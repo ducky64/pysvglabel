@@ -1,7 +1,7 @@
 import argparse
 import csv
 
-from .labelcore import SvgTemplate
+from labelcore import SvgTemplate
 
 parser = argparse.ArgumentParser(description='Create label sheets from SVG templates.')
 parser.add_argument('template', type=str,
