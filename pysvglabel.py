@@ -1,5 +1,6 @@
 import argparse
 import csv
+import xml.etree.ElementTree as ET
 
 from labelcore import SvgTemplate
 
@@ -15,4 +16,4 @@ parser.add_argument('output', type=str,
 args = parser.parse_args()
 
 reader = csv.DictReader(args.csv)
-
+template = SvgTemplate(ET.parse(args.template))
