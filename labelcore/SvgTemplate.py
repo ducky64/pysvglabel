@@ -2,6 +2,8 @@ import xml.etree.ElementTree as ET
 from typing import Any, Dict, Callable, Optional
 from copy import deepcopy
 
+from labelfrontend import LabelSheet
+
 
 class BadTemplateException(Exception):
   """Base class for all template errors."""
@@ -39,7 +41,11 @@ class SvgTemplate:
           start_code = child_text.strip('🏁')
           exec("from labelfrontend import *", self.env)
           exec(start_code, self.env)
-          print(self.env)
+
+          if 'sheet' not in self.env:
+            raise BadTemplateException("sheet not defined in starting block")
+          if not isinstance(self.env['sheet'], LabelSheet):
+            raise BadTemplateException(f"sheet not instance of LabelSheet, got {self.env['sheet']}")
 
           elt.remove(child)  # remove the init block from the template
 
