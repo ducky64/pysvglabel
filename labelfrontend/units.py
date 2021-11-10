@@ -2,7 +2,10 @@ from typing import Tuple, overload, Union
 
 
 class LengthDimension:
-  raise NotImplementedError
+  pass
+
+
+AreaDimension = Tuple[LengthDimension, LengthDimension]
 
 
 class LengthUnit:
@@ -14,11 +17,11 @@ class LengthUnit:
   @overload
   def __rmul__(self, other: float) -> LengthDimension: ...
   @overload
-  def __rmul__(self, other: Tuple[float, float]) -> Tuple[LengthDimension, LengthDimension]: ...
+  def __rmul__(self, other: Tuple[float, float]) -> AreaDimension: ...
 
   def __rmul__(self, other: Union[float, Tuple[float, float]]) -> \
-      Union[LengthDimension, Tuple[LengthDimension, LengthDimension]]:
-    raise NotImplementedError
+      Union[LengthDimension, AreaDimension]:
+    pass
 
 
 inch = LengthUnit('in', 96)  # in is a reserved keyword

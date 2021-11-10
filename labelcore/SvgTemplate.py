@@ -35,21 +35,16 @@ class SvgTemplate:
         if child_text.startswith('🏁'):
           if self.env is not None:
             raise BadTemplateException("multiple starting blocks (textboxes starting with 🏁) found")
-
+          self.env = {}
           start_code = child_text.strip('🏁')
-          print(start_code)
+          exec("from labelfrontend import *", self.env)
+          exec(start_code, self.env)
+          print(self.env)
 
-          self.env = {}  # TODO actually run the block and get the env
-
-
-          elt.remove(child)
-
+          elt.remove(child)  # remove the init block from the template
 
     self.visit(self.root.getroot(), replace_start)
 
-    # look for an init block and run it
-    # for child in self.root.getroot():
-    #   print(child.tag)
 
   def create_sheet(self) -> ET.ElementTree:  # TODO proper ETree type
     raise NotImplementedError
