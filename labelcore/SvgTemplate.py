@@ -1,36 +1,10 @@
 import xml.etree.ElementTree as ET
-from typing import Any, Dict, Callable, Optional, cast, List, Tuple
+from typing import Any, Dict, Callable, Optional, cast, List, Tuple, OrderedDict
 from copy import deepcopy, copy
 
 from labelfrontend import LabelSheet
 from labelfrontend.units import LengthDimension
-
-
-class BadTemplateException(Exception):
-  """Base class for all template errors."""
-  pass
-
-
-SVG_NAMESPACE = '{http://www.w3.org/2000/svg}'
-NAMESPACES = {
-  'svg': 'http://www.w3.org/2000/svg',
-}
-
-
-SVG_GRAPHICS_TAGS = [
-  f'{SVG_NAMESPACE}circle',
-  f'{SVG_NAMESPACE}ellipse',
-  f'{SVG_NAMESPACE}image',
-  f'{SVG_NAMESPACE}line',
-  f'{SVG_NAMESPACE}mesh',
-  f'{SVG_NAMESPACE}path',
-  f'{SVG_NAMESPACE}polygon',
-  f'{SVG_NAMESPACE}polyline',
-  f'{SVG_NAMESPACE}rect',
-  f'{SVG_NAMESPACE}text',
-  f'{SVG_NAMESPACE}use',
-  f'{SVG_NAMESPACE}g'
-]
+from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
 
 def text_of(elt: ET.Element) -> str:
@@ -117,7 +91,7 @@ class SvgTemplate:
       del top.attrib['viewBox']
     return top
 
-  def apply_instance(self, row: Dict[str, str], table: List[Dict[str, str]], row_num: int) -> ET.Element:
+  def apply_instance(self, row: Dict[str, str], table: List[OrderedDict[str, str]], row_num: int) -> ET.Element:
     """Creates a copy of this template, with substitutions for the given row data.
     The env dict is shallow-copied, so variable changes aren't reflected in other rows,
     but mutation effects will be visible."""
@@ -146,7 +120,7 @@ class SvgTemplate:
       new_root.append(new_elt)
     return new_root
 
-  def apply_table(self, table: List[Dict[str, str]]) -> List[ET.Element]:
+  def apply_table(self, table: List[OrderedDict[str, str]]) -> List[ET.Element]:
     """Given an entire table, generates sheet(s) of labels."""
     sheets = []
 

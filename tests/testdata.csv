@@ -1,7 +1,7 @@
-id,barcode,description
-0,B00,zero
-1,B01,one
-2,B02,two
-3,B03,three
-4,B04,four
-5,B05,five
+id,barcode,description,spaced thing
+0,B00,zero,a
+1,B01,one,b
+2,B02,two,c
+3,B03,three,d
+4,B04,four,e
+5,B05,five,f
