@@ -10,9 +10,9 @@ class BadTemplateException(Exception):
   pass
 
 
-SVG_NAMESPACE = 'http://www.w3.org/2000/svg'
+SVG_NAMESPACE = '{http://www.w3.org/2000/svg}'
 NAMESPACES = {
-  'svg': SVG_NAMESPACE,
+  'svg': 'http://www.w3.org/2000/svg',
 }
 
 
@@ -24,16 +24,16 @@ def text_of(elt: ET.Element) -> str:
 def text_child_elts(elt: ET.Element) -> List[ET.Element]:
   return [child for child in elt
           if child.tag in (
-            f'{{{SVG_NAMESPACE}}}text',
-            f'{{{SVG_NAMESPACE}}}flowRoot',
+            f'{SVG_NAMESPACE}text',
+            f'{SVG_NAMESPACE}flowRoot',
           )]
 
 
 def text_inner_elts(elt: ET.Element) -> List[ET.Element]:
   return [child for child in elt
           if child.tag in (
-            f'{{{SVG_NAMESPACE}}}tspan',
-            f'{{{SVG_NAMESPACE}}}flowPara',
+            f'{SVG_NAMESPACE}tspan',
+            f'{SVG_NAMESPACE}flowPara',
           )]
 
 
@@ -79,7 +79,7 @@ class SvgTemplate:
   def apply(self, row: Dict[str, str]) -> ET.Element:
     new = deepcopy(self.root.getroot())
     value_variables = {key: value for key, value in row.items()
-                       if key.isidentifier()}
+                       if key.isidentifier()}  # discard non-identifiers
     self.env.update(value_variables)
     self.env.update({'row': row})
 
@@ -87,9 +87,7 @@ class SvgTemplate:
       for child in text_inner_elts(elt):
         process_text(child)
       if elt.text:
-        old_text = elt.text
         elt.text = eval(f'f"""{elt.text}"""', self.env)  # TODO proper escaping, even though """ in a label is unlikely
-        print(f"{old_text} -> {elt.text}")
 
     def apply_template(elt: ET.Element) -> None:
       for child in text_child_elts(elt):
