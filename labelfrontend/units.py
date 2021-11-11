@@ -60,5 +60,9 @@ class LengthDimension:
   def to_str(self) -> str:
     return f"{self.value} {self.unit.svg_unit}"
 
+  def __add__(self, other: 'LengthDimension') -> 'LengthDimension':
+    assert self.unit == other.unit, "TODO support conversions"
+    return LengthDimension(self.value + other.value, self.unit)
+
 
 AreaDimension = Tuple[LengthDimension, LengthDimension]

@@ -1,8 +1,9 @@
 import xml.etree.ElementTree as ET
-from typing import Any, Dict, Callable, Optional, cast, List
+from typing import Any, Dict, Callable, Optional, cast, List, Tuple
 from copy import deepcopy, copy
 
 from labelfrontend import LabelSheet
+from labelfrontend.units import LengthDimension
 
 
 class BadTemplateException(Exception):
@@ -45,9 +46,10 @@ class SvgTemplate:
       cls._visit(child, fn)
 
   def __init__(self, root: ET.ElementTree):
-    self.root = root
+    self.root = root.getroot()
     self.env: Dict[str, Any] = cast(Any, None)
     self.sheet: LabelSheet = cast(Any, None)
+    self.size: Tuple[LengthDimension, LengthDimension]
 
     def replace_start(elt: ET.Element) -> None:
       for child in text_child_elts(elt):
@@ -68,10 +70,18 @@ class SvgTemplate:
 
           elt.remove(child)  # remove the init block from the template
 
-    self._visit(self.root.getroot(), replace_start)
+    self._visit(self.root, replace_start)
+    if 'width' not in self.root.attrib:
+      raise BadTemplateException("svg missing width")
+    if 'height' not in self.root.attrib:
+      raise BadTemplateException("svg missing height")
+    self.size = (LengthDimension.from_str(self.root.attrib['width']),
+                 LengthDimension.from_str(self.root.attrib['height']))
 
     if self.env is None:
       raise BadTemplateException("no starting blocks (textboxes starting with 🏁) found")
+    if self.sheet is None:
+      raise BadTemplateException("no sheet defined")
 
   def create_sheet(self) -> ET.Element:
     """Creates the top-level SVG object for a sheet."""
@@ -84,7 +94,7 @@ class SvgTemplate:
     """Creates a copy of this template, with substitutions for the given row data.
     The env dict is shallow-copied, so variable changes aren't reflected in other rows,
     but mutation effects will be visible."""
-    new = deepcopy(self.root.getroot())
+    new = deepcopy(self.root)
     if 'viewBox' in new.attrib:
       del new.attrib['viewBox']
 
