@@ -1,5 +1,5 @@
 import unittest
-from labelfrontend.units import LengthDimension, mm, px
+from labelfrontend.units import LengthDimension, mm, inch, px
 
 
 class UnitsParseTestCase(unittest.TestCase):
@@ -29,3 +29,19 @@ class UnitsOpsTestCase(unittest.TestCase):
     sum = 1.5 * mm + 0.5 * mm
     self.assertEqual(sum.value, 2.0)
     self.assertEqual(sum.unit, mm)
+
+  def test_eq(self) -> None:
+    self.assertTrue(1.5 * mm == 1.5 * mm)
+    self.assertTrue(0.5 * mm + 1.0 * mm == 1.5 * mm)
+    self.assertTrue(1.5 * mm == 0.5 * mm + 1.0 * mm)
+    self.assertTrue(1.5 * mm != 0.5 * mm)
+    self.assertTrue(25.4 * mm == 1 * inch)
+
+  def test_compare(self) -> None:
+    self.assertTrue(1.0 * mm < 1.0 * inch)
+    self.assertTrue(1.0 * mm <= 1.0 * inch)
+    self.assertTrue(1.0 * inch > 1.0 * mm)
+    self.assertTrue(1.0 * inch >= 1.0 * mm)
+
+    self.assertTrue(1.0 * inch >= 25.4 * mm)
+    self.assertTrue(1.0 * inch <= 25.4 * mm)

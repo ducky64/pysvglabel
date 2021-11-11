@@ -1,4 +1,5 @@
-from typing import Tuple, overload, Union
+from functools import total_ordering
+from typing import Tuple, overload, Union, Any
 import re
 
 
@@ -34,6 +35,7 @@ pt = LengthUnit('pt', 96/72)
 px = LengthUnit('', 1)
 
 
+@total_ordering
 class LengthDimension:
   STR_TO_UNITS = {
     'in': inch,
@@ -76,6 +78,15 @@ class LengthDimension:
 
   def __truediv__(self, other: Union[int, float]) -> 'LengthDimension':
     return LengthDimension(self.value / other, self.unit)
+
+  def __eq__(self, other: Any) -> bool:
+    if isinstance(other, LengthDimension):
+      return self.to_px() == other.to_px()
+    else:
+      return False
+
+  def __lt__(self, other: 'LengthDimension') -> bool:
+    return self.to_px() < other.to_px()
 
 
 AreaDimension = Tuple[LengthDimension, LengthDimension]

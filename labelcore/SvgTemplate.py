@@ -5,14 +5,15 @@ from copy import deepcopy, copy
 from labelfrontend import LabelSheet
 from labelfrontend.units import LengthDimension
 from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
+from .GroupReplacer import GroupReplacer
 
 
-def text_of(elt: ET.Element) -> str:
-  inner_texts = [text_of(child) for child in text_inner_elts(elt)]
+def get_text_of(elt: ET.Element) -> str:
+  inner_texts = [get_text_of(child) for child in get_text_inner_elts(elt)]
   return (elt.text or "") + "".join(inner_texts)
 
 
-def text_child_elts(elt: ET.Element) -> List[ET.Element]:
+def get_text_child_elts(elt: ET.Element) -> List[ET.Element]:
   return [child for child in elt
           if child.tag in (
             f'{SVG_NAMESPACE}text',
@@ -20,7 +21,7 @@ def text_child_elts(elt: ET.Element) -> List[ET.Element]:
           )]
 
 
-def text_inner_elts(elt: ET.Element) -> List[ET.Element]:
+def get_text_inner_elts(elt: ET.Element) -> List[ET.Element]:
   return [child for child in elt
           if child.tag in (
             f'{SVG_NAMESPACE}tspan',
@@ -41,8 +42,8 @@ class SvgTemplate:
     self.size: Tuple[LengthDimension, LengthDimension]
 
     def replace_start(elt: ET.Element) -> None:
-      for child in text_child_elts(elt):
-        child_text = text_of(child)
+      for child in get_text_child_elts(elt):
+        child_text = get_text_of(child)
         if child_text.startswith('🏁'):
           if self.env is not None:
             raise BadTemplateException("multiple starting blocks (textboxes starting with 🏁) found")
@@ -104,14 +105,23 @@ class SvgTemplate:
     env.update({'row': row, 'table': table, 'row_num': row_num})
 
     def process_text(elt: ET.Element) -> None:
-      for child in text_inner_elts(elt):
+      for child in get_text_inner_elts(elt):
         process_text(child)
       if elt.text:
         elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, even though """ in a label is unlikely
 
     def apply_template(elt: ET.Element) -> None:
-      for child in text_child_elts(elt):
-        if not text_of(child).startswith('🐍'):
+      text_child_elts = get_text_child_elts(elt)
+
+      if len(text_child_elts) == 1 and get_text_of(text_child_elts[0]).startswith('🐍'):
+        code = get_text_of(text_child_elts[0]).strip('🐍')
+        obj = eval(code, env)
+        if not isinstance(obj, GroupReplacer):
+          raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
+      else:
+        for child in text_child_elts:
+          if get_text_of(child).startswith('🐍'):
+            raise BadTemplateException('cannot have multiple 🐍 textboxes in the same group')
           process_text(child)
 
     for elt in self.template_elts:
