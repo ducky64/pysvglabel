@@ -162,7 +162,7 @@ class SvgTemplate:
       offset_y = margin_y + (self.size[1] + self.sheet.space[1]) * count_y
 
       instance = self.apply_instance(row, table, row_num)
-      instance.attrib['transform'] = f'translate({offset_x.to_px()}, {-offset_y.to_px()})'
+      instance.attrib['transform'] = f'translate({offset_x.to_px()}, {offset_y.to_px()})'
       sheets[-1].append(instance)
 
     return sheets
