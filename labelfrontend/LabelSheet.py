@@ -11,10 +11,10 @@ class LabelSheet:
     self.space = space
     self.count = count
 
-  def get_margins(self, label: Tuple[LengthDimension, LengthDimension]) -> Tuple[LengthDimension, LengthDimension]:
+  def get_margins(self, label_size: Tuple[LengthDimension, LengthDimension]) -> Tuple[LengthDimension, LengthDimension]:
     """Given the sheet of the actual label, returns the X and Y margins."""
-    contents_x = (label[0] * self.count[0]) - (self.space[0] * (self.count[0] - 1))
-    contents_y = (label[1] * self.count[1]) - (self.space[1] * (self.count[1] - 1))
+    contents_x = (label_size[0] * self.count[0]) + (self.space[0] * (self.count[0] - 1))
+    contents_y = (label_size[1] * self.count[1]) + (self.space[1] * (self.count[1] - 1))
     return (self.page[0] - contents_x) / 2, (self.page[1] - contents_y) / 2
 
   def labels_per_sheet(self) -> int:
