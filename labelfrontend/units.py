@@ -58,7 +58,10 @@ class LengthDimension:
     self.unit = unit
 
   def to_str(self) -> str:
-    return f"{self.value} {self.unit.svg_unit}"
+    return f"{self.value}{self.unit.svg_unit}"
+
+  def to_px(self) -> float:
+    return self.value * self.unit.pixels
 
   def __add__(self, other: 'LengthDimension') -> 'LengthDimension':
     assert self.unit == other.unit, "TODO support conversions"
