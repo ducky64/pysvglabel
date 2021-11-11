@@ -75,6 +75,7 @@ class SvgTemplate:
       raise BadTemplateException("svg missing width")
     if 'height' not in self.root.attrib:
       raise BadTemplateException("svg missing height")
+
     self.size = (LengthDimension.from_str(self.root.attrib['width']),
                  LengthDimension.from_str(self.root.attrib['height']))
 
@@ -120,11 +121,23 @@ class SvgTemplate:
 
   def apply_table(self, table: List[Dict[str, str]]) -> List[ET.Element]:
     """Given an entire table, generates sheet(s) of labels."""
-    sheets = [self.create_sheet()]
-    curr_sheet_num = 0
+    sheets = []
 
+    (margin_x, margin_y) = self.sheet.get_margins(self.size)
     for row_num, row in enumerate(table):
-      instance = self.apply_instance(row, table, row_num)
+      sheet_num = row_num % self.sheet.labels_per_sheet()
+      if sheet_num == 0:
+        sheets.append(self.create_sheet())
 
+      count_x = sheet_num % self.sheet.count[0]
+      count_y = sheet_num // self.sheet.count[0]
+      offset_x = margin_x + (self.size[0] + self.sheet.space[0]) * (count_x - 1)
+      offset_y = margin_y + (self.size[1] + self.sheet.space[1]) * (count_y - 1)
+
+      instance = self.apply_instance(row, table, row_num)
+      assert 'x' not in instance.attrib and 'y' not in instance.attrib, "template may not define x and y offset"
+      instance.attrib['x'] = offset_x.to_str()
+      instance.attrib['y'] = offset_y.to_str()
+      sheets[-1].append(instance)
 
     return sheets
