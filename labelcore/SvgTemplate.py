@@ -73,11 +73,17 @@ class SvgTemplate:
     if self.env is None:
       raise BadTemplateException("no starting blocks (textboxes starting with 🏁) found")
 
-  def create_sheet(self) -> ET.ElementTree:
-    raise NotImplementedError
+  def create_sheet(self) -> ET.Element:
+    top = ET.Element(f'{SVG_NAMESPACE}svg')
+    top.attrib['width'] = self.sheet.page[0].to_str()
+    top.attrib['height'] = self.sheet.page[1].to_str()
+    return top
 
   def apply(self, row: Dict[str, str]) -> ET.Element:
     new = deepcopy(self.root.getroot())
+    if 'viewBox' in new.attrib:
+      del new.attrib['viewBox']
+
     value_variables = {key: value for key, value in row.items()
                        if key.isidentifier()}  # discard non-identifiers
     self.env.update(value_variables)
