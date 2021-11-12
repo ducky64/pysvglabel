@@ -18,4 +18,4 @@ class SubSvgTestCase(LabelTestCase):
 
     self.assertEqual(len(sheets), 1)
     groups = sheets[0].findall('svg:g', NAMESPACES)
-    self.assertEqual(len(groups), 4)
+    self.assertEqual(len(groups), 5)
