@@ -66,12 +66,16 @@ class LengthDimension:
     return self.value * self.unit.pixels
 
   def __add__(self, other: 'LengthDimension') -> 'LengthDimension':
-    assert self.unit == other.unit, "TODO support conversions"
-    return LengthDimension(self.value + other.value, self.unit)
+    if self.unit != other.unit:  # fall back to pixels
+      return LengthDimension(self.to_px() + other.to_px(), px)
+    else:
+      return LengthDimension(self.value + other.value, self.unit)
 
   def __sub__(self, other: 'LengthDimension') -> 'LengthDimension':
-    assert self.unit == other.unit, "TODO support conversions"
-    return LengthDimension(self.value - other.value, self.unit)
+    if self.unit != other.unit:  # fall back to pixels
+      return LengthDimension(self.to_px() - other.to_px(), px)
+    else:
+      return LengthDimension(self.value - other.value, self.unit)
 
   def __mul__(self, other: Union[int, float]) -> 'LengthDimension':
     return LengthDimension(self.value * other, self.unit)

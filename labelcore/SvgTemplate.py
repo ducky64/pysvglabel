@@ -118,6 +118,12 @@ class SvgTemplate:
         obj = eval(code, env)
         if not isinstance(obj, GroupReplacer):
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
+        elt.remove(text_child_elts[0])
+
+        new_elts = obj.process_group(list(elt))
+        for child in list(elt):  # elt.clear also deletes attribs
+          elt.remove(child)
+        elt.extend(new_elts)
       else:
         for child in text_child_elts:
           if get_text_of(child).startswith('🐍'):
