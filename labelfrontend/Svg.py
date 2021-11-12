@@ -45,12 +45,11 @@ class Svg(RectGroupReplacer):
     if self.scaling == Svg.Scaling.NONE:
       svg.attrib['x'] = offset_x.to_str()
       svg.attrib['y'] = offset_y.to_str()
-
       return [svg]
     elif self.scaling == Svg.Scaling.FIT:
-
       scaler = ET.Element(f'{SVG_NAMESPACE}g')
       scaler.attrib['transform'] = f"translate({offset_x.to_str()}, {offset_y.to_str()}) scale({scale})"
       scaler.append(svg)
-
       return [scaler]
+    else:
+      raise NotImplementedError
