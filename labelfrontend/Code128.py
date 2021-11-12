@@ -30,7 +30,7 @@ class Code128(RectGroupReplacer):
     assert total_width <= width, f"barcode '{self.data}' width {total_width.to_str()} >= allocated {width.to_str()}"
 
     output = []
-    curr_x = x
+    curr_x = x + (width - total_width) / 2  # center the barcode
     for i, bar_width_dim in enumerate(bar_widths_dim):
       if i % 2 == 1:  # every other entry is a drawn bar
         output.append(ET.Element('rect', {
