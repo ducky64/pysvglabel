@@ -41,8 +41,8 @@
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
      inkscape:zoom="5.638896"
-     inkscape:cx="28.499239"
-     inkscape:cy="18.90271"
+     inkscape:cx="43.40278"
+     inkscape:cy="21.030786"
      inkscape:window-width="1320"
      inkscape:window-height="1198"
      inkscape:window-x="2137"
@@ -114,13 +114,13 @@
     <text
        xml:space="preserve"
        id="text880"
-       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;shape-inside:url(#rect882);"
        x="-6.5368652"
        y="0"><tspan
          x="0"
          y="970.23916"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">🏁</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"> # designed on a 1mm grid, 5 lines per major line
 </tspan></tspan><tspan
          x="0"
          y="974.92669"><tspan
@@ -132,7 +132,11 @@
 </tspan></tspan><tspan
          x="0"
          y="984.30169"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"># designed on a 1mm grid, 5 lines per major line</tspan></tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">def file_of(shape):
+</tspan></tspan><tspan
+         x="0"
+         y="988.98919"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">    return f'sub_{shape}.svg'</tspan></tspan></text>
     <g
        id="g5683-0"
        transform="translate(-70.157478,928.14717)">
