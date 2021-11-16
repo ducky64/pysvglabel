@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="40"
+   height="40"
+   id="svg3295"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="Screw Head - Torx TR.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs3297">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective3303" />
+    <inkscape:perspective
+       id="perspective3647"
+       inkscape:persp3d-origin="25 : 16.666667 : 1"
+       inkscape:vp_z="50 : 25 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 25 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="64.573406"
+     inkscape:cy="-12.37426"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1399"
+     inkscape:window-height="874"
+     inkscape:window-x="37"
+     inkscape:window-y="-4">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3305"
+       visible="true"
+       enabled="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3300">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.10526299;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3307"
+       sodipodi:cx="20"
+       sodipodi:cy="20"
+       sodipodi:rx="20"
+       sodipodi:ry="20"
+       d="M 40,20 A 20,20 0 1 1 0,20 A 20,20 0 1 1 40,20 z"
+       transform="matrix(0.95,0,0,0.95,1,1)" />
+    <g
+       id="g3653"
+       transform="matrix(1.6495304,0,0,1.6495304,17.113324,-66.600341)">
+      <g
+         transform="matrix(6.8827e-2,0,0,6.882715e-2,-22.051007,-11.923865)"
+         id="g2325">
+        <path
+           d="M 280,780 C 263.45932,793.23254 232.10763,750.12932 211.1667,753.31869 C 190.22578,756.50807 173.12752,806.99041 153.39746,799.28203 C 133.6674,791.57365 155.32004,742.87068 142.0875,726.33 C 128.85496,709.78932 76.586838,720.22295 73.39746,699.28203 C 70.208081,678.34111 123.21242,672.74136 130.9208,653.0113 C 138.62917,633.28124 103.45932,593.23254 120,580 C 136.54068,566.76746 167.89237,609.87068 188.8333,606.68131 C 209.77422,603.49193 226.87248,553.00959 246.60254,560.71797 C 266.3326,568.42635 244.67996,617.12932 257.9125,633.67 C 271.14504,650.21068 323.41316,639.77705 326.60254,660.71797 C 329.79192,681.65889 276.78758,687.25864 269.0792,706.9887 C 261.37083,726.71876 296.54068,766.76746 280,780 z"
+           transform="matrix(0.9319535,-0.3625779,0.3625779,0.9319535,-87.134521,374.81122)"
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.21246648;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="path7856" />
+      </g>
+    </g>
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3677"
+       sodipodi:cx="20"
+       sodipodi:cy="20"
+       sodipodi:rx="5"
+       sodipodi:ry="5"
+       d="M 25,20 A 5,5 0 1 1 15,20 A 5,5 0 1 1 25,20 z" />
+  </g>
+</svg>
