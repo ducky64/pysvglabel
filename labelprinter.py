@@ -54,8 +54,10 @@ if __name__ == '__main__':
         row_set = canonicalize_row_dict(row_dict)
         seen_set.add(row_set)
         if row_set not in last_seen_set and last_mod_time is not None:
+          label = template.create_single()
           instance = template.apply_instance(row_dict, all_row_dicts, row_index)
-          root = ET.ElementTree(instance)
+          label.append(instance)
+          root = ET.ElementTree(label)
           root.write("temp.svg")
 
           print(f"Printing: {row_dict}")
