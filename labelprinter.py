@@ -9,6 +9,10 @@ import win32print
 
 from labelcore import SvgTemplate
 
+import subprocess
+from reportlab.graphics import renderPDF, renderPM
+from svglib.svglib import svg2rlg
+
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Print individual labels (eg, with a thermal printer) from SVG templates.')
@@ -28,6 +32,14 @@ if __name__ == '__main__':
     # Discard empty cells - to not print everything is a new row is added
     return tuple(sorted([(k, v) for (k, v) in row_dict.items() if v]))
 
+  print("Waiting for Inkscape to start...")
+  p = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+  while True:
+    line = p.stdout.read(1)
+    if line == b'>':
+      # p.stdout.read(1)  # eat the space
+      break
+  print("done")
 
   last_mod_time = None  # None means initial read, and to not print anythign
   last_seen_set = set()
@@ -59,6 +71,27 @@ if __name__ == '__main__':
           label.append(instance)
           root = ET.ElementTree(label)
           root.write("temp.svg")
+
+          p.stdin.write(b'file-open:temp.svg;export-filename:temp.pdf;export-do;\r\n')
+          p.stdin.flush()
+
+          # while True:
+          #   line = p.stdout.read(1)
+          #   print(line)
+          #   if line == b'>':
+          #     p.stdout.read(1)  # eat the space
+          #     break
+
+          # subprocess.Popen([
+          #   'inkscape', 'temp.svg', '--export-filename=temp.svg'
+          # ]).communicate()
+
+          # process = subprocess.Popen([
+          #   'inkscape', '--shell'
+          # ])
+
+          # drawing = svg2rlg("temp.svg")
+          # renderPDF.drawToFile(drawing, "temp.pdf")
 
           print(f"Printing: {row_dict}")
 
