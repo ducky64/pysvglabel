@@ -32,24 +32,37 @@ if __name__ == '__main__':
   last_mod_time = None  # None means initial read, and to not print anythign
   last_seen_set = set()
   while True:
-    if os.path.isfile(args.csv):
-      mod_time = os.path.getmtime(args.csv)
-
-      if last_mod_time is None or mod_time != last_mod_time:
-        print("File modification detected")
-        reader = csv.DictReader(args.csv)
-        seen_set = set()
-        for row_dict in reader:
-          row_set = canonicalize_row_dict(row_dict)
-          if row_set not in last_seen_set and last_mod_time is not None:
-            print(f"Printing: {row_dict}")
-
-          seen_set.add(row_set)
-
-        last_mod_time = mod_time
-        last_seen_set = seen_set
-        print("Done")
-    else:
+    if not os.path.isfile(args.csv):
       print("Warning: file not found")
+      continue
+
+    try:
+      mod_time = os.path.getmtime(args.csv)
+    except FileNotFoundError:
+      continue  # sometimes the file temporarily disappears, just ignore it
+    if mod_time == last_mod_time:  # file unchanged, ignore
+      continue
+
+    time.sleep(0.25)  # TODO HACK: wait for the file the stabilize
+
+    with open(args.csv, 'r') as csvfile:
+      print("File modification detected")
+      reader = csv.DictReader(csvfile)
+      seen_set = set()
+      all_row_dicts = list(reader)
+      for row_index, row_dict in enumerate(all_row_dicts):
+        row_set = canonicalize_row_dict(row_dict)
+        seen_set.add(row_set)
+        if row_set not in last_seen_set and last_mod_time is not None:
+          instance = template.apply_instance(row_dict, all_row_dicts, row_index)
+          root = ET.ElementTree(instance)
+          root.write("temp.svg")
+
+          print(f"Printing: {row_dict}")
+
+        seen_set.add(row_set)
+
+      last_mod_time = mod_time
+      last_seen_set = seen_set
 
     time.sleep(0.25)
