@@ -10,8 +10,6 @@ import win32print
 from labelcore import SvgTemplate
 
 import subprocess
-from reportlab.graphics import renderPDF, renderPM
-from svglib.svglib import svg2rlg
 
 
 if __name__ == '__main__':
@@ -32,12 +30,15 @@ if __name__ == '__main__':
     # Discard empty cells - to not print everything is a new row is added
     return tuple(sorted([(k, v) for (k, v) in row_dict.items() if v]))
 
+  # We use Inkscape instead of ReportLab / svglib because svglib doesn't seem to render
+  # some features correctly, like flowRegion.
+  # Inkscape in shell mode is also pretty responsive.
   print("Waiting for Inkscape to start...")
   p = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE, stdout=subprocess.PIPE)
   while True:
     line = p.stdout.read(1)
     if line == b'>':
-      # p.stdout.read(1)  # eat the space
+      p.stdout.read(1)  # eat the space
       break
   print("done")
 
@@ -74,24 +75,6 @@ if __name__ == '__main__':
 
           p.stdin.write(b'file-open:temp.svg;export-filename:temp.pdf;export-do;\r\n')
           p.stdin.flush()
-
-          # while True:
-          #   line = p.stdout.read(1)
-          #   print(line)
-          #   if line == b'>':
-          #     p.stdout.read(1)  # eat the space
-          #     break
-
-          # subprocess.Popen([
-          #   'inkscape', 'temp.svg', '--export-filename=temp.svg'
-          # ]).communicate()
-
-          # process = subprocess.Popen([
-          #   'inkscape', '--shell'
-          # ])
-
-          # drawing = svg2rlg("temp.svg")
-          # renderPDF.drawToFile(drawing, "temp.pdf")
 
           print(f"Printing: {row_dict}")
 
