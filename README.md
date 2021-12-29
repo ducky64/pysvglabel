@@ -12,6 +12,14 @@ Label sheet data is embedded in the .svg file. All text in the .svg file is trea
 
 A future version may sandbox templates by default, limiting what Python functions they can access.
 
+### Windows Label Printing
+
+Additional packages are needed to use the label printer functionality on Windows.
+
+`pip install pywin32`
+
+Inkscape also needs to on your system PATH.
+
 ## Template Reference
 
 TBD
