@@ -1,8 +1,22 @@
 import argparse
 import csv
+import subprocess
 import xml.etree.ElementTree as ET
+import os.path
+from typing import Optional
 
 from labelcore import SvgTemplate
+
+
+class InkscapeSubprocess:
+  def __init__(self) -> None:
+    self.process = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+  def convert(self, filename_in: str, filename_out: str) -> None:
+    assert self.process.stdin
+    self.process.stdin.write(str.encode(f'file-open:{filename_in};export-filename:{filename_out};export-do;\r\n'))
+    self.process.stdin.flush()
+
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Create label sheets from SVG templates.')
@@ -12,7 +26,8 @@ if __name__ == '__main__':
                       help='Input CSV data file.')
   parser.add_argument('output', type=str,
                       help="Filename to write outputs to. Can have .svg or .pdf extensions."
-                           + " If multiple sheets are needed, appends a prefix to the second one, starting with _2.")
+                           + " If multiple sheets are needed, appends a prefix to the second one, starting with _2."
+                           + " If PDF output is requested, inkscape must be on the system path.")
   parser.add_argument('--print', type=str,
                       help="Optional printer name, to send output files to a printer as they are generated."
                            + " The output must be a PDF.")
@@ -25,17 +40,41 @@ if __name__ == '__main__':
     reader = csv.DictReader(csvfile)
     table = [row for row in reader]
 
+  output_name, output_ext = os.path.splitext(args.output)
+  inkscape: Optional[InkscapeSubprocess] = None
+  if output_ext == '.pdf':
+    inkscape = InkscapeSubprocess()
+
+  if args.print:
+    import win32api  # type:ignore
+    import win32print  # type:ignore
+    assert output_ext == '.pdf', "PDF output required to print"
+
   # chunk into page-sized tables
   page_tables = [table[start: start + template_page_count]
                  for start in range(0, len(table), template_page_count)]
   for (page_num, page_table) in enumerate(page_tables):
     page = template.apply_page(page_table)
-    filename = args.output
-    with open(filename, 'wb') as file:
+
+    if page_num == 0:
+      filename = output_name  # first page doesn't need an extension
+    else:
+      filename = output_name + f'_{page_num + 1}'
+
+    outfiles = []
+    with open(filename + '.svg', 'wb') as file:
       root = ET.ElementTree(page)
       root.write(file)
+      outfiles.append(filename + '.svg')
 
-    print(f'Wrote page {page_num + 1}/{len(page_tables)} {filename}')
+    if inkscape is not None:
+      inkscape.convert(filename + '.svg', filename + '.pdf')
+      outfiles.append(filename + '.pdf')
 
-  # TODO optional PDFing
+    print(f'Wrote page {page_num + 1}/{len(page_tables)}: {", ".join(outfiles)}')
+
+    if args.print:
+      win32api.ShellExecute(0, "print", filename + '.pdf', f'/d:"{args.print}"', ".", 0)
+      print(f'Print to {args.print}')
+
   # TODO optional printing
