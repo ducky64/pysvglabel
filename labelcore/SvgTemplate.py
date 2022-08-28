@@ -83,8 +83,14 @@ class SvgTemplate:
         self.template_elts.append(deepcopy(child))
         self.skeleton.remove(child)
 
+  def create_single(self) -> ET.Element:
+    """Creates the top-level SVG object for a single label."""
+    return deepcopy(self.skeleton)
+
   def create_sheet(self) -> ET.Element:
-    """Creates the top-level SVG object for a sheet."""
+    """Creates the top-level SVG object for a sheet.
+    TODO - separate responsibilities with create_single? perhaps sheets should be a different object entirely?
+    """
     top = deepcopy(self.skeleton)
     top.attrib['width'] = self.sheet.page[0].to_str()
     top.attrib['height'] = self.sheet.page[1].to_str()
