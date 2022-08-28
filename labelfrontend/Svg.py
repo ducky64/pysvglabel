@@ -31,7 +31,7 @@ class Svg(RectGroupReplacer):
     svg_height = LengthDimension.from_str(svg.attrib['height'])
 
     if self.scaling == Svg.Scaling.NONE:
-      scale = 1
+      scale = 1.0
     elif self.scaling == Svg.Scaling.FIT:
       width_scale = rect_width.to_px() / svg_width.to_px()
       height_scale = rect_height.to_px() / svg_height.to_px()

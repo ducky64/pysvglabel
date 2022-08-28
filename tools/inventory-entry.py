@@ -21,6 +21,7 @@ if __name__ == '__main__':
   with open(args.csv, 'r') as csvfile:
     reader = csv.DictReader(csvfile)
 
+    assert reader.fieldnames is not None
     id_index = reader.fieldnames.index(args.id)
     format_elts = args.format.split(';')
     format_index = [reader.fieldnames.index(elt) for elt in format_elts]

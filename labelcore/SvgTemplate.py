@@ -98,7 +98,7 @@ class SvgTemplate:
       del top.attrib['viewBox']
     return top
 
-  def apply_instance(self, row: Dict[str, str], table: List[OrderedDict[str, str]], row_num: int) -> ET.Element:
+  def apply_instance(self, row: Dict[str, str], table: List[Dict[str, str]], row_num: int) -> ET.Element:
     """Creates a copy of this template, with substitutions for the given row data.
     The env dict is shallow-copied, so variable changes aren't reflected in other rows,
     but mutation effects will be visible."""
@@ -142,7 +142,7 @@ class SvgTemplate:
       new_root.append(new_elt)
     return new_root
 
-  def apply_table(self, table: List[OrderedDict[str, str]]) -> List[ET.Element]:
+  def apply_table(self, table: List[Dict[str, str]]) -> List[ET.Element]:
     """Given an entire table, generates sheet(s) of labels."""
     sheets = []
 

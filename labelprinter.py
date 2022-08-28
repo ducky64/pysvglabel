@@ -3,9 +3,10 @@ import os
 import csv
 import xml.etree.ElementTree as ET
 import time
+from typing import Dict, Tuple
 
-import win32api
-import win32print
+import win32api  # type:ignore
+import win32print  # type:ignore
 
 from labelcore import SvgTemplate
 
@@ -27,7 +28,7 @@ if __name__ == '__main__':
   template = SvgTemplate(ET.parse(args.template))
 
 
-  def canonicalize_row_dict(row_dict):
+  def canonicalize_row_dict(row_dict: Dict[str, str]) -> Tuple[Tuple[str, str], ...]:
     # Discard empty cells - to not print everything is a new row is added
     return tuple(sorted([(k, v) for (k, v) in row_dict.items() if v]))
 
