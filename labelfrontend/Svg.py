@@ -1,7 +1,9 @@
 from enum import Enum
 from typing import List
 import xml.etree.ElementTree as ET
+import os.path
 
+from labelcore import SvgTemplate
 from labelcore.GroupReplacer import RectGroupReplacer
 from labelcore.common import SVG_NAMESPACE
 from .units import LengthDimension
@@ -25,8 +27,8 @@ class Svg(RectGroupReplacer):
     self.filename = filename
     self.scaling = scaling
 
-  def process_rect(self, rect: ET.Element) -> List[ET.Element]:
-    svg = ET.parse(self.filename).getroot()
+  def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
+    svg = ET.parse(os.path.join(os.path.dirname(context.file_abspath), self.filename)).getroot()
     assert svg.tag == f"{SVG_NAMESPACE}svg", f"loaded file {self.filename} root tag is not svg, got {svg.tag}"
     assert 'width' in svg.attrib and 'height' in svg.attrib, f"loaded svg {self.filename} missing width or height"
 

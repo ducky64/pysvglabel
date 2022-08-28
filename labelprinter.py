@@ -25,7 +25,7 @@ if __name__ == '__main__':
   # TODO: support user-defineable generated filename
   args = parser.parse_args()
 
-  template = SvgTemplate(ET.parse(args.template))
+  template = SvgTemplate(args.template)
 
 
   def canonicalize_row_dict(row_dict: Dict[str, str]) -> Tuple[Tuple[str, str], ...]:
@@ -66,7 +66,7 @@ if __name__ == '__main__':
         if row_set not in last_seen_set and last_mod_time is not None:
           print(f"Printing: {row_dict}")
 
-          label = template.create_single()
+          label = template._create_instance()
           instance = template.apply_instance(row_dict, all_row_dicts, row_index)
           label.append(instance)
           root = ET.ElementTree(label)

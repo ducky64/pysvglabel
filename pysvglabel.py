@@ -12,10 +12,14 @@ if __name__ == '__main__':
   parser.add_argument('csv', type=str,
                       help='Input CSV data file.')
   parser.add_argument('output', type=str,
-                      help="Filename to write outputs to. Must end in .svg."
-                           + " If multiple sheets are needed, appends a prefix to the second one, starting with _2."
-                           + " (future versions may auto-detect output format by the extension)")
+                      help="Filename to write outputs to. Can have .svg or .pdf extensions."
+                           + " If multiple sheets are needed, appends a prefix to the second one, starting with _2.")
+  parser.add_argument('--print', type=str,
+                      help="Optional printer name, to send output files to a printer as they are generated."
+                           + " The output must be a PDF.")
   args = parser.parse_args()
 
   reader = csv.DictReader(args.csv)
-  template = SvgTemplate(ET.parse(args.template))
+  template = SvgTemplate(args.template)
+
+
