@@ -1,7 +1,6 @@
 import csv
 
 import os.path
-import xml.etree.ElementTree as ET
 from labelcore import SvgTemplate, NAMESPACES
 from .LabelTestCase import LabelTestCase
 

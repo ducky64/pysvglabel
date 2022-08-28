@@ -1,9 +1,7 @@
 import argparse
 import csv
-import xml.etree.ElementTree as ET
 
 from labelcore import SvgTemplate
-
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Create label sheets from SVG templates.')

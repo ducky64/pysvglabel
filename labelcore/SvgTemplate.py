@@ -1,12 +1,12 @@
-import xml.etree.ElementTree as ET
-from typing import Any, Dict, Callable, Optional, cast, List, Tuple, OrderedDict
-from copy import deepcopy, copy
-
 import os.path
+import xml.etree.ElementTree as ET
+from copy import deepcopy, copy
+from typing import Any, Dict, Callable, cast, List, Tuple
+
 from labelfrontend import LabelSheet
 from labelfrontend.units import LengthDimension
-from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 from .GroupReplacer import GroupReplacer
+from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
 
 def get_text_of(elt: ET.Element) -> str:
