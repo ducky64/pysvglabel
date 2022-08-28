@@ -1,21 +1,10 @@
 import argparse
 import csv
-import subprocess
 import xml.etree.ElementTree as ET
 import os.path
 from typing import Optional
 
-from labelcore import SvgTemplate
-
-
-class InkscapeSubprocess:
-  def __init__(self) -> None:
-    self.process = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-
-  def convert(self, filename_in: str, filename_out: str) -> None:
-    assert self.process.stdin
-    self.process.stdin.write(str.encode(f'file-open:{filename_in};export-filename:{filename_out};export-do;\r\n'))
-    self.process.stdin.flush()
+from labelcore import SvgTemplate, InkscapeSubprocess
 
 
 if __name__ == '__main__':
@@ -67,7 +56,7 @@ if __name__ == '__main__':
       root.write(file)
       outfiles.append(filename + '.svg')
 
-    if inkscape is not None:
+    if inkscape:
       inkscape.convert(filename + '.svg', filename + '.pdf')
       outfiles.append(filename + '.pdf')
 
@@ -77,4 +66,5 @@ if __name__ == '__main__':
       win32api.ShellExecute(0, "print", filename + '.pdf', f'/d:"{args.print}"', ".", 0)
       print(f'Print to {args.print}')
 
-  # TODO optional printing
+  if inkscape:
+    inkscape.close()
