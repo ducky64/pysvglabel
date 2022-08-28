@@ -1,5 +1,6 @@
 import argparse
 import csv
+import xml.etree.ElementTree as ET
 
 from labelcore import SvgTemplate
 
@@ -17,7 +18,24 @@ if __name__ == '__main__':
                            + " The output must be a PDF.")
   args = parser.parse_args()
 
-  reader = csv.DictReader(args.csv)
   template = SvgTemplate(args.template)
+  template_page_count = template.get_sheet_count()[0] * template.get_sheet_count()[1]
 
+  with open(args.csv, newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    table = [row for row in reader]
 
+  # chunk into page-sized tables
+  page_tables = [table[start: start + template_page_count]
+                 for start in range(0, len(table), template_page_count)]
+  for (page_num, page_table) in enumerate(page_tables):
+    page = template.apply_page(page_table)
+    filename = args.output
+    with open(filename, 'wb') as file:
+      root = ET.ElementTree(page)
+      root.write(file)
+
+    print(f'Wrote page {page_num + 1}/{len(page_tables)} {filename}')
+
+  # TODO optional PDFing
+  # TODO optional printing

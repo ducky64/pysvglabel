@@ -86,6 +86,9 @@ class SvgTemplate:
         self.template_elts.append(deepcopy(child))
         self.skeleton.remove(child)
 
+  def get_sheet_count(self) -> Tuple[int, int]:
+    return self.sheet.count
+
   def _create_instance(self) -> ET.Element:
     """Creates the top-level SVG object for a single label."""
     return deepcopy(self.skeleton)
