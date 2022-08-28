@@ -8,11 +8,19 @@ from .units import LengthDimension
 
 
 class Svg(RectGroupReplacer):
+  """
+  Add the contents of a SVG file where this rectangle-area-group is.
+  """
+
   class Scaling(Enum):
     NONE = 1,
     FIT = 2,
 
   def __init__(self, filename: str, scaling: Scaling = Scaling.FIT):
+    """
+    :param filename: filename of the SVG file to load
+    :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
+    """
     assert isinstance(filename, str)
     self.filename = filename
     self.scaling = scaling

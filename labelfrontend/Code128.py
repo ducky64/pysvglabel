@@ -7,7 +7,17 @@ from .units import LengthDimension, px
 
 
 class Code128(RectGroupReplacer):
+  """
+  Adds a Code 128 barcode where this rectangle-area-group is.
+  The barcode height is determined by the rectangle height.
+  """
   def __init__(self, data: str, thickness: LengthDimension, quiet: bool = True, fill: str = '#000000'):
+    """
+    :param data: data of the barcode
+    :param thickness: width of a 'module'
+    :param quiet: whether to generate the quiet zone
+    :param fill: fill color of the bars
+    """
     assert isinstance(data, str) and isinstance(thickness, LengthDimension)
     self.data = data
     self.thickness = thickness

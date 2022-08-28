@@ -4,9 +4,16 @@ from .units import AreaDimension, LengthDimension
 
 
 class LabelSheet:
-  """Label sheet definition specifying a page area and spacing between labels,
-  and the labels are centered within the page (so margin spacing is automatically calculated)."""
+  """
+  Label sheet definition specifying a page area and spacing between labels,
+  and the labels are centered within the page (so margin spacing is automatically calculated).
+  """
   def __init__(self, page: AreaDimension, space: AreaDimension, count: Tuple[int, int]):
+    """
+    :param page: size of the overall page
+    :param space: spacing between labels, as horizontal spacing and vertical spacing
+    :param count: number of labels on a page, as (columns, rows)
+    """
     self.page = page
     self.space = space
     self.count = count
