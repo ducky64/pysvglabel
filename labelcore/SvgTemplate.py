@@ -1,29 +1,26 @@
 import os.path
 import xml.etree.ElementTree as ET
 from copy import deepcopy, copy
-from typing import Any, Dict, Callable, cast, List, Tuple
+from typing import Any, Dict, Callable, cast, List, Tuple, TYPE_CHECKING
 
-from labelfrontend import LabelSheet
-from labelfrontend.units import LengthDimension
-from .GroupReplacer import GroupReplacer
 from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
 
 def get_text_of(elt: ET.Element) -> str:
-  inner_texts = [get_text_of(child) for child in get_text_inner_elts(elt)]
+  inner_texts = [get_text_of(child) for child in filter_text_inner_elts(list(elt))]
   return (elt.text or "") + "".join(inner_texts)
 
 
-def get_text_child_elts(elt: ET.Element) -> List[ET.Element]:
-  return [child for child in elt
+def filter_text_elts(elts: List[ET.Element]) -> List[ET.Element]:
+  return [child for child in elts
           if child.tag in (
             f'{SVG_NAMESPACE}text',
             f'{SVG_NAMESPACE}flowRoot',
           )]
 
 
-def get_text_inner_elts(elt: ET.Element) -> List[ET.Element]:
-  return [child for child in elt
+def filter_text_inner_elts(elts: List[ET.Element]) -> List[ET.Element]:
+  return [child for child in elts
           if child.tag in (
             f'{SVG_NAMESPACE}tspan',
             f'{SVG_NAMESPACE}flowPara',
@@ -38,6 +35,9 @@ def visit(elt: ET.Element, fn: Callable[[ET.Element], None]) -> None:
 
 class SvgTemplate:
   def __init__(self, filename: str):
+    from labelfrontend import LabelSheet
+    from labelfrontend.units import LengthDimension
+
     self.file_abspath = os.path.abspath(filename)
     root = ET.parse(filename)
     self.env: Dict[str, Any] = cast(Any, None)
@@ -45,7 +45,7 @@ class SvgTemplate:
     self.size: Tuple[LengthDimension, LengthDimension]
 
     def replace_start(elt: ET.Element) -> None:
-      for child in get_text_child_elts(elt):
+      for child in filter_text_elts(list(elt)):
         child_text = get_text_of(child)
         if child_text.startswith('🏁'):
           if self.env is not None:
@@ -117,13 +117,15 @@ class SvgTemplate:
     env.update({'row': row, 'table': table, 'row_num': row_num})
 
     def process_text(elt: ET.Element) -> None:
-      for child in get_text_inner_elts(elt):
+      for child in filter_text_inner_elts(list(elt)):
         process_text(child)
       if elt.text:
         elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, even though """ in a label is unlikely
 
     def apply_template(elt: ET.Element) -> None:
-      text_child_elts = get_text_child_elts(elt)
+      from .GroupReplacer import GroupReplacer
+
+      text_child_elts = filter_text_elts(list(elt))
       command_child_elts = [text_child_elt for text_child_elt in text_child_elts
                             if get_text_of(text_child_elt).startswith('🐍')]
 
