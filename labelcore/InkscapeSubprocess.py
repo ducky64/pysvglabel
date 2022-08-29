@@ -2,6 +2,13 @@ import subprocess
 
 
 class InkscapeSubprocess:
+  """
+  A class for an Inkscape subprocess to convert SVG to PDF.
+
+  We use Inkscape instead of ReportLab / svglib because svglib doesn't seem to render some features correctly,
+  like flowRegion.
+  Inkscape in shell mode is also pretty responsive.
+  """
   def __init__(self) -> None:
     self.process = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE)
     # don't block for Inkscape to start up, just start sending commands
