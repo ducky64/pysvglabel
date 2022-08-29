@@ -20,9 +20,9 @@ class TextColor(GroupReplacer):
       if 'style' not in elt.attrib:
         elt.attrib['style'] = ''
       style_contents = elt.attrib['style'].split(';')
-
-
-      print()
-      print(elt)
+      style_contents = [elt for elt in style_contents  # discard any existing fill styles
+                        if not elt.startswith('fill:')]
+      style_contents.append(f'fill:{self.color}')  # and tack new fill style onto the end
+      elt.attrib['style'] = ';'.join(style_contents)
 
     return elts

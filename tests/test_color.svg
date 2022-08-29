@@ -34,19 +34,19 @@
      inkscape:current-layer="layer1"
      showgrid="true"
      units="in"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:snap-bbox="true"
      inkscape:snap-bbox-edge-midpoints="true"
      inkscape:snap-bbox-midpoints="true"
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
      inkscape:zoom="3.9873016"
-     inkscape:cx="97.058121"
-     inkscape:cy="13.292197"
-     inkscape:window-width="1200"
-     inkscape:window-height="1537"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:cx="96.43113"
+     inkscape:cy="13.166799"
+     inkscape:window-width="1350"
+     inkscape:window-height="1230"
+     inkscape:window-x="737"
+     inkscape:window-y="86"
      inkscape:snap-nodes="true"
      inkscape:document-rotation="0"
      inkscape:showpageshadow="2"
@@ -73,21 +73,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1007.3622)">
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4522-9"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:100%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.9375,0,0,0.9375,-43.256836,983.84733)"><flowRegion
-         id="flowRegion4524-4"
-         style="line-height:100%;text-align:center;text-anchor:middle"><rect
-           id="rect4526-5"
-           width="114"
-           height="28.499998"
-           x="29.982422"
-           y="57.071671"
-           style="line-height:100%;text-align:center;text-anchor:middle;stroke-width:1px" /></flowRegion><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:100%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans'"
-         id="flowPara880-7" /></flowRoot>
     <text
        xml:space="preserve"
        id="text880"
@@ -97,23 +82,23 @@
        transform="translate(0,-5.625)"><tspan
          x="0"
          y="970.23916"
-         id="tspan1511"><tspan
+         id="tspan436"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan1507">🏁</tspan><tspan
+           id="tspan432">🏁</tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan1509"> # the flag as first character denotes an initialization / configuration block
+           id="tspan434"> # the flag as first character denotes an initialization / configuration block
 </tspan></tspan><tspan
          x="0"
          y="974.92669"
-         id="tspan1515"><tspan
+         id="tspan440"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan1513"># by default, labels will be centered within the page
+           id="tspan438"># by default, labels will be centered within the page
 </tspan></tspan><tspan
          x="0"
          y="979.61419"
-         id="tspan1519"><tspan
+         id="tspan444"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan1517">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))</tspan></tspan></text>
+           id="tspan442">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))</tspan></tspan></text>
     <g
        id="g1483">
       <flowRoot

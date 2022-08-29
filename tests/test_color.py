@@ -21,8 +21,8 @@ class TextColorTestCase(LabelTestCase):
 
     # TODO text_of should add newlines?
     # ignoring type is needed here to avoid boilerplate assertions that find returns not-None
-    self.assertEqual(get_text_of(groups[0][0].find('svg:flowRoot', NAMESPACES)), 'B000 = zeroa')  # type: ignore
-    self.assertEqual(get_text_of(groups[1][0].find('svg:flowRoot', NAMESPACES)), 'B011 = oneb')  # type: ignore
-    self.assertEqual(get_text_of(groups[2][0].find('svg:flowRoot', NAMESPACES)), 'B022 = twoc')  # type: ignore
-    self.assertEqual(get_text_of(groups[3][0].find('svg:flowRoot', NAMESPACES)), 'B033 = threed')  # type: ignore
-    self.assertEqual(get_text_of(groups[4][0].find('svg:flowRoot', NAMESPACES)), 'B044 = foure')  # type: ignore
+    self.assertIn('fill:#ff0000', groups[0][0][0].find('svg:flowRoot', NAMESPACES).attrib['style'])  # type: ignore
+    self.assertIn('fill:#00ff00', groups[1][0][0].find('svg:flowRoot', NAMESPACES).attrib['style'])  # type: ignore
+    self.assertIn('fill:#0000ff', groups[2][0][0].find('svg:flowRoot', NAMESPACES).attrib['style'])  # type: ignore
+    self.assertIn('fill:#ffff00', groups[3][0][0].find('svg:flowRoot', NAMESPACES).attrib['style'])  # type: ignore
+    self.assertIn('fill:#00ffff', groups[4][0][0].find('svg:flowRoot', NAMESPACES).attrib['style'])  # type: ignore
