@@ -14,7 +14,7 @@ class GroupReplacer(metaclass=ABCMeta):
   which is when invoked on the group (minus the text box) to mutate it as needed.
   """
   @abstractmethod
-  def process_group(self, context: SvgTemplate, elt: List[ET.Element]) -> List[ET.Element]:
+  def process_group(self, context: SvgTemplate, elts: List[ET.Element]) -> List[ET.Element]:
     """Given the group contents (minus the textbox), returns the new group contents."""
     raise NotImplementedError
 
