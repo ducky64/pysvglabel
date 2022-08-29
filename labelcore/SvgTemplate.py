@@ -1,11 +1,12 @@
+import os.path
 import xml.etree.ElementTree as ET
-from typing import Any, Dict, Callable, Optional, cast, List, Tuple, OrderedDict
 from copy import deepcopy, copy
+from typing import Any, Dict, Callable, cast, List, Tuple
 
 from labelfrontend import LabelSheet
 from labelfrontend.units import LengthDimension
-from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 from .GroupReplacer import GroupReplacer
+from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
 
 def get_text_of(elt: ET.Element) -> str:
@@ -36,7 +37,9 @@ def visit(elt: ET.Element, fn: Callable[[ET.Element], None]) -> None:
 
 
 class SvgTemplate:
-  def __init__(self, root: ET.ElementTree):
+  def __init__(self, filename: str):
+    self.file_abspath = os.path.abspath(filename)
+    root = ET.parse(filename)
     self.env: Dict[str, Any] = cast(Any, None)
     self.sheet: LabelSheet = cast(Any, None)
     self.size: Tuple[LengthDimension, LengthDimension]
@@ -83,11 +86,14 @@ class SvgTemplate:
         self.template_elts.append(deepcopy(child))
         self.skeleton.remove(child)
 
-  def create_single(self) -> ET.Element:
+  def get_sheet_count(self) -> Tuple[int, int]:
+    return self.sheet.count
+
+  def _create_instance(self) -> ET.Element:
     """Creates the top-level SVG object for a single label."""
     return deepcopy(self.skeleton)
 
-  def create_sheet(self) -> ET.Element:
+  def _create_sheet(self) -> ET.Element:
     """Creates the top-level SVG object for a sheet.
     TODO - separate responsibilities with create_single? perhaps sheets should be a different object entirely?
     """
@@ -126,7 +132,7 @@ class SvgTemplate:
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
         elt.remove(text_child_elts[0])
 
-        new_elts = obj.process_group(list(elt))
+        new_elts = obj.process_group(self, list(elt))
         for child in list(elt):  # elt.clear also deletes attribs
           elt.remove(child)
         elt.extend(new_elts)
@@ -142,23 +148,23 @@ class SvgTemplate:
       new_root.append(new_elt)
     return new_root
 
-  def apply_table(self, table: List[Dict[str, str]]) -> List[ET.Element]:
-    """Given an entire table, generates sheet(s) of labels."""
-    sheets = []
+  def apply_page(self, table: List[Dict[str, str]]) -> ET.Element:
+    """Given a table containing at most one page's worth of entries, creates a page of labels.
+    If there are less entries than a full page, returns a partial page."""
+    sheet = self._create_sheet()
 
     (margin_x, margin_y) = self.sheet.get_margins(self.size)
     for row_num, row in enumerate(table):
-      sheet_num = row_num % self.sheet.labels_per_sheet()
-      if sheet_num == 0:
-        sheets.append(self.create_sheet())
+      if row_num >= self.sheet.labels_per_sheet():
+        raise BadTemplateException(f'table contains more entries than {self.sheet.labels_per_sheet()} per page')
 
-      count_x = sheet_num % self.sheet.count[0]
-      count_y = sheet_num // self.sheet.count[0]
+      count_x = row_num % self.sheet.count[0]
+      count_y = row_num // self.sheet.count[0]
       offset_x = margin_x + (self.size[0] + self.sheet.space[0]) * count_x
       offset_y = margin_y + (self.size[1] + self.sheet.space[1]) * count_y
 
       instance = self.apply_instance(row, table, row_num)
       instance.attrib['transform'] = f'translate({offset_x.to_px()}, {offset_y.to_px()})'
-      sheets[-1].append(instance)
+      sheet.append(instance)
 
-    return sheets
+    return sheet

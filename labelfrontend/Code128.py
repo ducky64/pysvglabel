@@ -1,5 +1,7 @@
 from typing import List, cast
 import xml.etree.ElementTree as ET
+
+from labelcore import SvgTemplate
 from .external.Code128 import code128_widths
 
 from labelcore.GroupReplacer import RectGroupReplacer
@@ -24,7 +26,7 @@ class Code128(RectGroupReplacer):
     self.quiet = quiet
     self.fill = fill
 
-  def process_rect(self, rect: ET.Element) -> List[ET.Element]:
+  def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
     x = LengthDimension.from_str(rect.attrib['x'])
     width = LengthDimension.from_str(rect.attrib['width'])
 

@@ -8,7 +8,7 @@ from typing import Dict, Tuple
 import win32api  # type:ignore
 import win32print  # type:ignore
 
-from labelcore import SvgTemplate
+from labelcore import SvgTemplate, InkscapeSubprocess
 
 import subprocess
 
@@ -25,19 +25,14 @@ if __name__ == '__main__':
   # TODO: support user-defineable generated filename
   args = parser.parse_args()
 
-  template = SvgTemplate(ET.parse(args.template))
+  template = SvgTemplate(args.template)
 
 
   def canonicalize_row_dict(row_dict: Dict[str, str]) -> Tuple[Tuple[str, str], ...]:
     # Discard empty cells - to not print everything is a new row is added
     return tuple(sorted([(k, v) for (k, v) in row_dict.items() if v]))
 
-  # We use Inkscape instead of ReportLab / svglib because svglib doesn't seem to render
-  # some features correctly, like flowRegion.
-  # Inkscape in shell mode is also pretty responsive.
-
-  # We don't wait for Inkscape to start here, instead the command will be batched for when it is ready.
-  p = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+  inkscape = InkscapeSubprocess()
 
   last_mod_time = None  # None means initial read, and to not print anythign
   last_seen_set = set()
@@ -66,7 +61,7 @@ if __name__ == '__main__':
         if row_set not in last_seen_set and last_mod_time is not None:
           print(f"Printing: {row_dict}")
 
-          label = template.create_single()
+          label = template._create_instance()
           instance = template.apply_instance(row_dict, all_row_dicts, row_index)
           label.append(instance)
           root = ET.ElementTree(label)
@@ -74,8 +69,7 @@ if __name__ == '__main__':
 
           if os.path.exists('temp.pdf'):
             os.remove('temp.pdf')
-          p.stdin.write(b'file-open:temp.svg;export-filename:temp.pdf;export-do;\r\n')
-          p.stdin.flush()
+          inkscape.convert('temp.svg', 'temp.pdf')
           while not os.path.exists('temp.pdf'):  # wait for file creation
             time.sleep(0.25)
 
