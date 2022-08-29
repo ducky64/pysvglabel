@@ -124,22 +124,25 @@ class SvgTemplate:
 
     def apply_template(elt: ET.Element) -> None:
       text_child_elts = get_text_child_elts(elt)
+      command_child_elts = [text_child_elt for text_child_elt in text_child_elts
+                            if get_text_of(text_child_elt).startswith('🐍')]
 
-      if len(text_child_elts) == 1 and get_text_of(text_child_elts[0]).startswith('🐍'):
-        code = get_text_of(text_child_elts[0]).strip('🐍')
+      if len(command_child_elts) == 1:
+        command_elt = command_child_elts[0]
+        code = get_text_of(command_elt).strip('🐍')
         obj = eval(code, env)
         if not isinstance(obj, GroupReplacer):
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
-        elt.remove(text_child_elts[0])
 
+        elt.remove(command_elt)
         new_elts = obj.process_group(self, list(elt))
         for child in list(elt):  # elt.clear also deletes attribs
           elt.remove(child)
         elt.extend(new_elts)
+      elif len(command_child_elts) > 1:
+        raise BadTemplateException('cannot have multiple 🐍 textboxes in the same group')
       else:
         for child in text_child_elts:
-          if get_text_of(child).startswith('🐍'):
-            raise BadTemplateException('cannot have multiple 🐍 textboxes in the same group')
           process_text(child)
 
     for elt in self.template_elts:
