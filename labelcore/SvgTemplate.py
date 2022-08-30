@@ -39,6 +39,7 @@ class SvgTemplate:
     from labelfrontend.units import LengthDimension
 
     self.file_abspath = os.path.abspath(filename)
+    self.dir_abspath = os.path.dirname(self.file_abspath)
     root = ET.parse(filename)
     self.env: Dict[str, Any] = cast(Any, None)
     self.sheet: LabelSheet = cast(Any, None)
@@ -53,6 +54,9 @@ class SvgTemplate:
           self.env = {}
           start_code = child_text.strip('🏁')
           exec("from labelfrontend import *", self.env)
+          exec("import sys as __sys", self.env)
+          dirpath_escaped = self.dir_abspath.replace('\\', '\\\\')
+          exec(f"__sys.path.append('{dirpath_escaped}')", self.env)
           exec(start_code, self.env)
 
           if 'sheet' not in self.env:
@@ -95,7 +99,6 @@ class SvgTemplate:
 
   def _create_sheet(self) -> ET.Element:
     """Creates the top-level SVG object for a sheet.
-    TODO - separate responsibilities with create_single? perhaps sheets should be a different object entirely?
     """
     top = deepcopy(self.skeleton)
     top.attrib['width'] = self.sheet.page[0].to_str()

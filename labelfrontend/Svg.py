@@ -28,7 +28,7 @@ class Svg(RectGroupReplacer):
     self.scaling = scaling
 
   def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
-    svg = ET.parse(os.path.join(os.path.dirname(context.file_abspath), self.filename)).getroot()
+    svg = ET.parse(os.path.join(context.dir_abspath, self.filename)).getroot()
     assert svg.tag == f"{SVG_NAMESPACE}svg", f"loaded file {self.filename} root tag is not svg, got {svg.tag}"
     assert 'width' in svg.attrib and 'height' in svg.attrib, f"loaded svg {self.filename} missing width or height"
 
