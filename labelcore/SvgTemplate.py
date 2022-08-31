@@ -159,6 +159,8 @@ class SvgTemplate:
   def apply_page(self, table: List[Dict[str, str]]) -> ET.Element:
     """Given a table containing at most one page's worth of entries, creates a page of labels.
     If there are less entries than a full page, returns a partial page."""
+    from labelfrontend.units import LengthDimension
+
     sheet = self._create_sheet()
 
     (margin_x, margin_y) = self.sheet.get_margins(self.size)
@@ -173,6 +175,18 @@ class SvgTemplate:
 
       instance = self.apply_instance(row, table, row_num)
       instance.attrib['transform'] = f'translate({offset_x.to_px()}, {offset_y.to_px()})'
+
+      # apply viewbox scaling transform
+      if 'viewBox' in self.skeleton.attrib and 'width' in self.skeleton.attrib and 'height' in self.skeleton.attrib:
+        viewbox_split = self.skeleton.attrib['viewBox'].split(' ')
+        assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.skeleton.attrib['viewBox']}"
+        width = LengthDimension.from_str(self.skeleton.attrib['width'])
+        height = LengthDimension.from_str(self.skeleton.attrib['height'])
+        assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zeo viewBox origin"
+        scale_factor_x = (width / float(viewbox_split[2])).to_px()
+        scale_factor_y = (height / float(viewbox_split[3])).to_px()
+        instance.attrib['transform'] = instance.attrib['transform'] + f' scale({scale_factor_x} {scale_factor_y})'
+
       sheet.append(instance)
 
     return sheet
