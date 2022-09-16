@@ -44,20 +44,23 @@ class SvgTemplate:
     self.env: Dict[str, Any] = cast(Any, None)
     self.sheet: LabelSheet = cast(Any, None)
     self.size: Tuple[LengthDimension, LengthDimension]
+    self.row_contents: List[str] = []
+    self.end_contents: List[str] = []
+
+    newroot = deepcopy(root.getroot())
 
     def replace_start(elt: ET.Element) -> None:
       for child in filter_text_elts(list(elt)):
         child_text = get_text_of(child)
-        if child_text.startswith('🏁'):
+        if child_text.startswith('# pysvglabel: init'):
           if self.env is not None:
-            raise BadTemplateException("multiple starting blocks (textboxes starting with 🏁) found")
+            raise BadTemplateException("multiple starting blocks (textboxes starting with '# pysvglabel: init') found")
           self.env = {}
-          start_code = child_text.strip('🏁')
           exec("from labelfrontend import *", self.env)
           exec("import sys as __sys", self.env)
           dirpath_escaped = self.dir_abspath.replace('\\', '\\\\')
           exec(f"__sys.path.append('{dirpath_escaped}')", self.env)
-          exec(start_code, self.env)
+          exec(child_text, self.env)
 
           if 'sheet' not in self.env:
             raise BadTemplateException("sheet not defined in starting block")
@@ -65,15 +68,31 @@ class SvgTemplate:
             raise BadTemplateException(f"sheet not instance of LabelSheet, got {self.env['sheet']}")
           self.sheet = cast(LabelSheet, self.env['sheet'])
 
-          elt.remove(child)  # remove the init block from the template
-
-    newroot = deepcopy(root.getroot())
+          elt.remove(child)  # remove the code block from the template
 
     visit(newroot, replace_start)
     if self.env is None:
-      raise BadTemplateException("no starting blocks (textboxes starting with 🏁) found")
+      raise BadTemplateException("no starting blocks (textboxes starting with '# pysvglabel: init') found")
     if self.sheet is None:
       raise BadTemplateException("no sheet defined")
+
+    def replace_row(elt: ET.Element) -> None:
+      for child in filter_text_elts(list(elt)):
+        child_text = get_text_of(child)
+        if child_text.startswith('# pysvglabel: row'):
+          self.row_contents.append(child_text)
+          elt.remove(child)  # remove the code block from the template
+
+    visit(newroot, replace_row)
+
+    def replace_end(elt: ET.Element) -> None:
+      for child in filter_text_elts(list(elt)):
+        child_text = get_text_of(child)
+        if child_text.startswith('# pysvglabel: end'):
+          self.end_contents.append(child_text)
+          elt.remove(child)  # remove the code block from the template
+
+    visit(newroot, replace_end)
 
     if 'width' not in newroot.attrib:
       raise BadTemplateException("svg missing width")
@@ -113,17 +132,19 @@ class SvgTemplate:
     but mutation effects will be visible."""
     new_root = ET.Element(f'{SVG_NAMESPACE}g')
 
-    env = copy(self.env)
+    instance_env = copy(self.env)
     value_variables = {key: value for key, value in row.items()
                        if key.isidentifier()}  # discard non-identifiers
-    env.update(value_variables)
-    env.update({'row': row, 'table': table, 'row_num': row_num})
+    instance_env.update(value_variables)
+    instance_env.update({'row': row, 'table': table, 'row_num': row_num})
+    for row_code in self.row_contents:
+      exec(row_code, instance_env)
 
     def process_text(elt: ET.Element) -> None:
       for child in filter_text_inner_elts(list(elt)):
         process_text(child)
       if elt.text:
-        elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, even though """ in a label is unlikely
+        elt.text = eval(f'f"""{elt.text}"""', instance_env)  # TODO proper escaping, though """ in a label is unlikely
 
     def apply_template(elt: ET.Element) -> None:
       from .GroupReplacer import GroupReplacer
@@ -135,7 +156,7 @@ class SvgTemplate:
       if len(command_child_elts) == 1:
         command_elt = command_child_elts[0]
         code = get_text_of(command_elt).strip('🐍')
-        obj = eval(code, env)
+        obj = eval(code, instance_env)
         if not isinstance(obj, GroupReplacer):
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
 
@@ -190,3 +211,9 @@ class SvgTemplate:
       sheet.append(instance)
 
     return sheet
+
+  def run_end(self) -> None:
+    """Call this to run the end block of the template."""
+    end_env = copy(self.env)
+    for end_code in self.end_contents:
+      exec(end_code, end_env)

@@ -66,5 +66,7 @@ if __name__ == '__main__':
       win32api.ShellExecute(0, "print", filename + '.pdf', f'/d:"{args.print}"', ".", 0)
       print(f'Print to {args.print}')
 
+  template.run_end()
+
   if inkscape:
     inkscape.close()

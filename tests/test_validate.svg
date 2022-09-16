@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1.75in"
+   height="0.5in"
+   viewBox="0 0 157.5 44.9999998"
+   id="svg2"
+   version="1.1"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="test_validate.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <rect
+       x="0"
+       y="966.8622"
+       width="157.5"
+       height="46.125"
+       id="rect882" />
+    <rect
+       x="0"
+       y="966.86218"
+       width="157.5"
+       height="46.125"
+       id="rect882-6" />
+    <rect
+       x="0"
+       y="966.86218"
+       width="157.5"
+       height="46.125"
+       id="rect882-6-4" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="in"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:bbox-nodes="false"
+     inkscape:object-nodes="true"
+     inkscape:zoom="3.9873016"
+     inkscape:cx="66.210191"
+     inkscape:cy="13.919188"
+     inkscape:window-width="1200"
+     inkscape:window-height="1230"
+     inkscape:window-x="604"
+     inkscape:window-y="138"
+     inkscape:snap-nodes="true"
+     inkscape:document-rotation="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4136" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1007.3622)">
+    <text
+       xml:space="preserve"
+       id="text880"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-6.5368652"
+       y="0"
+       transform="translate(0,-28.125)"><tspan
+         x="0"
+         y="970.18401"
+         id="tspan1177"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1175"># pysvglabel: init
+</tspan></tspan><tspan
+         x="0"
+         y="974.87151"
+         id="tspan1181"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1179"># by default, labels will be centered within the page
+</tspan></tspan><tspan
+         x="0"
+         y="979.55901"
+         id="tspan1185"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1183">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
+</tspan></tspan><tspan
+         x="0"
+         y="984.24651"
+         id="tspan1189"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1187">
+</tspan></tspan><tspan
+         x="0"
+         y="988.93401"
+         id="tspan1193"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1191">seen = set()</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text880-9"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882-6);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-6.5368652"
+       y="0"
+       transform="translate(-1.2499999e-8,22.5)"><tspan
+         x="0"
+         y="970.18401"
+         id="tspan1197"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1195"># pysvglabel: end
+</tspan></tspan><tspan
+         x="0"
+         y="974.87151"
+         id="tspan1201"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1199">assert '4' in seen</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text880-9-9"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882-6-4);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-6.5368652"
+       y="0"
+       transform="translate(-1.2499999e-8,5.625)"><tspan
+         x="0"
+         y="970.18401"
+         id="tspan1205"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1203"># pysvglabel: row
+</tspan></tspan><tspan
+         x="0"
+         y="974.87151"
+         id="tspan1209"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1207">seen.update(id)</tspan></tspan></text>
+    <g
+       id="g1483" />
+  </g>
+</svg>

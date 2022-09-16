@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1.75in"
    height="0.5in"
    viewBox="0 0 157.5 44.9999998"
    id="svg2"
    version="1.1"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="test_subsvg.svg">
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="test_subsvg.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs4">
     <rect
@@ -41,15 +41,18 @@
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
      inkscape:zoom="5.6568542"
-     inkscape:cx="-21.494244"
-     inkscape:cy="-23.825422"
-     inkscape:window-width="2560"
+     inkscape:cx="-21.566757"
+     inkscape:cy="-23.688077"
+     inkscape:window-width="1200"
      inkscape:window-height="1537"
-     inkscape:window-x="1192"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:snap-nodes="true"
      inkscape:document-rotation="0"
-     inkscape:snap-text-baseline="true">
+     inkscape:snap-text-baseline="true"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
        id="grid4136" />
@@ -62,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -111,25 +114,32 @@
     <text
        xml:space="preserve"
        id="text880"
-       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;shape-inside:url(#rect882)"
        x="-6.5368652"
        y="0"><tspan
          x="0"
-         y="970.23916"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">🏁</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">
+         y="970.18401"
+         id="tspan395"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan393"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
-         y="974.92669"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
+         y="974.87151"
+         id="tspan399"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan397">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
 </tspan></tspan><tspan
          x="0"
-         y="979.61419"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">def file_of(shape):
+         y="979.55901"
+         id="tspan403"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan401">def file_of(shape):
 </tspan></tspan><tspan
          x="0"
-         y="984.30169"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">    return f'sub_{shape}.svg'</tspan></tspan></text>
+         y="984.24651"
+         id="tspan407"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan405">    return f'sub_{shape}.svg'</tspan></tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.885827;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect858"

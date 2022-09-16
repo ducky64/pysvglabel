@@ -41,11 +41,11 @@
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
      inkscape:zoom="3.9873016"
-     inkscape:cx="96.43113"
-     inkscape:cy="13.166799"
-     inkscape:window-width="1350"
+     inkscape:cx="66.210191"
+     inkscape:cy="13.668392"
+     inkscape:window-width="1200"
      inkscape:window-height="1230"
-     inkscape:window-x="737"
+     inkscape:window-x="1200"
      inkscape:window-y="86"
      inkscape:snap-nodes="true"
      inkscape:document-rotation="0"
@@ -76,29 +76,27 @@
     <text
        xml:space="preserve"
        id="text880"
-       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;shape-inside:url(#rect882)"
        x="-6.5368652"
        y="0"
        transform="translate(0,-5.625)"><tspan
          x="0"
-         y="970.23916"
-         id="tspan436"><tspan
+         y="970.18401"
+         id="tspan609"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan432">🏁</tspan><tspan
-           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan434"> # the flag as first character denotes an initialization / configuration block
+           id="tspan607"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
-         y="974.92669"
-         id="tspan440"><tspan
+         y="974.87151"
+         id="tspan613"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan438"># by default, labels will be centered within the page
+           id="tspan611"># by default, labels will be centered within the page
 </tspan></tspan><tspan
          x="0"
-         y="979.61419"
-         id="tspan444"><tspan
+         y="979.55901"
+         id="tspan617"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan442">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))</tspan></tspan></text>
+           id="tspan615">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))</tspan></tspan></text>
     <g
        id="g1483">
       <flowRoot

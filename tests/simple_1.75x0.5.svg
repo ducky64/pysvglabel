@@ -28,6 +28,12 @@
        width="157.5"
        height="57.375"
        id="rect882" />
+    <rect
+       x="0"
+       y="966.86218"
+       width="157.5"
+       height="57.375"
+       id="rect882-0" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -40,19 +46,19 @@
      inkscape:current-layer="layer1"
      showgrid="true"
      units="in"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
      inkscape:snap-bbox-edge-midpoints="true"
      inkscape:snap-bbox-midpoints="true"
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
      inkscape:zoom="5.638896"
-     inkscape:cx="40.078767"
-     inkscape:cy="-7.3595966"
-     inkscape:window-width="1350"
-     inkscape:window-height="1230"
-     inkscape:window-x="233"
-     inkscape:window-y="429"
+     inkscape:cx="41.497485"
+     inkscape:cy="-7.4482665"
+     inkscape:window-width="2560"
+     inkscape:window-height="1537"
+     inkscape:window-x="1192"
+     inkscape:window-y="-8"
      inkscape:snap-nodes="true"
      inkscape:document-rotation="0"
      inkscape:showpageshadow="2"
@@ -117,7 +123,7 @@
          id="flowPara4530"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:100%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold'">{barcode}</flowPara><flowPara
          style="font-weight:normal;font-size:8px;line-height:100%"
-         id="flowPara4601">{id} = {description}, {double(id)}</flowPara><flowPara
+         id="flowPara4601">{id} = {description_var}, {double(id)}</flowPara><flowPara
          style="font-weight:normal;font-size:8px;line-height:100%"
          id="flowPara880">{row['spaced thing']}</flowPara></flowRoot>
     <text
@@ -126,80 +132,102 @@
        style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-6.5368652"
        y="0"
-       transform="translate(0,-16.875)"><tspan
+       transform="translate(0,-50.625)"><tspan
          x="0"
-         y="970.23916"
-         id="tspan30209"><tspan
+         y="970.18401"
+         id="tspan972"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30205">🏁</tspan><tspan
-           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30207"> # the flag as first character denotes an initialization / configuration block
+           id="tspan970"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
-         y="974.92669"
-         id="tspan30213"><tspan
+         y="974.87151"
+         id="tspan976"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30211">from import_module import double
+           id="tspan974">from import_module import double
 </tspan></tspan><tspan
          x="0"
-         y="979.61419"
-         id="tspan30217"><tspan
+         y="979.55901"
+         id="tspan980"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30215">
+           id="tspan978">
 </tspan></tspan><tspan
          x="0"
-         y="984.30169"
-         id="tspan30221"><tspan
+         y="984.24651"
+         id="tspan984"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30219"># by default, labels will be centered within the page
+           id="tspan982"># by default, labels will be centered within the page
 </tspan></tspan><tspan
          x="0"
-         y="988.98919"
-         id="tspan30227"><tspan
+         y="988.93401"
+         id="tspan990"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30223">sheet = LabelSheet</tspan><tspan
+           id="tspan986">sheet = LabelSheet</tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30225">(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
+           id="tspan988">(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
 </tspan></tspan><tspan
          x="0"
-         y="993.67669"
-         id="tspan30231"><tspan
+         y="993.62151"
+         id="tspan994"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30229">
+           id="tspan992">
 </tspan></tspan><tspan
          x="0"
-         y="998.36419"
-         id="tspan30235"><tspan
+         y="998.30901"
+         id="tspan998"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30233"># note: designed on a 0.06250 in grid, 4 lines per major line
+           id="tspan996"># note: designed on a 0.06250 in grid, 4 lines per major line
 </tspan></tspan><tspan
          x="0"
-         y="1003.0517"
-         id="tspan30239"><tspan
+         y="1002.9965"
+         id="tspan1002"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30237">
+           id="tspan1000">
 </tspan></tspan><tspan
          x="0"
-         y="1007.7943"
-         id="tspan30247"><tspan
+         y="1007.7392"
+         id="tspan1010"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30241"># the </tspan><tspan
+           id="tspan1004"># the </tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30243">🐍</tspan><tspan
+           id="tspan1006">🐍</tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30245"> means run as a Python expression and apply the result
+           id="tspan1008"> means run as a Python expression and apply the result
 </tspan></tspan><tspan
          x="0"
-         y="1012.4819"
-         id="tspan30251"><tspan
+         y="1012.4267"
+         id="tspan1014"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30249"># in all text elements, {} is treated as f-string interpolation
+           id="tspan1012"># in all text elements, {} is treated as f-string interpolation
 </tspan></tspan><tspan
          x="0"
-         y="1017.1694"
-         id="tspan30255"><tspan
+         y="1017.1142"
+         id="tspan1018"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30253"># column names are bound as variables, with _ replacing spaces</tspan></tspan></text>
+           id="tspan1016"># column names are bound as variables, with _ replacing spaces</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text880-9"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882-0);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-6.5368652"
+       y="0"
+       transform="translate(-1.2499999e-8,5.625)"><tspan
+         x="0"
+         y="970.18401"
+         id="tspan1022"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1020"># pysvglabel: row
+</tspan></tspan><tspan
+         x="0"
+         y="974.87151"
+         id="tspan1026"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1024"># this is run for every row, this just tests that the variable created here is seen
+</tspan></tspan><tspan
+         x="0"
+         y="979.55901"
+         id="tspan1030"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1028">description_var = description</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.9375,0,0,0.9375,0,1007.3622)"
