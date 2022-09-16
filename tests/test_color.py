@@ -2,7 +2,6 @@ import csv
 
 import os.path
 from labelcore import SvgTemplate, NAMESPACES
-from labelcore.SvgTemplate import get_text_of
 from .LabelTestCase import LabelTestCase
 
 
