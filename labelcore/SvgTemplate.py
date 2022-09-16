@@ -68,7 +68,7 @@ class SvgTemplate:
             raise BadTemplateException(f"sheet not instance of LabelSheet, got {self.env['sheet']}")
           self.sheet = cast(LabelSheet, self.env['sheet'])
 
-          elt.remove(child)  # remove the init block from the template
+          elt.remove(child)  # remove the code block from the template
 
     visit(newroot, replace_start)
     if self.env is None:
@@ -81,8 +81,7 @@ class SvgTemplate:
         child_text = get_text_of(child)
         if child_text.startswith('# pysvglabel: row'):
           self.row_contents.append(child_text)
-
-          elt.remove(child)  # remove the init block from the template
+          elt.remove(child)  # remove the code block from the template
 
     visit(newroot, replace_row)
 
@@ -91,8 +90,7 @@ class SvgTemplate:
         child_text = get_text_of(child)
         if child_text.startswith('# pysvglabel: end'):
           self.end_contents.append(child_text)
-
-          elt.remove(child)  # remove the init block from the template
+          elt.remove(child)  # remove the code block from the template
 
     visit(newroot, replace_end)
 
