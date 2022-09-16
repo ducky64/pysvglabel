@@ -212,8 +212,10 @@ class SvgTemplate:
 
       sheet.append(instance)
 
+    return sheet
+
+  def run_end(self) -> None:
+    """Call this to run the end block of the template."""
     end_env = copy(self.env)
     for end_code in self.end_contents:
       exec(end_code, end_env)
-
-    return sheet

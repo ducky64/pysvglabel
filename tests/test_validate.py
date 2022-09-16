@@ -13,7 +13,7 @@ class SubValidationTestCase(LabelTestCase):
     template = SvgTemplate(os.path.join(self.get_base_dir(), "test_validate.svg"))
 
     sheet = template.apply_page(table)
-    self.write_label(sheet)
+    template.run_end()
 
   def test_validate_fail(self) -> None:
     with open(os.path.join(self.get_base_dir(), 'test_simple_empty.csv'), newline='') as csvfile:
@@ -21,5 +21,6 @@ class SubValidationTestCase(LabelTestCase):
       table = [row for row in reader]
     template = SvgTemplate(os.path.join(self.get_base_dir(), "test_validate.svg"))
 
+    template.apply_page(table)
     with self.assertRaises(AssertionError):
-      template.apply_page(table)
+      template.run_end()
