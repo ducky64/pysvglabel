@@ -134,17 +134,19 @@ class SvgTemplate:
     but mutation effects will be visible."""
     new_root = ET.Element(f'{SVG_NAMESPACE}g')
 
-    env = copy(self.env)
+    instance_env = copy(self.env)
     value_variables = {key: value for key, value in row.items()
                        if key.isidentifier()}  # discard non-identifiers
-    env.update(value_variables)
-    env.update({'row': row, 'table': table, 'row_num': row_num})
+    instance_env.update(value_variables)
+    instance_env.update({'row': row, 'table': table, 'row_num': row_num})
+    for row_code in self.row_contents:
+      exec(row_code, instance_env)
 
     def process_text(elt: ET.Element) -> None:
       for child in filter_text_inner_elts(list(elt)):
         process_text(child)
       if elt.text:
-        elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, even though """ in a label is unlikely
+        elt.text = eval(f'f"""{elt.text}"""', instance_env)  # TODO proper escaping, though """ in a label is unlikely
 
     def apply_template(elt: ET.Element) -> None:
       from .GroupReplacer import GroupReplacer
@@ -156,7 +158,7 @@ class SvgTemplate:
       if len(command_child_elts) == 1:
         command_elt = command_child_elts[0]
         code = get_text_of(command_elt).strip('🐍')
-        obj = eval(code, env)
+        obj = eval(code, instance_env)
         if not isinstance(obj, GroupReplacer):
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
 
@@ -209,5 +211,9 @@ class SvgTemplate:
         instance.attrib['transform'] = instance.attrib['transform'] + f' scale({scale_factor_x} {scale_factor_y})'
 
       sheet.append(instance)
+
+    end_env = copy(self.env)
+    for end_code in self.end_contents:
+      exec(end_code, end_env)
 
     return sheet
