@@ -5,7 +5,7 @@ from labelcore import SvgTemplate, NAMESPACES
 from .LabelTestCase import LabelTestCase
 
 
-class SubValidationTestCase(LabelTestCase):
+class ValidationTestCase(LabelTestCase):
   def test_validate_ok(self) -> None:
     with open(os.path.join(self.get_base_dir(), 'test_simple.csv'), newline='') as csvfile:
       reader = csv.DictReader(csvfile)
