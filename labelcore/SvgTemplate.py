@@ -44,8 +44,8 @@ class SvgTemplate:
     self.env: Dict[str, Any] = cast(Any, None)
     self.sheet: LabelSheet = cast(Any, None)
     self.size: Tuple[LengthDimension, LengthDimension]
-    self.row_contents = []
-    self.end_contents = []
+    self.row_contents: List[str] = []
+    self.end_contents: List[str] = []
 
     newroot = deepcopy(root.getroot())
 
