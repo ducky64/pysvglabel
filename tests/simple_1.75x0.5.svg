@@ -47,12 +47,12 @@
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
      inkscape:zoom="5.638896"
-     inkscape:cx="40.078767"
+     inkscape:cx="41.497485"
      inkscape:cy="-7.3595966"
-     inkscape:window-width="1350"
+     inkscape:window-width="1200"
      inkscape:window-height="1230"
-     inkscape:window-x="233"
-     inkscape:window-y="429"
+     inkscape:window-x="0"
+     inkscape:window-y="291"
      inkscape:snap-nodes="true"
      inkscape:document-rotation="0"
      inkscape:showpageshadow="2"
@@ -123,83 +123,81 @@
     <text
        xml:space="preserve"
        id="text880"
-       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;shape-inside:url(#rect882)"
        x="-6.5368652"
        y="0"
        transform="translate(0,-16.875)"><tspan
          x="0"
-         y="970.23916"
-         id="tspan30209"><tspan
+         y="970.18401"
+         id="tspan478"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30205">🏁</tspan><tspan
-           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30207"> # the flag as first character denotes an initialization / configuration block
+           id="tspan476"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
-         y="974.92669"
-         id="tspan30213"><tspan
+         y="974.87151"
+         id="tspan482"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30211">from import_module import double
+           id="tspan480">from import_module import double
 </tspan></tspan><tspan
          x="0"
-         y="979.61419"
-         id="tspan30217"><tspan
+         y="979.55901"
+         id="tspan486"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30215">
+           id="tspan484">
 </tspan></tspan><tspan
          x="0"
-         y="984.30169"
-         id="tspan30221"><tspan
+         y="984.24651"
+         id="tspan490"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30219"># by default, labels will be centered within the page
+           id="tspan488"># by default, labels will be centered within the page
 </tspan></tspan><tspan
          x="0"
-         y="988.98919"
-         id="tspan30227"><tspan
+         y="988.93401"
+         id="tspan496"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30223">sheet = LabelSheet</tspan><tspan
+           id="tspan492">sheet = LabelSheet</tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30225">(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
+           id="tspan494">(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))
 </tspan></tspan><tspan
          x="0"
-         y="993.67669"
-         id="tspan30231"><tspan
+         y="993.62151"
+         id="tspan500"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30229">
+           id="tspan498">
 </tspan></tspan><tspan
          x="0"
-         y="998.36419"
-         id="tspan30235"><tspan
+         y="998.30901"
+         id="tspan504"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30233"># note: designed on a 0.06250 in grid, 4 lines per major line
+           id="tspan502"># note: designed on a 0.06250 in grid, 4 lines per major line
 </tspan></tspan><tspan
          x="0"
-         y="1003.0517"
-         id="tspan30239"><tspan
+         y="1002.9965"
+         id="tspan508"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30237">
+           id="tspan506">
 </tspan></tspan><tspan
          x="0"
-         y="1007.7943"
-         id="tspan30247"><tspan
+         y="1007.7392"
+         id="tspan516"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30241"># the </tspan><tspan
+           id="tspan510"># the </tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30243">🐍</tspan><tspan
+           id="tspan512">🐍</tspan><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30245"> means run as a Python expression and apply the result
+           id="tspan514"> means run as a Python expression and apply the result
 </tspan></tspan><tspan
          x="0"
-         y="1012.4819"
-         id="tspan30251"><tspan
+         y="1012.4267"
+         id="tspan520"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30249"># in all text elements, {} is treated as f-string interpolation
+           id="tspan518"># in all text elements, {} is treated as f-string interpolation
 </tspan></tspan><tspan
          x="0"
-         y="1017.1694"
-         id="tspan30255"><tspan
+         y="1017.1142"
+         id="tspan524"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan30253"># column names are bound as variables, with _ replacing spaces</tspan></tspan></text>
+           id="tspan522"># column names are bound as variables, with _ replacing spaces</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.9375,0,0,0.9375,0,1007.3622)"
