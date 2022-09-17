@@ -25,7 +25,7 @@ if __name__ == '__main__':
   template = SvgTemplate(args.template)
   template_page_count = template.get_sheet_count()[0] * template.get_sheet_count()[1]
 
-  with open(args.csv, newline='') as csvfile:
+  with open(args.csv, newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile)
     table = [row for row in reader]
 
