@@ -3,7 +3,7 @@
 from .units import inch, mm, cm, pt
 from .LabelSheet import LabelSheet
 
-from .TextColor import TextColor
+from .StyleModifier import StyleModifier, FillColor, StrokeColor
 
 from .Svg import Svg
 
