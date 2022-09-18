@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 
 import xml.etree.ElementTree as ET
 
-from . import SvgTemplate
+from .SvgTemplate import SvgTemplate
 from .common import BadTemplateException, SVG_NAMESPACE
 
 

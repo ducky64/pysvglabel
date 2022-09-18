@@ -3,9 +3,7 @@ from typing import List
 import xml.etree.ElementTree as ET
 import os.path
 
-from labelcore import SvgTemplate
-from labelcore.GroupReplacer import RectGroupReplacer
-from labelcore.common import SVG_NAMESPACE
+from labelcore import SvgTemplate, RectGroupReplacer, SVG_NAMESPACE
 from .units import LengthDimension
 
 
