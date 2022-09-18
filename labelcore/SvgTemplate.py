@@ -145,6 +145,9 @@ class SvgTemplate:
         process_text(child)
       if elt.text:
         elt.text = eval(f'f"""{elt.text}"""', instance_env)  # TODO proper escaping, though """ in a label is unlikely
+      for child in elt:
+        if child.tail:
+          child.tail = eval(f'f"""{child.tail}"""', instance_env)  # TODO proper escaping
 
     def apply_template(elt: ET.Element) -> None:
       from .GroupReplacer import GroupReplacer
