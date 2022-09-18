@@ -5,7 +5,7 @@ from labelcore import SvgTemplate
 
 from labelcore.GroupReplacer import RectGroupReplacer
 from labelcore.common import SVG_NAMESPACE
-from .units import LengthDimension, px
+from .units import LengthDimension
 from .Align import Align
 
 
@@ -46,6 +46,8 @@ class DataMatrix(RectGroupReplacer):
     data_height = len(datamatrix.matrix)
     align_x, align_y = Align.to_transform(self.align, (self.size * data_width, self.size * data_height),
                                           (width, height))
+    assert self.size * data_width <= width and self.size * data_height < height, \
+      f"datamatrix {self.data} with {data_width}x{data_height} matrix overflowed"
 
     return [ET.Element(f'{SVG_NAMESPACE}path', {
       'd': f"M0,0.5 {path_cmds}",
