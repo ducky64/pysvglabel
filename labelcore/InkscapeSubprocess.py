@@ -23,8 +23,4 @@ class InkscapeSubprocess:
     assert self.process.stdin
     self.process.stdin.write(b'quit\r\n')
     self.process.stdin.flush()
-    try:
-      self.process.communicate(timeout=15)  # in case Inkscape is still working
-    except subprocess.TimeoutExpired:
-      self.process.kill()
-      print('Inkscape failed to close gracefully')
+    self.process.communicate()  # Inkscape may still be converting
