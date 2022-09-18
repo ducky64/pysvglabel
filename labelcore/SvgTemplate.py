@@ -191,7 +191,10 @@ class SvgTemplate:
 
       count_x = row_num % self.sheet.count[0]
       count_y = row_num // self.sheet.count[0]
-      offset_x = margin_x + (self.size[0] + self.sheet.space[0]) * count_x
+      if not self.sheet.flip_x:
+        offset_x = margin_x + (self.size[0] + self.sheet.space[0]) * count_x
+      else:
+        offset_x = margin_x + (self.size[0] + self.sheet.space[0]) * (self.sheet.count[0] - 1 - count_x)
       offset_y = margin_y + (self.size[1] + self.sheet.space[1]) * count_y
 
       instance = self.apply_instance(row, table, row_num)
