@@ -20,6 +20,8 @@ if __name__ == '__main__':
   parser.add_argument('--print', type=str,
                       help="Optional printer name, to send output files to a printer as they are generated."
                            + " The output must be a PDF.")
+  parser.add_argument('--inkscape_multipage', action='store_true', default=False,
+                      help="Use Inkscape's nonstandard multipage functionality, instead of writing multiple files.")
   args = parser.parse_args()
 
   template = SvgTemplate(args.template)
@@ -39,21 +41,10 @@ if __name__ == '__main__':
     import win32print  # type:ignore
     assert output_ext == '.pdf', "PDF output required to print"
 
-  # chunk into page-sized tables
-  page_tables = [table[start: start + template_page_count]
-                 for start in range(0, len(table), template_page_count)]
-  for (page_num, page_table) in enumerate(page_tables):
-    page = template.create_sheet()
-    page.append(template.apply_page(page_table))
-
-    if page_num == 0:
-      filename = output_name  # first page doesn't need an extension
-    else:
-      filename = output_name + f'_{page_num + 1}'
-
+  def write_file(filename: str, sheet: ET.Element) -> None:
     outfiles = []
     with open(filename + '.svg', 'wb') as file:
-      root = ET.ElementTree(page)
+      root = ET.ElementTree(sheet)
       root.write(file)
       outfiles.append(filename + '.svg')
 
@@ -66,6 +57,39 @@ if __name__ == '__main__':
     if args.print:
       win32api.ShellExecute(0, "print", filename + '.pdf', f'/d:"{args.print}"', ".", 0)
       print(f'Print to {args.print}')
+
+  # chunk into page-sized tables
+  page_tables = [table[start: start + template_page_count]
+                 for start in range(0, len(table), template_page_count)]
+
+  if args.inkscape_multipage:
+    multipage = template.create_sheet()
+    namedviews = multipage.findall('{http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd}namedview')
+    assert len(namedviews) == 1, f"must have exactly one sodipodi:namedview tag, got {len(namedviews)}"
+    namedview = namedviews[0]
+    assert len(namedview.findall('{http://www.inkscape.org/namespaces/inkscape}page')) == 0, "namedview must be empty"
+    (viewbox_scale_x, viewbox_scale_y) = template._viewbox_scale()
+
+  for (page_num, page_table) in enumerate(page_tables):
+    page = template.apply_page(page_table)
+
+    if not args.inkscape_multipage:
+      sheet = template.create_sheet()
+      sheet.append(page)
+
+      if page_num == 0:
+        filename = output_name  # first page doesn't need an extension
+      else:
+        filename = output_name + f'_{page_num + 1}'
+      write_file(filename, sheet)
+    else:
+      multipage.append(page)
+      namedview_page = ET.Element('{http://www.inkscape.org/namespaces/inkscape}page')
+      
+      namedview.append(namedview_page)
+
+  if args.inkscape_multipage:
+    write_file(output_name, multipage)
 
   template.run_end()
 
