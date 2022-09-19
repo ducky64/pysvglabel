@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
   inkscape = InkscapeSubprocess()
 
-  last_mod_time = None  # None means initial read, and to not print anythign
+  last_mod_time = None  # None means initial read, and to not print anything
   last_seen_set = set()
   while True:
     if not os.path.isfile(args.csv):

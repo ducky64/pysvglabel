@@ -12,7 +12,7 @@ class ValidationTestCase(LabelTestCase):
       table = [row for row in reader]
     template = SvgTemplate(os.path.join(self.get_base_dir(), "test_validate.svg"))
 
-    sheet = template.apply_page(table)
+    self.create_sheet(template, table)
     template.run_end()
 
   def test_validate_fail(self) -> None:
@@ -21,6 +21,6 @@ class ValidationTestCase(LabelTestCase):
       table = [row for row in reader]
     template = SvgTemplate(os.path.join(self.get_base_dir(), "test_validate.svg"))
 
-    template.apply_page(table)
+    self.create_sheet(template, table)
     with self.assertRaises(AssertionError):
       template.run_end()
