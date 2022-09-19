@@ -43,7 +43,8 @@ if __name__ == '__main__':
   page_tables = [table[start: start + template_page_count]
                  for start in range(0, len(table), template_page_count)]
   for (page_num, page_table) in enumerate(page_tables):
-    page = template.apply_page(page_table)
+    page = template.create_sheet()
+    page.append(template.apply_page(page_table))
 
     if page_num == 0:
       filename = output_name  # first page doesn't need an extension

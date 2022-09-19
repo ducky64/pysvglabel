@@ -13,10 +13,10 @@ class SimpleLabelTestCase(LabelTestCase):
       table = [row for row in reader]
     template = SvgTemplate(os.path.join(self.get_base_dir(), "simple_1.75x0.5.svg"))
 
-    sheet = template.apply_page(table)
+    sheet = self.create_sheet(template, table)
     self.write_label(sheet)
 
-    groups = sheet.findall('svg:g', NAMESPACES)
+    groups = sheet.findall('svg:g', NAMESPACES)[0].findall('svg:g', NAMESPACES)
     self.assertEqual(len(groups), 5)
 
     # TODO text_of should add newlines?

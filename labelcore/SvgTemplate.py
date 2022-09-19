@@ -203,7 +203,7 @@ class SvgTemplate:
   def apply_page(self, table: List[Dict[str, str]]) -> ET.Element:
     """Given a table containing at most one page's worth of entries, creates a page of labels.
     If there are less entries than a full page, returns a partial page."""
-    sheet = self.create_sheet()
+    new_root = ET.Element(f'{SVG_NAMESPACE}g')
 
     (margin_x, margin_y) = self.sheet.get_margins(self.size)
     (viewbox_scale_x, viewbox_scale_y) = self._viewbox_scale()
@@ -224,9 +224,9 @@ class SvgTemplate:
       instance.attrib['transform'] = \
         f'translate({offset_x.to_px() * viewbox_scale_x}, {offset_y.to_px() * viewbox_scale_y})'
 
-      sheet.append(instance)
+      new_root.append(instance)
 
-    return sheet
+    return new_root
 
   def run_end(self) -> None:
     """Call this to run the end block of the template."""
