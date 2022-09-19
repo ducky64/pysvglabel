@@ -175,7 +175,6 @@ class SvgTemplate:
       text_child_elts = filter_text_elts(list(elt))
       command_child_elts = [text_child_elt for text_child_elt in text_child_elts
                             if get_text_of(text_child_elt).startswith('🐍')]
-
       if len(command_child_elts) == 1:
         command_elt = command_child_elts[0]
         code = get_text_of(command_elt).strip('🐍')
@@ -190,9 +189,10 @@ class SvgTemplate:
         elt.extend(new_elts)
       elif len(command_child_elts) > 1:
         raise BadTemplateException('cannot have multiple 🐍 textboxes in the same group')
-      else:
-        for child in text_child_elts:
-          process_text(child)
+
+      text_child_elts = filter_text_elts(list(elt))  # make sure to process text on the output of command blocks too
+      for child in text_child_elts:
+        process_text(child)
 
     for elt in self.template_elts:
       new_elt = deepcopy(elt)
