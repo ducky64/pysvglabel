@@ -52,7 +52,7 @@ if __name__ == '__main__':
       inkscape.convert(filename + '.svg', filename + '.pdf')
       outfiles.append(filename + '.pdf')
 
-    print(f'Wrote page {page_num + 1}/{len(page_tables)}: {", ".join(outfiles)}')
+    print(f'Wrote {", ".join(outfiles)}')
 
     if args.print:
       win32api.ShellExecute(0, "print", filename + '.pdf', f'/d:"{args.print}"', ".", 0)
@@ -83,10 +83,18 @@ if __name__ == '__main__':
         filename = output_name + f'_{page_num + 1}'
       write_file(filename, sheet)
     else:
+      assert 'transform' not in page.attrib
+      page.attrib['transform'] = f'translate({page_num * template.sheet.page[0].to_px() * viewbox_scale_x}, 0)'
       multipage.append(page)
+
       namedview_page = ET.Element('{http://www.inkscape.org/namespaces/inkscape}page')
-      
+      namedview_page.attrib['x'] = str(page_num * template.sheet.page[0].to_px() * viewbox_scale_x)
+      namedview_page.attrib['y'] = '0'
+      namedview_page.attrib['width'] = str(template.sheet.page[0].to_px() * viewbox_scale_x)
+      namedview_page.attrib['height'] = str(template.sheet.page[1].to_px() * viewbox_scale_y)
       namedview.append(namedview_page)
+
+      print(f'Generate page {page_num}')
 
   if args.inkscape_multipage:
     write_file(output_name, multipage)
