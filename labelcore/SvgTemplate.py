@@ -209,7 +209,7 @@ class SvgTemplate:
         assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.skeleton.attrib['viewBox']}"
         width = LengthDimension.from_str(self.skeleton.attrib['width'])
         height = LengthDimension.from_str(self.skeleton.attrib['height'])
-        assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zeo viewBox origin"
+        assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zero viewBox origin"
         scale_factor_x = (width / float(viewbox_split[2])).to_px()
         scale_factor_y = (height / float(viewbox_split[3])).to_px()
         instance.attrib['transform'] = instance.attrib['transform'] + f' scale({scale_factor_x} {scale_factor_y})'
