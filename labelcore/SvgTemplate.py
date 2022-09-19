@@ -116,15 +116,35 @@ class SvgTemplate:
     """Creates the top-level SVG object for a single label."""
     return deepcopy(self.skeleton)
 
-  def _create_sheet(self) -> ET.Element:
+  def create_sheet(self) -> ET.Element:
     """Creates the top-level SVG object for a sheet.
     """
     top = deepcopy(self.skeleton)
+
+    # scale viewBox accordingly
+    if 'viewBox' in top.attrib and 'width' in top.attrib and 'height' in top.attrib:
+      viewbox_scale_x, viewbox_scale_y = self._viewbox_scale()
+      viewbox_x = viewbox_scale_x * self.sheet.page[0].to_px()
+      viewbox_y = viewbox_scale_y * self.sheet.page[1].to_px()
+      top.attrib['viewBox'] = f'0 0 {viewbox_x} {viewbox_y}'
+
     top.attrib['width'] = self.sheet.page[0].to_str()
     top.attrib['height'] = self.sheet.page[1].to_str()
-    if 'viewBox' in top.attrib:
-      del top.attrib['viewBox']
+
     return top
+
+  def _viewbox_scale(self) -> Tuple[float, float]:
+    """Returns the viewbox scaling, as factor to multiply by to get true units."""
+    from labelfrontend.units import LengthDimension
+    if 'viewBox' in self.skeleton.attrib and 'width' in self.skeleton.attrib and 'height' in self.skeleton.attrib:
+      viewbox_split = self.skeleton.attrib['viewBox'].split(' ')
+      assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.skeleton.attrib['viewBox']}"
+      width = LengthDimension.from_str(self.skeleton.attrib['width'])
+      height = LengthDimension.from_str(self.skeleton.attrib['height'])
+      assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zero viewBox origin"
+      return float(viewbox_split[2]) / width.to_px(), float(viewbox_split[3]) / height.to_px()
+    else:
+      return 1.0, 1.0
 
   def apply_instance(self, row: Dict[str, str], table: List[Dict[str, str]], row_num: int) -> ET.Element:
     """Creates a copy of this template, with substitutions for the given row data.
@@ -183,11 +203,10 @@ class SvgTemplate:
   def apply_page(self, table: List[Dict[str, str]]) -> ET.Element:
     """Given a table containing at most one page's worth of entries, creates a page of labels.
     If there are less entries than a full page, returns a partial page."""
-    from labelfrontend.units import LengthDimension
-
-    sheet = self._create_sheet()
+    sheet = self.create_sheet()
 
     (margin_x, margin_y) = self.sheet.get_margins(self.size)
+    (viewbox_scale_x, viewbox_scale_y) = self._viewbox_scale()
     for row_num, row in enumerate(table):
       if row_num >= self.sheet.labels_per_sheet():
         raise BadTemplateException(f'table contains more entries than {self.sheet.labels_per_sheet()} per page')
@@ -201,18 +220,9 @@ class SvgTemplate:
       offset_y = margin_y + (self.size[1] + self.sheet.space[1]) * count_y
 
       instance = self.apply_instance(row, table, row_num)
-      instance.attrib['transform'] = f'translate({offset_x.to_px()}, {offset_y.to_px()})'
-
-      # apply viewbox scaling transform
-      if 'viewBox' in self.skeleton.attrib and 'width' in self.skeleton.attrib and 'height' in self.skeleton.attrib:
-        viewbox_split = self.skeleton.attrib['viewBox'].split(' ')
-        assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.skeleton.attrib['viewBox']}"
-        width = LengthDimension.from_str(self.skeleton.attrib['width'])
-        height = LengthDimension.from_str(self.skeleton.attrib['height'])
-        assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zero viewBox origin"
-        scale_factor_x = (width / float(viewbox_split[2])).to_px()
-        scale_factor_y = (height / float(viewbox_split[3])).to_px()
-        instance.attrib['transform'] = instance.attrib['transform'] + f' scale({scale_factor_x} {scale_factor_y})'
+      assert 'transform' not in instance.attrib
+      instance.attrib['transform'] = \
+        f'translate({offset_x.to_px() * viewbox_scale_x}, {offset_y.to_px() * viewbox_scale_y})'
 
       sheet.append(instance)
 
