@@ -1,7 +1,7 @@
 import os.path
 import xml.etree.ElementTree as ET
 from copy import deepcopy, copy
-from typing import Any, Dict, Callable, cast, List, Tuple, TYPE_CHECKING
+from typing import Any, Dict, Callable, cast, List, Tuple
 
 from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
@@ -102,12 +102,14 @@ class SvgTemplate:
                  LengthDimension.from_str(newroot.attrib['height']))
 
     # split the combined SVG into a skeleton and template elements
-    self.template_elts = []
     self.skeleton = newroot
+    template_elts = []
     for child in self.skeleton:
       if child.tag in SVG_GRAPHICS_TAGS:
-        self.template_elts.append(deepcopy(child))
-        self.skeleton.remove(child)
+        template_elts.append(child)
+    for child in template_elts:  # separate deletion pass to avoid mutation while traversing
+      self.skeleton.remove(child)
+    self.template_elts = [deepcopy(child) for child in template_elts]  # keep a separate internal copy
 
   def get_sheet_count(self) -> Tuple[int, int]:
     return self.sheet.count
