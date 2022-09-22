@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 import os.path
 from typing import Optional
 
-from labelcore import SvgTemplate, InkscapeSubprocess
+from labelcore import SvgTemplate, InkscapeSubprocess, INKSCAPE_NAMESPACE, SODIPODI_NAMESPACE
 
 
 if __name__ == '__main__':
@@ -64,10 +64,10 @@ if __name__ == '__main__':
 
   if args.inkscape_multipage:
     multipage = template.create_sheet()
-    namedviews = multipage.findall('{http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd}namedview')
+    namedviews = multipage.findall(f'{SODIPODI_NAMESPACE}namedview')
     assert len(namedviews) == 1, f"must have exactly one sodipodi:namedview tag, got {len(namedviews)}"
     namedview = namedviews[0]
-    assert len(namedview.findall('{http://www.inkscape.org/namespaces/inkscape}page')) == 0, "namedview must be empty"
+    assert len(namedview.findall(f'{INKSCAPE_NAMESPACE}page')) == 0, "namedview must be empty"
     (viewbox_scale_x, viewbox_scale_y) = template._viewbox_scale()
 
   for (page_num, page_table) in enumerate(page_tables):
@@ -87,7 +87,7 @@ if __name__ == '__main__':
       page.attrib['transform'] = f'translate({page_num * template.sheet.page[0].to_px() * viewbox_scale_x}, 0)'
       multipage.append(page)
 
-      namedview_page = ET.Element('{http://www.inkscape.org/namespaces/inkscape}page')
+      namedview_page = ET.Element(f'{INKSCAPE_NAMESPACE}page')
       namedview_page.attrib['x'] = str(page_num * template.sheet.page[0].to_px() * viewbox_scale_x)
       namedview_page.attrib['y'] = '0'
       namedview_page.attrib['width'] = str(template.sheet.page[0].to_px() * viewbox_scale_x)

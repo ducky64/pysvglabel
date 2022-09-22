@@ -4,8 +4,11 @@ class BadTemplateException(Exception):
 
 
 SVG_NAMESPACE = '{http://www.w3.org/2000/svg}'
+SODIPODI_NAMESPACE = '{http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd}'
+INKSCAPE_NAMESPACE = '{http://www.inkscape.org/namespaces/inkscape}'
 NAMESPACES = {
   'svg': 'http://www.w3.org/2000/svg',
+  'inkscape': 'http://www.w3.org/2000/svg',
 }
 
 
