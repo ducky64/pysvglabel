@@ -2,9 +2,9 @@
 
 Label generator with SVG templates supporting embedded Python code and CSV data
 
-| Template & Data | Output |
+| Template | Output |
 |:---:|:---:|
-| ![Design Template](docs/design_screws_40x10mm_simple.png) <br/> [Source SVG](examples/screws_40x10mm_simple.svg) <br/> with [source data CSV](examples/screws.csv) <br/> with [supporting code](examples/screws.py) | ![Generated Labels](docs/output_screws_simple.png) |
+| ![Design Template](docs/design_screws_40x10mm_simple.png) <br/> [source SVG](examples/screws_40x10mm_simple.svg) <br/> with [supporting code](examples/screws.py) | ![Generated Labels](docs/output_screws_simple.png) <br/> from [data CSV](examples/screws.csv) |
 
 ## Usage
 
