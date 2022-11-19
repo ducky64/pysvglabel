@@ -6,7 +6,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="screws_40x10mm.svg"
+   sodipodi:docname="screws_40x10mm_simple.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="true"
      units="mm"
      inkscape:window-maximized="1"
@@ -51,9 +51,9 @@
      inkscape:snap-bbox-midpoints="true"
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
-     inkscape:zoom="22.555584"
-     inkscape:cx="54.953133"
-     inkscape:cy="13.123136"
+     inkscape:zoom="4"
+     inkscape:cx="80"
+     inkscape:cy="-15"
      inkscape:window-width="2560"
      inkscape:window-height="1537"
      inkscape:window-x="1192"
@@ -75,7 +75,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -86,14 +85,14 @@
      transform="translate(0,-1007.3622)">
     <g
        id="g5683"
-       transform="translate(20.506889,909.19048)">
+       transform="translate(34.680116,909.19048)">
       <rect
          y="101.71503"
          x="53.902557"
          height="10.629921"
-         width="63.779526"
+         width="49.606297"
          id="rect4193"
-         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.999213;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:#808080;stroke-width:0.3543307;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <text
          id="text4189"
          y="105.97041"
@@ -109,13 +108,13 @@
            y="110.65791"
            x="55.829239"
            sodipodi:role="line"
-           id="tspan25715">thickness=(2/300)*inch, align=Align.RIGHT)</tspan></text>
+           id="tspan25715">  thickness=(2/300)*inch)</tspan></text>
     </g>
     <flowRoot
        xml:space="preserve"
        id="flowRoot4522"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;line-height:100%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed,  Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.9375,0,0,0.9375,30.068148,971.86996)"><flowRegion
+       transform="matrix(0.9375,0,0,0.9375,31.839802,971.86996)"><flowRegion
          id="flowRegion4524"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;line-height:100%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed,  Bold';text-align:center;text-anchor:middle"><rect
            id="rect4526"
@@ -131,57 +130,46 @@
        id="text880"
        style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-6.5368652"
-       y="0"><tspan
+       y="0"
+       transform="translate(0,12.375039)"><tspan
          x="0"
          y="970.18401"
-         id="tspan88449"><tspan
+         id="tspan93539"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88447"># pysvglabel: init
+           id="tspan93537"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
          y="974.87151"
-         id="tspan88453"><tspan
+         id="tspan93543"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88451">from screws import *
+           id="tspan93541">from screws import *
 </tspan></tspan><tspan
          x="0"
          y="979.55901"
-         id="tspan88457"><tspan
+         id="tspan93547"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88455"># designed on a 1mm grid, 5 lines per major line
+           id="tspan93545"># designed on a 1mm grid, 5 lines per major line
 </tspan></tspan><tspan
          x="0"
          y="984.24651"
-         id="tspan88461"><tspan
+         id="tspan93551"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88459"># individual labels, for use with a thermal printer, at 300dpi
+           id="tspan93549"># this is the simplified one that looks better as an example
 </tspan></tspan><tspan
          x="0"
          y="988.93401"
-         id="tspan88465"><tspan
+         id="tspan93555"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88463"># sheet = LabelSheet(page=(40, 10)*mm, space=(0, 0)*mm, count=(1, 1))
-</tspan></tspan><tspan
-         x="0"
-         y="993.62151"
-         id="tspan88469"><tspan
-           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88467"># Multilabel test page
-</tspan></tspan><tspan
-         x="0"
-         y="998.30901"
-         id="tspan88473"><tspan
-           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan88471">sheet = LabelSheet(page=(100, 120)*mm, space=(0, 0)*mm, count=(2, 10))</tspan></tspan></text>
+           id="tspan93553">sheet = LabelSheet(page=(100, 120)*mm, space=(0, 0)*mm, count=(2, 10))</tspan></tspan></text>
     <text
        id="text4189-9-5"
        y="1019.7638"
-       x="53.149605"
+       x="56.692909"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
          y="1019.7638"
-         x="53.149605"
+         x="56.692909"
          sodipodi:role="line"
          id="tspan5751-1-8">{drive}</tspan></text>
     <text
@@ -208,78 +196,30 @@
          id="tspan5751-1-8-6-0">{length}</tspan></text>
     <g
        id="g5683-0-1"
-       transform="translate(-31.181102,920.70621)">
+       transform="translate(-27.637794,920.70621)">
       <rect
          y="100.8292"
          x="70.157478"
          height="12.401568"
          width="12.401575"
          id="rect4193-1-3"
-         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.999213;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:#808080;stroke-width:0.3543307;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <text
          id="text4189-9-1"
-         y="104.68254"
+         y="107.34002"
          x="70.157478"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="104.68254"
+           y="107.34002"
            x="70.157478"
            sodipodi:role="line"
            id="tspan22307">🐍Svg(</tspan><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="109.37004"
+           y="112.02752"
            x="70.157478"
            sodipodi:role="line"
-           id="tspan86749">head_svg(head))</tspan></text>
-    </g>
-    <g
-       id="g64996"
-       transform="translate(38.976272,-1.7716541)"
-       clip-path="url(#clipPath86559)">
-      <ellipse
-         style="fill:#b3b3b3;fill-opacity:1;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         id="path62575"
-         cx="-35.432964"
-         cy="1025.0789"
-         ry="14.173228"
-         rx="14.173124" />
-      <text
-         id="text4189-9-53"
-         y="1026.8505"
-         x="-49.606087"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1026.8505"
-           x="-49.606087"
-           sodipodi:role="line"
-           id="tspan22305-2">🐍DimensionModifier({</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1031.538"
-           x="-49.606087"
-           sodipodi:role="line"
-           id="tspan64984">  'rx': thread_dia(thread)/2,</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1036.2255"
-           x="-49.606087"
-           sodipodi:role="line"
-           id="tspan64988">  'ry': thread_dia(thread)/2</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1040.913"
-           x="-49.606087"
-           sodipodi:role="line"
-           id="tspan64986">}, {</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1045.6005"
-           x="-49.606087"
-           sodipodi:role="line"
-           id="tspan86468">  'cx': thread_dia(thread)/2,</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1050.288"
-           x="-49.606087"
-           sodipodi:role="line"
-           id="tspan86466">})</tspan></text>
+           id="tspan86749">  head_svg(head))</tspan></text>
     </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
@@ -332,44 +272,34 @@
            y="1042.7953"
            x="7.0866141"
            sodipodi:role="line"
-           id="tspan22305-2-7">🐍DimensionModifier({</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1047.4828"
-           x="7.0866141"
-           sodipodi:role="line"
-           id="tspan64988-6">  'width': to_dim(length)</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="1052.1703"
-           x="7.0866141"
-           sodipodi:role="line"
-           id="tspan64986-5">})</tspan></text>
+           id="tspan64986-5">🐍DimensionModifier({ 'width': to_dim(length) })</tspan></text>
     </g>
     <g
        id="g5683-0"
-       transform="translate(-31.181102,910.07631)">
+       transform="translate(-27.637794,910.07631)">
       <rect
          y="100.8292"
          x="70.157478"
          height="12.401568"
          width="12.401575"
          id="rect4193-1"
-         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.999213;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:#808080;stroke-width:0.3543307;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <text
          id="text4189-9"
-         y="104.68253"
+         y="107.34002"
          x="70.157478"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="104.68253"
+           y="107.34002"
            x="70.157478"
            sodipodi:role="line"
            id="tspan22305">🐍Svg(</tspan><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-           y="109.37003"
+           y="112.02752"
            x="70.157478"
            sodipodi:role="line"
-           id="tspan86745">drive_svg(drive))</tspan></text>
+           id="tspan86745">  drive_svg(drive))</tspan></text>
     </g>
   </g>
   <g
