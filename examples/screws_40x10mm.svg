@@ -19,8 +19,8 @@
     <rect
        x="0"
        y="966.86218"
-       width="157.5"
-       height="40.5"
+       width="159.44881"
+       height="58.216555"
        id="rect882" />
   </defs>
   <sodipodi:namedview
@@ -31,7 +31,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g5683"
      showgrid="true"
      units="mm"
      inkscape:window-maximized="1"
@@ -40,9 +40,9 @@
      inkscape:snap-bbox-midpoints="true"
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
-     inkscape:zoom="7.9746032"
-     inkscape:cx="79.314291"
-     inkscape:cy="2.6333599"
+     inkscape:zoom="11.277792"
+     inkscape:cx="65.039327"
+     inkscape:cy="8.7783141"
      inkscape:window-width="2560"
      inkscape:window-height="1537"
      inkscape:window-x="1192"
@@ -78,22 +78,27 @@
        transform="translate(20.506889,909.19048)">
       <rect
          y="101.71503"
-         x="64.532478"
+         x="53.902557"
          height="10.629921"
-         width="53.149605"
+         width="63.779526"
          id="rect4193"
          style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.999213;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <text
          id="text4189"
          y="105.97041"
-         x="67.344978"
-         style="font-style:normal;font-weight:normal;line-height:0%;font-family:'Open Sans Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Open Sans Condensed, ';font-stretch:normal;font-variant:normal"
+         x="55.829239"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
            y="105.97041"
-           x="67.344978"
+           x="55.829239"
            sodipodi:role="line"
-           id="tspan5751">🐍Code128(barcode, thickness=0.254*mm)</tspan></text>
+           id="tspan5751">🐍Code128(barcode.zfill(4),</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="110.65791"
+           x="55.829239"
+           sodipodi:role="line"
+           id="tspan25715">thickness=(2/300)*inch, align=Align.RIGHT)</tspan></text>
     </g>
     <flowRoot
        xml:space="preserve"
@@ -109,7 +114,7 @@
            y="57.071671"
            style="line-height:100%;text-align:center;text-anchor:middle;stroke-width:1px;-inkscape-font-specification:'Open Sans Condensed,  Bold';font-family:'Open Sans Condensed';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:11.99999954px" /></flowRegion><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;line-height:100%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed,  Bold';text-align:center;text-anchor:middle"
-         id="flowPara880">{barcode}</flowPara></flowRoot>
+         id="flowPara880">{barcode.zfill(4)}</flowPara></flowRoot>
     <text
        xml:space="preserve"
        id="text880"
@@ -118,45 +123,105 @@
        y="0"><tspan
          x="0"
          y="970.18401"
-         id="tspan11923"><tspan
+         id="tspan26545"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11921"># pysvglabel: init
+           id="tspan26543"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
          y="974.87151"
-         id="tspan11927"><tspan
+         id="tspan26549"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11925">from screws import *
+           id="tspan26547">from screws import *
 </tspan></tspan><tspan
          x="0"
          y="979.55901"
-         id="tspan11931"><tspan
+         id="tspan26553"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11929"># designed on a 1mm grid, 5 lines per major line
+           id="tspan26551"># designed on a 1mm grid, 5 lines per major line
 </tspan></tspan><tspan
          x="0"
          y="984.24651"
-         id="tspan11935"><tspan
+         id="tspan26557"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11933">sheet = SingleLabel()
+           id="tspan26555"># individual labels, for use with a thermal printer, at 300dpi
 </tspan></tspan><tspan
          x="0"
          y="988.93401"
-         id="tspan11939"><tspan
+         id="tspan26561"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11937">
+           id="tspan26559"># sheet = LabelSheet(page=(40, 10)*mm, space=(0, 0)*inch, count=(1, 1))
 </tspan></tspan><tspan
          x="0"
          y="993.62151"
-         id="tspan11943"><tspan
+         id="tspan26565"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11941">def file_of(shape):
+           id="tspan26563"># Multilabel test page
 </tspan></tspan><tspan
          x="0"
          y="998.30901"
-         id="tspan11947"><tspan
+         id="tspan26569"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan11945">    return f'sub_{shape}.svg'</tspan></tspan></text>
+           id="tspan26567">sheet = LabelSheet(page=(80, 100)*mm, space=(0, 0)*inch, count=(2, 10))</tspan></tspan></text>
+    <text
+       id="text4189-9-5"
+       y="1019.7638"
+       x="44.291336"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;text-anchor:middle"
+         y="1019.7638"
+         x="44.291336"
+         sodipodi:role="line"
+         id="tspan5751-1-8">{drive}</tspan></text>
+    <text
+       id="text4189-9-5-5"
+       y="1019.7638"
+       x="63.779533"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;text-anchor:middle"
+         y="1019.7638"
+         x="63.779533"
+         sodipodi:role="line"
+         id="tspan5751-1-8-7">{head}</tspan></text>
+    <text
+       id="text4189-9-5-4"
+       y="1019.7638"
+       x="8.8582668"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+         y="1019.7638"
+         x="8.8582668"
+         sodipodi:role="line"
+         id="tspan5751-1-8-6">{thread}</tspan></text>
+    <text
+       id="text4189-9-5-4-7"
+       y="1032.1654"
+       x="8.8582668"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+         y="1032.1654"
+         x="8.8582668"
+         sodipodi:role="line"
+         id="tspan5751-1-8-6-0">{length}</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect1910"
+       width="131.10236"
+       height="3.5432975"
+       x="7.0866141"
+       y="1035.7086"
+       ry="0" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect1910-5"
+       width="3.5433066"
+       height="28.346447"
+       x="3.5433071"
+       y="1010.9055"
+       ry="0" />
     <g
        id="g5683-0"
        transform="translate(-32.066928,920.70623)">
@@ -177,7 +242,7 @@
            y="107.34003"
            x="70.157478"
            sodipodi:role="line"
-           id="tspan5751-1">🐍Svg(drive_svg(drive))</tspan></text>
+           id="tspan22305">🐍Svg(drive_svg(drive))</tspan></text>
     </g>
     <g
        id="g5683-0-1"
@@ -199,67 +264,7 @@
            y="107.34003"
            x="70.157478"
            sodipodi:role="line"
-           id="tspan5751-1-87">🐍Svg(head_svg(head))</tspan></text>
+           id="tspan22307">🐍Svg(head_svg(head))</tspan></text>
     </g>
-    <text
-       id="text4189-9-5"
-       y="1019.7638"
-       x="44.291336"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;text-anchor:middle"
-         y="1019.7638"
-         x="44.291336"
-         sodipodi:role="line"
-         id="tspan5751-1-8">TS10</tspan></text>
-    <text
-       id="text4189-9-5-5"
-       y="1019.7638"
-       x="63.779533"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;text-anchor:middle"
-         y="1019.7638"
-         x="63.779533"
-         sodipodi:role="line"
-         id="tspan5751-1-8-7">PA</tspan></text>
-    <text
-       id="text4189-9-5-4"
-       y="1019.7638"
-       x="8.8582668"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-         y="1019.7638"
-         x="8.8582668"
-         sodipodi:role="line"
-         id="tspan5751-1-8-6">M2.5</tspan></text>
-    <text
-       id="text4189-9-5-4-7"
-       y="1032.1654"
-       x="8.8582668"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
-         y="1032.1654"
-         x="8.8582668"
-         sodipodi:role="line"
-         id="tspan5751-1-8-6-0">6mm</tspan></text>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect1910"
-       width="131.10236"
-       height="3.5432975"
-       x="7.0866141"
-       y="1035.7086"
-       ry="0" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect1910-5"
-       width="3.5433066"
-       height="28.346447"
-       x="3.5433071"
-       y="1010.9055"
-       ry="0" />
   </g>
 </svg>
