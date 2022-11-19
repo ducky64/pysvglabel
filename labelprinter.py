@@ -74,7 +74,7 @@ if __name__ == '__main__':
             time.sleep(0.25)
 
           win32api.ShellExecute(0, "print", 'temp.pdf',
-                                f'/d:"{args.printer}"', ".", 0)
+                                f'/d:{args.printer}', ".", 0)
 
       last_mod_time = mod_time
       last_seen_set = seen_set

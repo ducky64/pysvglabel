@@ -51,13 +51,13 @@ class Code128(RectGroupReplacer):
     path_cmds = ""
     for i, bar_width_dim in enumerate(bar_widths):
       if i % 2 == 1:  # drawn bar
-        path_cmds += f"h{bar_width_dim}"
+        path_cmds += f"h{bar_width_dim} v1 h{-bar_width_dim} z m{bar_width_dim},0"
       else:  # space
         path_cmds += f"m{bar_width_dim},0"
 
     return [ET.Element(f'{SVG_NAMESPACE}path', {
-      'd': f"M0,0.5 {path_cmds}",
-      'stroke': self.fill,
-      'stroke-width': '1',
+      'd': path_cmds,
+      'fill': self.fill,
+      'stroke': 'transparent',
       'transform': f'translate({(x + align_x).to_str()} {y.to_str()}) scale({self.thickness.to_px()} {height.to_px()})'
     })]
