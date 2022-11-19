@@ -1,3 +1,1 @@
-[Screw head images downloaded from Wikimedia](https://commons.wikimedia.org/wiki/Category:Drawings_of_screw_heads), all released under public domain.
-
-
+Custom artwork for screw head profiles. Designed to be stylistically consistent with https://commons.wikimedia.org/wiki/Category:Drawings_of_screw_heads (40x40px canvas, 2px line stroke).

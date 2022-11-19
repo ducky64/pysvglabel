@@ -18,4 +18,11 @@ def drive_svg(name: str) -> str:
 
 def head_svg(name: str) -> str:
   """Returns the SVG name for a given head geometry"""
-  return "external/screws/torx.svg"
+  return {
+    "PN": "screws/pan.svg",
+    "CS": "screws/countersunk90.svg",
+    "OV": "screws/countersunk-round.svg",
+    "HX": "screws/hex.svg",
+    "HXF": "screws/hex-flanged.svg",
+    "SKT": "screws/socket.svg",
+  }[name]
