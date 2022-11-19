@@ -22,6 +22,17 @@
        width="159.44881"
        height="58.216555"
        id="rect882" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath70582">
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="rect70584"
+         width="3.5433085"
+         height="35.433086"
+         x="-23.031498"
+         y="1007.3622" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -31,7 +42,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:document-units="px"
-     inkscape:current-layer="g5683"
+     inkscape:current-layer="layer1"
      showgrid="true"
      units="mm"
      inkscape:window-maximized="1"
@@ -40,9 +51,9 @@
      inkscape:snap-bbox-midpoints="true"
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
-     inkscape:zoom="11.277792"
-     inkscape:cx="65.039327"
-     inkscape:cy="8.7783141"
+     inkscape:zoom="22.555584"
+     inkscape:cx="26.135435"
+     inkscape:cy="32.054147"
      inkscape:window-width="2560"
      inkscape:window-height="1537"
      inkscape:window-x="1192"
@@ -123,45 +134,45 @@
        y="0"><tspan
          x="0"
          y="970.18401"
-         id="tspan26545"><tspan
+         id="tspan78085"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26543"># pysvglabel: init
+           id="tspan78083"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
          y="974.87151"
-         id="tspan26549"><tspan
+         id="tspan78089"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26547">from screws import *
+           id="tspan78087">from screws import *
 </tspan></tspan><tspan
          x="0"
          y="979.55901"
-         id="tspan26553"><tspan
+         id="tspan78093"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26551"># designed on a 1mm grid, 5 lines per major line
+           id="tspan78091"># designed on a 1mm grid, 5 lines per major line
 </tspan></tspan><tspan
          x="0"
          y="984.24651"
-         id="tspan26557"><tspan
+         id="tspan78097"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26555"># individual labels, for use with a thermal printer, at 300dpi
+           id="tspan78095"># individual labels, for use with a thermal printer, at 300dpi
 </tspan></tspan><tspan
          x="0"
          y="988.93401"
-         id="tspan26561"><tspan
+         id="tspan78101"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26559"># sheet = LabelSheet(page=(40, 10)*mm, space=(0, 0)*inch, count=(1, 1))
+           id="tspan78099"># sheet = LabelSheet(page=(40, 10)*mm, space=(0, 0)*inch, count=(1, 1))
 </tspan></tspan><tspan
          x="0"
          y="993.62151"
-         id="tspan26565"><tspan
+         id="tspan78105"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26563"># Multilabel test page
+           id="tspan78103"># Multilabel test page
 </tspan></tspan><tspan
          x="0"
          y="998.30901"
-         id="tspan26569"><tspan
+         id="tspan78109"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan26567">sheet = LabelSheet(page=(80, 100)*mm, space=(0, 0)*inch, count=(2, 10))</tspan></tspan></text>
+           id="tspan78107">sheet = LabelSheet(page=(80, 100)*mm, space=(0, 0)*inch, count=(2, 10))</tspan></tspan></text>
     <text
        id="text4189-9-5"
        y="1019.7638"
@@ -206,22 +217,6 @@
          x="8.8582668"
          sodipodi:role="line"
          id="tspan5751-1-8-6-0">{length}</tspan></text>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect1910"
-       width="131.10236"
-       height="3.5432975"
-       x="7.0866141"
-       y="1035.7086"
-       ry="0" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect1910-5"
-       width="3.5433066"
-       height="28.346447"
-       x="3.5433071"
-       y="1010.9055"
-       ry="0" />
     <g
        id="g5683-0"
        transform="translate(-32.066928,920.70623)">
@@ -265,6 +260,106 @@
            x="70.157478"
            sodipodi:role="line"
            id="tspan22307">🐍Svg(head_svg(head))</tspan></text>
+    </g>
+    <g
+       id="g64996"
+       transform="translate(26.574803,1.7382813e-5)"
+       clip-path="url(#clipPath70582)">
+      <ellipse
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="path62575"
+         cx="-21.259842"
+         cy="1025.0787"
+         ry="14.173228"
+         rx="14.173124" />
+      <text
+         id="text4189-9-53"
+         y="1014.4488"
+         x="-23.031496"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1014.4488"
+           x="-23.031496"
+           sodipodi:role="line"
+           id="tspan22305-2">🐍DimensionModifier({</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1019.1363"
+           x="-23.031496"
+           sodipodi:role="line"
+           id="tspan64984">  'rx': thread_dia(thread)/2,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1023.8239"
+           x="-23.031496"
+           sodipodi:role="line"
+           id="tspan64988">  'ry': thread_dia(thread)/2</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1028.5114"
+           x="-23.031496"
+           sodipodi:role="line"
+           id="tspan64986">})</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 7.9724406,1039.252 v -2.6575"
+       id="path77234"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 8.8582673,1038.3662 v -2.6575"
+       id="path77234-0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#333333;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 9.744094,1039.252 v -2.6575"
+       id="path77234-4"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 10.629921,1038.3662 v -2.6575"
+       id="path77234-0-3"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#999999;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 11.515748,1039.252 v -2.6575"
+       id="path77234-44"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#cccccc;stroke-width:0.265748;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 12.401575,1038.3662 v -2.6575"
+       id="path77234-0-9"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g72961">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.531496;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="rect1910"
+         width="131.10236"
+         height="3.5432975"
+         x="7.0866141"
+         y="1035.7086"
+         ry="0" />
+      <text
+         id="text4189-9-53-3"
+         y="1042.7953"
+         x="7.0866141"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1042.7953"
+           x="7.0866141"
+           sodipodi:role="line"
+           id="tspan22305-2-7">🐍DimensionModifier({</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1047.4828"
+           x="7.0866141"
+           sodipodi:role="line"
+           id="tspan64988-6">  'width': to_dim(length)</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;text-anchor:start"
+           y="1052.1703"
+           x="7.0866141"
+           sodipodi:role="line"
+           id="tspan64986-5">})</tspan></text>
     </g>
   </g>
 </svg>

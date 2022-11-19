@@ -1,8 +1,12 @@
 from string import digits
 
+from labelfrontend.units import LengthDimension, mm
+
+
 # Abbreviations from
 # https://monsterbolts.com/pages/abbreviations
 # https://www.boltdepot.com/fastener-information/Abbreviations.aspx
+
 
 def drive_svg(name: str) -> str:
   """Returns the SVG name for a given drive specification"""
@@ -26,3 +30,15 @@ def head_svg(name: str) -> str:
     "HXF": "screws/hex-flanged.svg",
     "SKT": "screws/socket.svg",
   }[name]
+
+def thread_dia(value: str) -> LengthDimension:
+  if value.startswith("M"):
+    return float(value[1:]) * mm
+  else:
+    raise ValueError(f"unknown thread {value}")
+
+def to_dim(value: str) -> LengthDimension:
+  if value.endswith("mm"):
+    return float(value[:-2]) * mm
+  else:
+    raise ValueError(f"unknown dimension {value}")
