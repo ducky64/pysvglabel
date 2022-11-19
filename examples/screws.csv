@@ -1,0 +1,4 @@
+barcode,thread,length,drive,head
+0,M3,8,T10,pan
+1,M2,6,T6,pan
+2,M2.5,6,TS8,pan
