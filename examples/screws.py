@@ -10,7 +10,7 @@ from labelfrontend.units import LengthDimension, mm
 
 def drive_svg(name: str) -> str:
   """Returns the SVG name for a given drive specification"""
-  drive_type = name.rstrip(digits)
+  drive_type = name.rstrip(digits + '.')
   return {
     "PH": "external/screws/phillips.svg",
     "SL": "external/screws/slot.svg",
@@ -24,6 +24,7 @@ def head_svg(name: str) -> str:
   """Returns the SVG name for a given head geometry"""
   return {
     "PN": "screws/pan.svg",
+    "BH": "screws/round.svg",  # button
     "CS": "screws/countersunk90.svg",
     "OV": "screws/countersunk-round.svg",
     "HX": "screws/hex.svg",

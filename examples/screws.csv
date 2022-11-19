@@ -2,3 +2,6 @@ barcode,thread,length,drive,head
 0,M3,8mm,T10,PN
 1,M2,6mm,T6,PN
 2,M2.5,6mm,TS8,PN
+3,M3,16mm,TS10,CS
+4,M4,10mm,H2.5,BH
+5,M4,12mm,H3,SKT
