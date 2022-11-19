@@ -1,10 +1,10 @@
 from typing import List, cast
 import xml.etree.ElementTree as ET
 
-from labelcore import SvgTemplate
 from .Align import Align
 from .external.Code128 import code128_widths
 
+from labelcore.SvgTemplate import SvgTemplate
 from labelcore.common import SVG_NAMESPACE
 from labelcore.GroupReplacer import RectGroupReplacer
 from .units import LengthDimension, px

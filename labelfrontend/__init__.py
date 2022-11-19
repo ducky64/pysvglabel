@@ -5,6 +5,7 @@ from .Align import Align
 from .LabelSheet import LabelSheet
 
 from .StyleModifier import StyleModifier, FillColor, StrokeColor
+from .DimensionModifier import DimensionModifier
 
 from .Svg import Svg
 

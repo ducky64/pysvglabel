@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 from typing import List, Dict
 
-from labelcore import SvgTemplate, filter_text_elts
+from labelcore.SvgTemplate import SvgTemplate
 from labelcore.GroupReplacer import GroupReplacer
 
 
