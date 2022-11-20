@@ -1,4 +1,5 @@
 from string import digits
+from typing import Optional
 
 from labelfrontend.units import LengthDimension, mm
 
@@ -8,7 +9,7 @@ from labelfrontend.units import LengthDimension, mm
 # https://www.boltdepot.com/fastener-information/Abbreviations.aspx
 
 
-def drive_svg(name: str) -> str:
+def drive_svg(name: str) -> Optional[str]:
   """Returns the SVG name for a given drive specification"""
   drive_type = name.rstrip(digits + '.')
   return {
@@ -21,7 +22,7 @@ def drive_svg(name: str) -> str:
     "HX": "external/screws/hex-external.svg",
   }.get(drive_type, None)
 
-def head_svg(name: str) -> str:
+def head_svg(name: str) -> Optional[str]:
   """Returns the SVG name for a given head geometry"""
   return {
     "PN": "screws/pan.svg",
