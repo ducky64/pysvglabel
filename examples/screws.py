@@ -18,7 +18,8 @@ def drive_svg(name: str) -> str:
     "TS": "external/screws/torx-tamperproof.svg",
     "SQ": "external/screws/robertson.svg",
     "H": "external/screws/hex.svg",
-  }[drive_type]
+    "HX": "external/screws/hex-external.svg",
+  }.get(drive_type, None)
 
 def head_svg(name: str) -> str:
   """Returns the SVG name for a given head geometry"""
@@ -30,7 +31,11 @@ def head_svg(name: str) -> str:
     "HX": "screws/hex.svg",
     "HXF": "screws/hex-flanged.svg",
     "SKT": "screws/socket.svg",
-  }[name]
+    "SetFlat": "screws/set-flat.svg",
+    "SetCup": "screws/set-cup.svg",
+    "SetCone": "screws/set-cone.svg",
+    "SetDog": "screws/set-dog.svg",
+  }.get(name, None)
 
 def thread_dia(value: str) -> LengthDimension:
   if value.startswith("M"):
