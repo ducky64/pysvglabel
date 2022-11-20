@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List
+from typing import List, Optional
 import xml.etree.ElementTree as ET
 import os.path
 
@@ -16,16 +16,19 @@ class Svg(RectGroupReplacer):
     NONE = 1,
     FIT = 2,
 
-  def __init__(self, filename: str, scaling: Scaling = Scaling.FIT):
+  def __init__(self, filename: Optional[str], scaling: Scaling = Scaling.FIT):
     """
-    :param filename: filename of the SVG file to load
+    :param filename: filename of the SVG file to load, if none the element is left empty
     :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
     """
-    assert isinstance(filename, str)
+    assert isinstance(filename, str) or filename is None
     self.filename = filename
     self.scaling = scaling
 
   def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
+    if self.filename is None:
+      return []
+
     svg = ET.parse(os.path.join(context.dir_abspath, self.filename)).getroot()
     assert svg.tag == f"{SVG_NAMESPACE}svg", f"loaded file {self.filename} root tag is not svg, got {svg.tag}"
     assert 'width' in svg.attrib and 'height' in svg.attrib, f"loaded svg {self.filename} missing width or height"
