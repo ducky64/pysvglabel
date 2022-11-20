@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="15.379686"
-     inkscape:cx="14.597177"
-     inkscape:cy="22.65976"
+     inkscape:cx="14.629687"
+     inkscape:cy="22.724781"
      inkscape:window-width="1350"
      inkscape:window-height="1230"
      inkscape:window-x="2046"
@@ -64,27 +64,27 @@
        y="6.5999999" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0.132292;stroke-opacity:1"
-       d="M 3.1749999,6.6000002 V 10.304167"
+       d="M 2.6458333,6.6145833 V 10.31875"
        id="path44673"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0.132292;stroke-opacity:1"
-       d="M 7.4083332,6.5999999 V 10.304167"
+       d="M 7.9375,6.6145831 V 10.31875"
        id="path44673-6"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0.264583;stroke-opacity:1"
-       d="M 3.175,7.4083333 H 6.35"
+       d="m 2.6458333,7.4083333 4.2333334,0"
        id="path44673-0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0.264583;stroke-opacity:1"
-       d="M 3.175,9.525 H 6.35"
+       d="M 2.6458333,9.525 H 6.8791667"
        id="path44673-0-9"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 4.2333333,8.4666667 h 3.175"
+       d="m 3.7041667,8.4666667 4.2333333,0"
        id="path44673-0-7"
        sodipodi:nodetypes="cc" />
   </g>
