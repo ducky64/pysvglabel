@@ -1,6 +1,7 @@
 import unittest
 
 import xml.etree.ElementTree as ET
+import os
 import os.path
 import inspect
 from typing import Dict, List
@@ -18,7 +19,10 @@ class LabelTestCase(unittest.TestCase):
     return sheet
 
   def write_label(self, sheet: ET.Element) -> None:
-    with open(os.path.join(self.get_base_dir(), 'out', f'{self.__class__.__name__}_{self._testMethodName}.svg'),
+    label_out_dir = os.path.join(self.get_base_dir(), 'out')
+    if not os.path.exists(label_out_dir):
+      os.makedirs(label_out_dir)
+    with open(os.path.join(label_out_dir, f'{self.__class__.__name__}_{self._testMethodName}.svg'),
               'wb') as file:
       root = ET.ElementTree(sheet)
       root.write(file)
