@@ -45,19 +45,22 @@ class Svg(RectGroupReplacer):
       width_scale = rect_width.to_px() / svg_width.to_px()
       height_scale = rect_height.to_px() / svg_height.to_px()
       scale = min(width_scale, height_scale)
+      svg_width = svg_width * scale
+      svg_height = svg_height * scale
     else:
       raise NotImplementedError
 
-    offset_x = rect_x + (rect_width - svg_width * scale) / 2
-    offset_y = rect_y + (rect_height - svg_height * scale) / 2
+    offset_x, offset_y = Align.to_transform(align, (svg_width, svg_height), (rect_width, rect_height))
+    sub_x = rect_x + offset_x
+    sub_y = rect_y + offset_y
 
     if scaling == Svg.Scaling.NONE:
-      sub.attrib['x'] = offset_x.to_str()
-      sub.attrib['y'] = offset_y.to_str()
+      sub.attrib['x'] = sub_x.to_str()
+      sub.attrib['y'] = sub_y.to_str()
       return sub
     elif scaling == Svg.Scaling.FIT:
       scaler = ET.Element(f'{SVG_NAMESPACE}g')
-      scaler.attrib['transform'] = f"translate({offset_x.to_str()}, {offset_y.to_str()}) scale({scale})"
+      scaler.attrib['transform'] = f"translate({sub_x.to_str()}, {sub_y.to_str()}) scale({scale})"
       scaler.append(sub)
       return scaler
     else:
