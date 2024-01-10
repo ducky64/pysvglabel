@@ -4,6 +4,8 @@ import xml.etree.ElementTree as ET
 import os.path
 
 from labelcore import SvgTemplate, RectGroupReplacer, SVG_NAMESPACE
+
+from .Align import Align
 from .units import LengthDimension
 
 
@@ -16,7 +18,7 @@ class Svg(RectGroupReplacer):
     NONE = 1,
     FIT = 2,
 
-  def __init__(self, filename: Optional[str], scaling: Scaling = Scaling.FIT):
+  def __init__(self, filename: Optional[str], scaling: Scaling = Scaling.FIT, align: Align = Align.CENTER):
     """
     :param filename: filename of the SVG file to load, if none the element is left empty
     :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
@@ -24,6 +26,12 @@ class Svg(RectGroupReplacer):
     assert isinstance(filename, str) or filename is None
     self.filename = filename
     self.scaling = scaling
+    self.align = align
+
+  @staticmethod
+  def _apply(sub: ET.Element, rect: ET.Element, scaling: Scaling, align: Align) -> List[ET.Element]:
+    """given the contents of the sub-svg, return the transformed version to be placed in the rect"""
+    return replacer.process_rect(context, elt)
 
   def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
     if self.filename is None:
