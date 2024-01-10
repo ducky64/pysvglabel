@@ -1,6 +1,6 @@
 # This package is implicitly imported for all labels
 
-from .units import inch, mm, cm, pt
+from .units import inch, mm, cm, pt, px
 from .Align import Align
 from .LabelSheet import LabelSheet
 
