@@ -8,7 +8,7 @@ from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHIC
 
 def get_text_of(elt: ET.Element) -> str:
   inner_texts = [get_text_of(child) for child in filter_text_inner_elts(list(elt))]
-  return (elt.text or "") + "".join(inner_texts)
+  return (elt.text or "") + "\n".join(inner_texts)
 
 
 def filter_text_elts(elts: List[ET.Element]) -> List[ET.Element]:
