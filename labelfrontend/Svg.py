@@ -29,13 +29,11 @@ class Svg(RectGroupReplacer):
     self.align = align
 
   @staticmethod
-  def _apply(sub: ET.Element, rect: ET.Element, scaling: Scaling, align: Align) -> ET.Element:
+  def _apply(sub: ET.Element, rect_xy: (float, float), rect_wh: (float, float), scaling: Scaling, align: Align) \
+      -> ET.Element:
     """given the contents of the sub-svg, return the transformed version to be placed in the rect"""
-    rect_x = LengthDimension.from_str(rect.attrib['x'])
-    rect_y = LengthDimension.from_str(rect.attrib['y'])
-    rect_width = LengthDimension.from_str(rect.attrib['width'])
-    rect_height = LengthDimension.from_str(rect.attrib['height'])
-
+    rect_x, rect_y = rect_xy
+    rect_width, rect_height = rect_wh
     svg_width = LengthDimension.from_str(sub.attrib['width'])
     svg_height = LengthDimension.from_str(sub.attrib['height'])
 
@@ -73,4 +71,6 @@ class Svg(RectGroupReplacer):
     svg = ET.parse(os.path.join(context.dir_abspath, self.filename)).getroot()
     assert svg.tag == f"{SVG_NAMESPACE}svg", f"loaded file {self.filename} root tag is not svg, got {svg.tag}"
     assert 'width' in svg.attrib and 'height' in svg.attrib, f"loaded svg {self.filename} missing width or height"
-    return [self._apply(svg, rect, self.scaling, self.align)]
+    rect_xy = (LengthDimension.from_str(rect.attrib['x']), LengthDimension.from_str(rect.attrib['y']))
+    rect_wh = (LengthDimension.from_str(rect.attrib['width']), LengthDimension.from_str(rect.attrib['height']))
+    return [self._apply(svg, rect_xy, rect_wh, self.scaling, self.align)]
