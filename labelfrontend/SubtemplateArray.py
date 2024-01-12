@@ -20,7 +20,7 @@ class SubtemplateArray(RectGroupReplacer):
     :param filename: filename of the SVG file to load, if none the element is left empty
     :param elts_env: list of array elements, each as a tuple of (position, env), with position in [0, 1] as a
       fraction of the total area width or height
-    :param vertical: whether the subtemplates are arrayed vertically (true) or horizontally (false, default)
+    :param vertical: whether the subtemplates are arrayed horizontally (false, default) or vertically (true)
     :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
     :param align: how to align the loaded SVG file to the area
     """
