@@ -50,6 +50,12 @@ class SubtemplateArray(RectGroupReplacer):
     for (pos, env) in self.elts_env:
       transformer = ET.Element(f'{SVG_NAMESPACE}g')
       svg = template.apply_instance(self.env)
+      if not self.vertical:  # horizontal
+        rect_xy = (area_xy[0] + pos * area_wh[0], area_xy[1])
+        rect_wh = (0, area_wh[1])
+      else:  # vertical
+        rect_xy = (area_xy[0], area_xy[1] + pos * area_wh[1])
+        rect_wh = (area_wh[0], 0)
       transformer.append(Svg._apply(svg, rect_xy, rect_wh, self.scaling, self.align))
       outs.append(transformer)
 
