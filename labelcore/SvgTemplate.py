@@ -97,7 +97,7 @@ class SvgTemplate:
 
     # split the combined SVG into a skeleton and template elements
     self.skeleton, template = self.split_skeleton_template(newroot)
-    self.template = SubTemplate(template, self.dir_abspath)
+    self.template = SvgTemplateInstance(template, self.dir_abspath)
 
   def split_skeleton_template(self, root: ET.Element) -> Tuple[ET.Element, ET.Element]:
     """Given a root SVG element, returns a tuple of (skeleton, template) elements.
@@ -180,7 +180,12 @@ class SvgTemplate:
     for row_code in self.row_contents:
       exec(row_code, instance_env)
 
-    return self.template.apply_instance(instance_env)
+    instance_svg = self.template.apply_instance(instance_env)
+    new_group = ET.Element(f'{SVG_NAMESPACE}g')
+    for child in instance_svg:
+      new_group.append(child)
+
+    return new_group
 
   def apply_page(self, table: List[Dict[str, str]]) -> ET.Element:
     """Given a table containing at most one page's worth of entries, creates a page of labels.
@@ -218,7 +223,7 @@ class SvgTemplate:
       exec(end_code, end_env)
 
 
-class SubTemplate:
+class SvgTemplateInstance:
   """Class that defines a SVG template only, excluding top-level data like init block."""
   def __init__(self, template: ET.Element, dir_abspath: str):
     from labelfrontend import LabelSheet
@@ -234,8 +239,11 @@ class SubTemplate:
     self.template = template
 
   def apply_instance(self, env: Dict[str, Any]) -> ET.Element:
-    """Creates a copy of this template, with specified environment containing global / local variables."""
-    new_root = ET.Element(f'{SVG_NAMESPACE}g')
+    """Creates a copy of this template, with specified environment containing global / local variables.
+    The root element is preserved."""
+    new_root = deepcopy(self.template)
+    # for child in list(new_root):
+    #   new_root.remove(child)
 
     def process_text(elt: ET.Element) -> None:
       for child in filter_text_inner_elts(list(elt)):
@@ -273,8 +281,8 @@ class SubTemplate:
       for child in text_child_elts:
         process_text(child)
 
-    for child in self.template:
-      new_elt = deepcopy(child)
-      visit(new_elt, apply_template)
-      new_root.append(new_elt)
+    for child in new_root:
+      # new_elt = deepcopy(child)
+      visit(child, apply_template)
+      # new_root.append(new_elt)
     return new_root

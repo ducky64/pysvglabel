@@ -9,6 +9,7 @@ from .StyleModifier import StyleModifier, FillColor, StrokeColor
 from .DimensionModifier import DimensionModifier
 
 from .Svg import Svg
+from .Subtemplate import Subtemplate
 
 from .Code128 import Code128
 from .DataMatrix import DataMatrix

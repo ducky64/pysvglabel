@@ -17,6 +17,7 @@ class Svg(RectGroupReplacer):
     """
     :param filename: filename of the SVG file to load, if none the element is left empty
     :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
+    :param align: how to align the loaded SVG file to the area
     """
     assert isinstance(filename, str) or filename is None
     if filename is not None:
@@ -30,18 +31,16 @@ class Svg(RectGroupReplacer):
              rect_wh: Tuple[LengthDimension, LengthDimension], scaling: Scaling, align: Align) \
       -> ET.Element:
     """given the contents of the sub-svg, return the transformed version to be placed in the rect"""
-    rect_x, rect_y = rect_xy
-    rect_width, rect_height = rect_wh
     svg_width = LengthDimension.from_str(sub.attrib['width'])
     svg_height = LengthDimension.from_str(sub.attrib['height'])
 
-    wscale, hscale = Scaling.to_transform(scaling, (svg_width, svg_height), (rect_width, rect_height))
+    wscale, hscale = Scaling.to_transform(scaling, (svg_width, svg_height), rect_wh)
     svg_width = svg_width * wscale
     svg_height = svg_height * hscale
 
-    offset_x, offset_y = Align.to_transform(align, (svg_width, svg_height), (rect_width, rect_height))
-    sub_x = rect_x + offset_x
-    sub_y = rect_y + offset_y
+    offset_x, offset_y = Align.to_transform(align, (svg_width, svg_height), rect_wh)
+    sub_x = rect_xy[0] + offset_x
+    sub_y = rect_xy[1] + offset_y
 
     transformer = ET.Element(f'{SVG_NAMESPACE}g')
     transformer.attrib['transform'] = f"translate({sub_x.to_str()}, {sub_y.to_str()})"
