@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, Optional
+from typing import List, Optional, Tuple
 import xml.etree.ElementTree as ET
 import os.path
 
@@ -24,12 +24,15 @@ class Svg(RectGroupReplacer):
     :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
     """
     assert isinstance(filename, str) or filename is None
+    if filename is not None:
+      filename = os.path.abspath(filename)  # take the abspath here to encapsulate working directory
     self.filename = filename
     self.scaling = scaling
     self.align = align
 
   @staticmethod
-  def _apply(sub: ET.Element, rect_xy: (float, float), rect_wh: (float, float), scaling: Scaling, align: Align) \
+  def _apply(sub: ET.Element, rect_xy: Tuple[LengthDimension, LengthDimension],
+             rect_wh: Tuple[LengthDimension, LengthDimension], scaling: Scaling, align: Align) \
       -> ET.Element:
     """given the contents of the sub-svg, return the transformed version to be placed in the rect"""
     rect_x, rect_y = rect_xy
@@ -64,11 +67,11 @@ class Svg(RectGroupReplacer):
     else:
       raise NotImplementedError
 
-  def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
+  def process_rect(self, rect: ET.Element) -> List[ET.Element]:
     if self.filename is None:
       return []
 
-    svg = ET.parse(os.path.join(context.dir_abspath, self.filename)).getroot()
+    svg = ET.parse(self.filename).getroot()
     assert svg.tag == f"{SVG_NAMESPACE}svg", f"loaded file {self.filename} root tag is not svg, got {svg.tag}"
     assert 'width' in svg.attrib and 'height' in svg.attrib, f"loaded svg {self.filename} missing width or height"
     rect_xy = (LengthDimension.from_str(rect.attrib['x']), LengthDimension.from_str(rect.attrib['y']))

@@ -18,7 +18,7 @@ class DimensionModifier(GroupReplacer):
     self.set = set
     self.add = add
 
-  def process_group(self, context: SvgTemplate, elts: List[ET.Element]) -> List[ET.Element]:
+  def process_group(self, elts: List[ET.Element]) -> List[ET.Element]:
     for elt in elts:
       for attrib_name, attrib_value in self.set.items():
         assert attrib_name in elt.attrib, f"attrib {attrib_name} missing from elt"
