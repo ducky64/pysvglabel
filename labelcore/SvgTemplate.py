@@ -100,7 +100,9 @@ class SvgTemplate:
     self.template = SubTemplate(template, self.dir_abspath)
 
   def split_skeleton_template(self, root: ET.Element) -> Tuple[ET.Element, ET.Element]:
-    """Given a root SVG element, returns a tuple of (skeleton, template) elements."""
+    """Given a root SVG element, returns a tuple of (skeleton, template) elements.
+    The skeleton contains global defs, while the template contains graphical elements.
+    Both share the top-level SVG root."""
     skeleton = deepcopy(root)
     template = deepcopy(root)
     skeleton_elts = []
