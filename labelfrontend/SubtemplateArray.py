@@ -7,7 +7,7 @@ from labelcore import SvgTemplate, RectGroupReplacer, SVG_NAMESPACE, SvgTemplate
 from .Align import Align
 from .Scaling import Scaling
 from .Svg import Svg
-from .units import LengthDimension
+from .units import LengthDimension, px
 
 
 class SubtemplateArray(RectGroupReplacer):
@@ -15,13 +15,15 @@ class SubtemplateArray(RectGroupReplacer):
   Instantiate several subtemplates (specified by envs - tuple of pos, env) in a linear array.
   """
   def __init__(self, filename: Optional[str], elts_env: List[Tuple[float, Dict[str, Any]]], vertical: bool = False,
-               scaling: Scaling = Scaling.FIT, align: Align = Align.CENTER):
+               align: Align = Align.CENTER):
     """
+    Note - scaling is not allowed since the individual element widths (in horizontal mode) or heights (in vertical mode)
+      are zero.
+
     :param filename: filename of the SVG file to load, if none the element is left empty
     :param elts_env: list of array elements, each as a tuple of (position, env), with position in [0, 1] as a
       fraction of the total area width or height
     :param vertical: whether the subtemplates are arrayed horizontally (false, default) or vertically (true)
-    :param scaling: how to scale the loaded SVG file, whether to drop the SVG as-is or fit into the area
     :param align: how to align the loaded SVG file to the area
     """
     assert isinstance(filename, str) or filename is None
@@ -30,7 +32,6 @@ class SubtemplateArray(RectGroupReplacer):
     self.filename = filename
     self.elts_env = elts_env
     self.vertical = vertical
-    self.scaling = scaling
     self.align = align
 
   def process_rect(self, rect: ET.Element) -> List[ET.Element]:
@@ -49,14 +50,14 @@ class SubtemplateArray(RectGroupReplacer):
     outs = []
     for (pos, env) in self.elts_env:
       transformer = ET.Element(f'{SVG_NAMESPACE}g')
-      svg = template.apply_instance(self.env)
+      svg = template.apply_instance(env)
       if not self.vertical:  # horizontal
-        rect_xy = (area_xy[0] + pos * area_wh[0], area_xy[1])
-        rect_wh = (0, area_wh[1])
+        rect_xy = (area_xy[0] + (area_wh[0] * pos), area_xy[1])
+        rect_wh = (0*px, area_wh[1])
       else:  # vertical
-        rect_xy = (area_xy[0], area_xy[1] + pos * area_wh[1])
-        rect_wh = (area_wh[0], 0)
-      transformer.append(Svg._apply(svg, rect_xy, rect_wh, self.scaling, self.align))
+        rect_xy = (area_xy[0], area_xy[1] + (area_wh[1] * pos))
+        rect_wh = (area_wh[0], 0*px)
+      transformer.append(Svg._apply(svg, rect_xy, rect_wh, Scaling.NONE, self.align))
       outs.append(transformer)
 
     return outs
