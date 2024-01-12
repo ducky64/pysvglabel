@@ -56,9 +56,7 @@ class SvgTemplate:
           if self.env is not None:
             raise BadTemplateException("multiple starting blocks (textboxes starting with '# pysvglabel: init') found")
           self.env = {}
-          exec("import os as __os", self.env)
-          exec(f"__os.chdir(r\"{self.dir_abspath}\")", self.env)
-
+          os.chdir(self.dir_abspath)
           exec("from labelfrontend import *", self.env)
           exec("import sys as __sys", self.env)
           dirpath_escaped = self.dir_abspath.replace('\\', '\\\\')
@@ -99,7 +97,7 @@ class SvgTemplate:
 
     # split the combined SVG into a skeleton and template elements
     self.skeleton, template = self.split_skeleton_template(newroot)
-    self.template = SubTemplate(template)
+    self.template = SubTemplate(template, self.dir_abspath)
 
   def split_skeleton_template(self, root: ET.Element) -> Tuple[ET.Element, ET.Element]:
     """Given a root SVG element, returns a tuple of (skeleton, template) elements."""
@@ -152,8 +150,7 @@ class SvgTemplate:
     """Creates a copy of this template, with substitutions for the given row data.
     The env dict is shallow-copied, so variable changes aren't reflected in other rows,
     but mutation effects will be visible."""
-    new_root = ET.Element(f'{SVG_NAMESPACE}g')
-
+    os.chdir(self.dir_abspath)
     instance_env = copy(self.env)
     value_variables = {key: value for key, value in row.items()
                        if key.isidentifier()}  # discard non-identifiers
@@ -203,6 +200,7 @@ class SvgTemplate:
 
   def run_end(self) -> None:
     """Call this to run the end block of the template."""
+    os.chdir(self.dir_abspath)
     end_env = copy(self.env)
     for end_code in self.end_contents:
       exec(end_code, end_env)
@@ -210,7 +208,7 @@ class SvgTemplate:
 
 class SubTemplate:
   """Class that defines a SVG template only, excluding top-level data like init block."""
-  def __init__(self, template: ET.Element):
+  def __init__(self, template: ET.Element, dir_abspath: str):
     from labelfrontend import LabelSheet
     from labelfrontend.units import LengthDimension
 
@@ -220,8 +218,7 @@ class SubTemplate:
       raise BadTemplateException("svg missing height")
     self.size = (LengthDimension.from_str(template.attrib['width']),
                  LengthDimension.from_str(template.attrib['height']))
-
-    # split the combined SVG into a skeleton and template elements
+    self.dir_abspath = dir_abspath
     self.template = template
 
   def _viewbox_scale(self) -> Tuple[float, float]:
@@ -244,6 +241,7 @@ class SubTemplate:
     def process_text(elt: ET.Element) -> None:
       for child in filter_text_inner_elts(list(elt)):
         process_text(child)
+      os.chdir(self.dir_abspath)
       if elt.text:
         elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, though """ in a label is unlikely
       for child in elt:
@@ -259,6 +257,7 @@ class SubTemplate:
       if len(command_child_elts) == 1:
         command_elt = command_child_elts[0]
         code = get_text_of(command_elt).strip('🐍')
+        os.chdir(self.dir_abspath)
         obj = eval(code, env)
         if not isinstance(obj, GroupReplacer):
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
