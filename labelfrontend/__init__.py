@@ -10,6 +10,7 @@ from .DimensionModifier import DimensionModifier
 
 from .Svg import Svg
 from .Subtemplate import Subtemplate
+from .SubtemplateArray import SubtemplateArray
 
 from .Code128 import Code128
 from .DataMatrix import DataMatrix
