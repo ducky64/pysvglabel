@@ -102,7 +102,7 @@ class SvgTemplate:
   def split_skeleton_template(self, root: ET.Element) -> Tuple[ET.Element, ET.Element]:
     """Given a root SVG element, returns a tuple of (skeleton, template) elements.
     The skeleton contains global defs, while the template contains graphical elements.
-    Both share the top-level SVG root."""
+    Both share the top-level SVG root container."""
     skeleton = deepcopy(root)
     template = deepcopy(root)
     skeleton_elts = []
@@ -125,7 +125,17 @@ class SvgTemplate:
     return self.sheet.count
 
   def _viewbox_scale(self) -> Tuple[float, float]:
-    return self.template._viewbox_scale()
+    """Returns the viewbox scaling, as factor to multiply by to get true units."""
+    from labelfrontend.units import LengthDimension
+    if 'viewBox' in self.skeleton.attrib and 'width' in self.skeleton.attrib and 'height' in self.skeleton.attrib:
+      viewbox_split = self.skeleton.attrib['viewBox'].split(' ')
+      assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.skeleton.attrib['viewBox']}"
+      width = LengthDimension.from_str(self.skeleton.attrib['width'])
+      height = LengthDimension.from_str(self.skeleton.attrib['height'])
+      assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zero viewBox origin"
+      return float(viewbox_split[2]) / width.to_px(), float(viewbox_split[3]) / height.to_px()
+    else:
+      return 1.0, 1.0
 
   def _create_instance(self) -> ET.Element:
     """Creates the top-level SVG object for a single label."""
@@ -138,7 +148,7 @@ class SvgTemplate:
 
     # scale viewBox accordingly
     if 'viewBox' in top.attrib and 'width' in top.attrib and 'height' in top.attrib:
-      viewbox_scale_x, viewbox_scale_y = self.template._viewbox_scale()
+      viewbox_scale_x, viewbox_scale_y = self._viewbox_scale()
       viewbox_x = viewbox_scale_x * self.sheet.page[0].to_px()
       viewbox_y = viewbox_scale_y * self.sheet.page[1].to_px()
       top.attrib['viewBox'] = f'0 0 {viewbox_x} {viewbox_y}'
@@ -178,7 +188,7 @@ class SvgTemplate:
     new_root = ET.Element(f'{SVG_NAMESPACE}g')
 
     (margin_x, margin_y) = self.sheet.get_margins(self.template.size)
-    (viewbox_scale_x, viewbox_scale_y) = self.template._viewbox_scale()
+    (viewbox_scale_x, viewbox_scale_y) = self._viewbox_scale()
     for row_num, row in enumerate(table):
       if row_num >= self.sheet.labels_per_sheet():
         raise BadTemplateException(f'table contains more entries than {self.sheet.labels_per_sheet()} per page')
@@ -222,19 +232,6 @@ class SubTemplate:
                  LengthDimension.from_str(template.attrib['height']))
     self.dir_abspath = dir_abspath
     self.template = template
-
-  def _viewbox_scale(self) -> Tuple[float, float]:
-    """Returns the viewbox scaling, as factor to multiply by to get true units."""
-    from labelfrontend.units import LengthDimension
-    if 'viewBox' in self.template.attrib and 'width' in self.template.attrib and 'height' in self.template.attrib:
-      viewbox_split = self.template.attrib['viewBox'].split(' ')
-      assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.template.attrib['viewBox']}"
-      width = LengthDimension.from_str(self.template.attrib['width'])
-      height = LengthDimension.from_str(self.template.attrib['height'])
-      assert viewbox_split[0] == '0' and viewbox_split[1] == '0', "TODO support non-zero viewBox origin"
-      return float(viewbox_split[2]) / width.to_px(), float(viewbox_split[3]) / height.to_px()
-    else:
-      return 1.0, 1.0
 
   def apply_instance(self, env: Dict[str, Any]) -> ET.Element:
     """Creates a copy of this template, with specified environment containing global / local variables."""

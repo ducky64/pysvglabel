@@ -2,6 +2,7 @@
 
 from .units import inch, mm, cm, pt, px
 from .Align import Align
+from .Scaling import Scaling
 from .LabelSheet import LabelSheet
 
 from .StyleModifier import StyleModifier, FillColor, StrokeColor

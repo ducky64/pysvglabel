@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import List, Optional, Tuple
 import xml.etree.ElementTree as ET
 import os.path
@@ -6,6 +5,7 @@ import os.path
 from labelcore import SvgTemplate, RectGroupReplacer, SVG_NAMESPACE
 
 from .Align import Align
+from .Scaling import Scaling
 from .units import LengthDimension
 
 
@@ -13,11 +13,6 @@ class Svg(RectGroupReplacer):
   """
   Add the contents of a SVG file where this rectangle-area-group is.
   """
-
-  class Scaling(Enum):
-    NONE = 1,
-    FIT = 2,
-
   def __init__(self, filename: Optional[str], scaling: Scaling = Scaling.FIT, align: Align = Align.CENTER):
     """
     :param filename: filename of the SVG file to load, if none the element is left empty
@@ -40,9 +35,9 @@ class Svg(RectGroupReplacer):
     svg_width = LengthDimension.from_str(sub.attrib['width'])
     svg_height = LengthDimension.from_str(sub.attrib['height'])
 
-    if scaling == Svg.Scaling.NONE:
+    if scaling == Scaling.NONE:
       scale = 1.0
-    elif scaling == Svg.Scaling.FIT:
+    elif scaling == Scaling.FIT:
       width_scale = rect_width.to_px() / svg_width.to_px()
       height_scale = rect_height.to_px() / svg_height.to_px()
       scale = min(width_scale, height_scale)
@@ -55,11 +50,11 @@ class Svg(RectGroupReplacer):
     sub_x = rect_x + offset_x
     sub_y = rect_y + offset_y
 
-    if scaling == Svg.Scaling.NONE:
+    if scaling == Scaling.NONE:
       sub.attrib['x'] = sub_x.to_str()
       sub.attrib['y'] = sub_y.to_str()
       return sub
-    elif scaling == Svg.Scaling.FIT:
+    elif scaling == Scaling.FIT:
       scaler = ET.Element(f'{SVG_NAMESPACE}g')
       scaler.attrib['transform'] = f"translate({sub_x.to_str()}, {sub_y.to_str()}) scale({scale})"
       scaler.append(sub)
