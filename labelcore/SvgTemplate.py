@@ -242,8 +242,6 @@ class SvgTemplateInstance:
     """Creates a copy of this template, with specified environment containing global / local variables.
     The root element is preserved."""
     new_root = deepcopy(self.template)
-    # for child in list(new_root):
-    #   new_root.remove(child)
 
     def process_text(elt: ET.Element) -> None:
       for child in filter_text_inner_elts(list(elt)):
@@ -282,7 +280,6 @@ class SvgTemplateInstance:
         process_text(child)
 
     for child in new_root:
-      # new_elt = deepcopy(child)
       visit(child, apply_template)
-      # new_root.append(new_elt)
+
     return new_root
