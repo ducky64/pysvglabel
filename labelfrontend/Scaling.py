@@ -10,9 +10,16 @@ class Scaling(Enum):
 
   @staticmethod
   def to_transform(scaling: 'Scaling', src_size: Tuple[LengthDimension, LengthDimension],
-                   dst_size: Tuple[LengthDimension, LengthDimension]) -> Tuple[LengthDimension, LengthDimension]:
+                   dst_size: Tuple[LengthDimension, LengthDimension]) -> Tuple[float, float]:
     """Returns the x, y scaling factors to be applied to src to fit within dst for the given scaling.
     :return: scaling factors for (x, y)
     """
-    # handle X transform
-    # if scaling in [Scaling.NONE, Scaling.FIT]:
+    if scaling == Scaling.NONE:
+      return 1.0, 1.0
+    elif scaling == Scaling.FIT:
+      width_scale = dst_size[0].to_px() / src_size[0].to_px()
+      height_scale = dst_size[1].to_px() / src_size[1].to_px()
+      scale = min(width_scale, height_scale)
+      return scale, scale
+    else:
+      raise NotImplementedError

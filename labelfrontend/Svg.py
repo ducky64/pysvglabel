@@ -35,32 +35,20 @@ class Svg(RectGroupReplacer):
     svg_width = LengthDimension.from_str(sub.attrib['width'])
     svg_height = LengthDimension.from_str(sub.attrib['height'])
 
-    if scaling == Scaling.NONE:
-      scale = 1.0
-    elif scaling == Scaling.FIT:
-      width_scale = rect_width.to_px() / svg_width.to_px()
-      height_scale = rect_height.to_px() / svg_height.to_px()
-      scale = min(width_scale, height_scale)
-      svg_width = svg_width * scale
-      svg_height = svg_height * scale
-    else:
-      raise NotImplementedError
+    wscale, hscale = Scaling.to_transform(scaling, (svg_width, svg_height), (rect_width, rect_height))
+    svg_width = svg_width * wscale
+    svg_height = svg_height * hscale
 
     offset_x, offset_y = Align.to_transform(align, (svg_width, svg_height), (rect_width, rect_height))
     sub_x = rect_x + offset_x
     sub_y = rect_y + offset_y
 
-    if scaling == Scaling.NONE:
-      sub.attrib['x'] = sub_x.to_str()
-      sub.attrib['y'] = sub_y.to_str()
-      return sub
-    elif scaling == Scaling.FIT:
-      scaler = ET.Element(f'{SVG_NAMESPACE}g')
-      scaler.attrib['transform'] = f"translate({sub_x.to_str()}, {sub_y.to_str()}) scale({scale})"
-      scaler.append(sub)
-      return scaler
-    else:
-      raise NotImplementedError
+    transformer = ET.Element(f'{SVG_NAMESPACE}g')
+    transformer.attrib['transform'] = f"translate({sub_x.to_str()}, {sub_y.to_str()})"
+    transformer.append(sub)
+    if (wscale, hscale) != (1.0, 1.0):
+      transformer.attrib['transform'] += f" scale({wscale}, {hscale})"
+    return transformer
 
   def process_rect(self, rect: ET.Element) -> List[ET.Element]:
     if self.filename is None:
