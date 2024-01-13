@@ -10,8 +10,6 @@ import win32print  # type:ignore
 
 from labelcore import SvgTemplate, InkscapeSubprocess
 
-import subprocess
-
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Print individual labels (eg, with a thermal printer) from SVG templates.')
