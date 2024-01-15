@@ -57,7 +57,7 @@ class SubtemplateArray(RectGroupReplacer):
       else:  # vertical
         rect_xy = (area_xy[0], area_xy[1] + (area_wh[1] * pos))
         rect_wh = (area_wh[0], 0*px)
-      transformer.append(Svg._apply(svg, rect_xy, rect_wh, Scaling.FIT_MAX, self.align))
+      transformer.append(Svg._apply(svg, rect_xy, rect_wh, Scaling.NONE, self.align))
       outs.append(transformer)
 
     return outs
