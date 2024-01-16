@@ -47,10 +47,17 @@ class SubtemplateArray(RectGroupReplacer):
     dirpath = os.path.dirname(self.filename)
     template = SvgTemplateInstance(svg, dirpath)
 
+    base_env = SvgTemplate._create_env(os.path.dirname(self.filename))
+    base_env.update({
+      '_area_width': area_wh[0],
+      '_area_height': area_wh[1],
+    })
     outs = []
     for (pos, env) in self.elts_env:
       transformer = ET.Element(f'{SVG_NAMESPACE}g')
-      svg = template.apply_instance(env)
+      instance_env = base_env.copy()
+      instance_env.update(env)
+      svg = template.apply_instance(instance_env)
       if not self.vertical:  # horizontal
         rect_xy = (area_xy[0] + (area_wh[0] * pos), area_xy[1])
         rect_wh = (0*px, area_wh[1])

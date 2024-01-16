@@ -41,6 +41,14 @@ class Subtemplate(RectGroupReplacer):
     rect_wh = (LengthDimension.from_str(rect.attrib['width']), LengthDimension.from_str(rect.attrib['height']))
 
     dirpath = os.path.dirname(self.filename)
-    svg = SvgTemplateInstance(svg, dirpath).apply_instance(self.env)
+
+    instance_env = SvgTemplate._create_env(os.path.dirname(self.filename))
+    instance_env.update({
+      '_area_width': rect_wh[0],
+      '_area_height': rect_wh[1],
+    })
+    instance_env.update(self.env)
+
+    svg = SvgTemplateInstance(svg, dirpath).apply_instance(instance_env)
 
     return [Svg._apply(svg, rect_xy, rect_wh, self.scaling, self.align)]

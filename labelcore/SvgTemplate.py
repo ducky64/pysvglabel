@@ -35,6 +35,17 @@ def visit(elt: ET.Element, fn: Callable[[ET.Element], None]) -> None:
 
 class SvgTemplate:
   """Class that defines a SVG sheet template, including init block, per-row blocks, and end block."""
+  @staticmethod
+  def _create_env(dir_abspath: str) -> Dict[str, Any]:
+    """Creates an environment for a template in some directory. CWD leaks."""
+    env: Dict[str, Any] = {}
+    os.chdir(dir_abspath)
+    exec("from labelfrontend import *", env)
+    exec("import sys as __sys", env)
+    dirpath_escaped = dir_abspath.replace('\\', '\\\\')
+    exec(f"__sys.path.append('{dirpath_escaped}')", env)
+    return env
+
   def __init__(self, filename: str):
     from labelfrontend import LabelSheet
     from labelfrontend.units import LengthDimension
@@ -55,12 +66,7 @@ class SvgTemplate:
         if child_text.startswith('# pysvglabel: init'):
           if self.env is not None:
             raise BadTemplateException("multiple starting blocks (textboxes starting with '# pysvglabel: init') found")
-          self.env = {}
-          os.chdir(self.dir_abspath)
-          exec("from labelfrontend import *", self.env)
-          exec("import sys as __sys", self.env)
-          dirpath_escaped = self.dir_abspath.replace('\\', '\\\\')
-          exec(f"__sys.path.append('{dirpath_escaped}')", self.env)
+          self.env = self._create_env(self.dir_abspath)
           exec(child_text, self.env)
 
           if 'sheet' not in self.env:
