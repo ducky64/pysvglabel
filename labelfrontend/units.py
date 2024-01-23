@@ -43,7 +43,7 @@ class LengthDimension:
     'cm': cm,
     'pt': pt,
   }
-  FROM_STR_RE = re.compile(r'^(\d+(?:\.\d+)?)\s*([a-zA-Z]*)?$')
+  FROM_STR_RE = re.compile(r'^-?(\d+(?:\.\d+)?)\s*([a-zA-Z]*)?$')
   @classmethod
   def from_str(cls, input: str) -> 'LengthDimension':
     match = cls.FROM_STR_RE.match(input)
