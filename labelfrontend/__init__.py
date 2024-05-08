@@ -5,6 +5,7 @@ from .Align import Align
 from .Scaling import Scaling
 from .LabelSheet import LabelSheet
 
+from .Compose import Compose
 from .StyleModifier import StyleModifier, FillColor, StrokeColor
 from .DimensionModifier import DimensionModifier
 
