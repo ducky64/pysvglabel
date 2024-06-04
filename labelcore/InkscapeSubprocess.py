@@ -10,7 +10,7 @@ class InkscapeSubprocess:
   Inkscape in shell mode is also pretty responsive.
   """
   def __init__(self) -> None:
-    self.process = subprocess.Popen("inkscape --shell", stdin=subprocess.PIPE)
+    self.process = subprocess.Popen(["inkscape", "--shell"], stdin=subprocess.PIPE)
     # don't block for Inkscape to start up, just start sending commands
 
   def convert(self, filename_in: str, filename_out: str) -> None:
