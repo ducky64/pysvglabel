@@ -5,12 +5,10 @@ import xml.etree.ElementTree as ET
 import time
 from typing import Dict, Tuple
 
-import win32api  # type:ignore
-import win32print  # type:ignore
+import win32com.shell.shell as shell
+import win32event  # type:ignore
 
 from labelcore import SvgTemplate, InkscapeSubprocess
-
-import subprocess
 
 
 if __name__ == '__main__':
@@ -73,8 +71,11 @@ if __name__ == '__main__':
           while not os.path.exists('temp.pdf'):  # wait for file creation
             time.sleep(0.25)
 
-          win32api.ShellExecute(0, "print", 'temp.pdf',
-                                f'/d:{args.printer}', ".", 0)
+          # wait for the print to execute, so we can then overwrite the file
+          # https://stackoverflow.com/questions/18025882/how-to-determine-if-win32api-shellexecute-was-successful-using-hinstance
+          pinfo = shell.ShellExecuteEx(fMask=256+64, lpVerb="print", lpFile='temp.pdf',
+                                       lpParameters=f'/d:{args.printer} .')
+          win32event.WaitForSingleObject(pinfo['hProcess'], win32event.INFINITE)
 
       last_mod_time = mod_time
       last_seen_set = seen_set
