@@ -130,3 +130,7 @@ dmypy.json
 
 # IDEs
 .idea/
+
+# labelprinter temp files
+temp.svg
+temp.pdf
