@@ -7,6 +7,7 @@ from .LabelSheet import LabelSheet
 
 from .Compose import Compose
 from .StyleModifier import StyleModifier, FillColor, StrokeColor
+from .Hide import Hide
 from .DimensionModifier import DimensionModifier
 
 from .Svg import Svg
