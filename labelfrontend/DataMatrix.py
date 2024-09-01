@@ -28,7 +28,7 @@ class DataMatrix(RectGroupReplacer):
     self.align = align
     self.fill = fill
 
-  def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
+  def process_rect(self, rect: ET.Element) -> List[ET.Element]:
     from ppf.datamatrix import DataMatrix  # type: ignore
 
     datamatrix = DataMatrix(self.data)

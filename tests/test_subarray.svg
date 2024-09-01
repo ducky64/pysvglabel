@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1.75in"
+   height="0.5in"
+   viewBox="0 0 157.5 44.9999998"
+   id="svg2"
+   version="1.1"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="test_subarray.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <rect
+       x="0"
+       y="966.8622"
+       width="157.5"
+       height="40.5"
+       id="rect882" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:document-units="px"
+     inkscape:current-layer="g5683"
+     showgrid="true"
+     units="in"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:bbox-nodes="false"
+     inkscape:object-nodes="true"
+     inkscape:zoom="5.656854"
+     inkscape:cx="103.32598"
+     inkscape:cy="14.937631"
+     inkscape:window-width="1825"
+     inkscape:window-height="1177"
+     inkscape:window-x="466"
+     inkscape:window-y="0"
+     inkscape:snap-nodes="true"
+     inkscape:document-rotation="0"
+     inkscape:snap-text-baseline="true"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4136"
+       units="in"
+       spacingx="5.625"
+       spacingy="5.625" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1007.3622)">
+    <g
+       id="g5683"
+       transform="translate(-64.532478,911.27217)">
+      <rect
+         y="101.71503"
+         x="70.157478"
+         height="16.875004"
+         width="146.25"
+         id="rect4193"
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.999213;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4189"
+         y="107.34003"
+         x="70.157478"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="107.34003"
+           x="70.157478"
+           sodipodi:role="line"
+           id="tspan5751">🐍SubtemplateArray(</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="112.0682"
+           x="70.157478"
+           sodipodi:role="line"
+           id="tspan3488">  &quot;test_subarray_subtemplate.svg&quot;,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="116.76219"
+           x="70.157478"
+           sodipodi:role="line"
+           id="tspan4351">  eval(value),</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="121.45618"
+           x="70.157478"
+           sodipodi:role="line"
+           id="tspan3490">  align=Align.TOP</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="126.15018"
+           x="70.157478"
+           sodipodi:role="line"
+           id="tspan3492">)</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25px;line-height:100%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="74.196167"
+       y="1048.8063"
+       id="text900"><tspan
+         sodipodi:role="line"
+         x="74.196167"
+         y="1048.8063"
+         id="tspan898"
+         style="stroke-width:0.9375px"><tspan
+           x="74.196167"
+           y="1048.8063"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:100%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';text-align:start;text-anchor:start;stroke-width:0.9375px"
+           id="tspan896">{index}</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text880"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-6.5368652"
+       y="0"><tspan
+         x="0"
+         y="970.27334"
+         id="tspan6640"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan6638"># pysvglabel: init
+</tspan></tspan><tspan
+         x="0"
+         y="974.96084"
+         id="tspan6644"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan6642">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0.3125, 0)*inch, count=(4, 20))</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.939375;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="m 5.625,1012.9872 h 146.25 v 0 0 0"
+       id="path3593" />
+  </g>
+</svg>

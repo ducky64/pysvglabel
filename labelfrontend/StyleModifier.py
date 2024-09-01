@@ -15,7 +15,7 @@ class StyleModifier(GroupReplacer):
     """
     self.attribs = attribs
 
-  def process_group(self, context: SvgTemplate, elts: List[ET.Element]) -> List[ET.Element]:
+  def process_group(self, elts: List[ET.Element]) -> List[ET.Element]:
     for elt in elts:
       if 'style' not in elt.attrib:
         elt.attrib['style'] = ''

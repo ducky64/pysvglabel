@@ -32,7 +32,7 @@ class Align(Enum):
     else:
       raise ValueError(f"unknown alignment {align}")
 
-    # handle X transform
+    # handle Y transform
     if align in [Align.TOP_LEFT, Align.TOP, Align.TOP_RIGHT]:  # top align
       dy = 0 * px
     elif align in [Align.LEFT, Align.CENTER, Align.RIGHT]:  # center align

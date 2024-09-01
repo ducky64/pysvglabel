@@ -30,7 +30,7 @@ class Code128(RectGroupReplacer):
     self.align = align
     self.fill = fill
 
-  def process_rect(self, context: SvgTemplate, rect: ET.Element) -> List[ET.Element]:
+  def process_rect(self, rect: ET.Element) -> List[ET.Element]:
     bar_widths = code128_widths(self.data)
 
     if self.quiet:  # first bar is a dummy spacer, alternate spaces and drawn bars
