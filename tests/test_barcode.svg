@@ -5,7 +5,7 @@
    viewBox="0 0 112.5 90"
    id="svg2"
    version="1.1"
-   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    sodipodi:docname="test_barcode.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -40,11 +40,11 @@
      inkscape:snap-bbox-midpoints="true"
      inkscape:bbox-nodes="false"
      inkscape:object-nodes="true"
-     inkscape:zoom="5.638896"
-     inkscape:cx="57.812735"
-     inkscape:cy="16.7586"
-     inkscape:window-width="1350"
-     inkscape:window-height="1230"
+     inkscape:zoom="7.9746032"
+     inkscape:cx="57.244228"
+     inkscape:cy="32.478105"
+     inkscape:window-width="2404"
+     inkscape:window-height="1697"
      inkscape:window-x="2313"
      inkscape:window-y="169"
      inkscape:snap-nodes="true"
@@ -57,7 +57,13 @@
      inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
-       id="grid4136" />
+       id="grid4136"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1"
+       units="in"
+       visible="true" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -160,6 +166,11 @@
            y="115.53705"
            x="67.344978"
            sodipodi:role="line"
+           id="tspan1">  fill='red',</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="120.32037"
+           x="67.344978"
+           sodipodi:role="line"
            id="tspan31270">  align=Align.BOT_RIGHT)</tspan></text>
     </g>
     <text
@@ -171,15 +182,21 @@
        transform="translate(0,-5.625)"><tspan
          x="0"
          y="970.18401"
-         id="tspan31769"><tspan
+         id="tspan11"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan31767"># pysvglabel: init
+           id="tspan10"># pysvglabel: init
 </tspan></tspan><tspan
          x="0"
          y="974.87151"
-         id="tspan31773"><tspan
+         id="tspan15"><tspan
            style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
-           id="tspan31771">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0, 0)*inch, count=(4, 10))</tspan></tspan></text>
+           id="tspan12">import qrcode
+</tspan></tspan><tspan
+         x="0"
+         y="979.55901"
+         id="tspan17"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan16">sheet = LabelSheet(page=(8.5, 11)*inch, space=(0, 0)*inch, count=(4, 10))</tspan></tspan></text>
     <g
        id="g5683-1-3"
        transform="translate(-19.532475,928.14717)">
@@ -206,6 +223,122 @@
            x="67.344978"
            sodipodi:role="line"
            id="tspan31272-7">  size=0.254*mm)</tspan></text>
+    </g>
+    <g
+       id="g5683-1-9"
+       transform="translate(-64.532478,958.14717)">
+      <rect
+         y="101.71503"
+         x="64.532478"
+         height="22.500004"
+         width="22.499992"
+         id="rect4193-4-7"
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.844489;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4189-3-1"
+         y="105.97041"
+         x="67.344978"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="105.97041"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan5751-1-1">🐍QrCode(row['barcode'],</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="110.75373"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan31226-0">  size=0.254*mm,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="115.53705"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan5">  border=0,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="120.32037"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan31272-9">  align=Align.TOP_LEFT)</tspan></text>
+    </g>
+    <g
+       id="g5683-1-8-8"
+       transform="translate(25.467531,958.14717)">
+      <rect
+         y="101.71503"
+         x="64.532478"
+         height="22.500004"
+         width="22.499992"
+         id="rect4193-4-6-2"
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.844489;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4189-3-4-5"
+         y="105.97041"
+         x="67.344978"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="105.97041"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan5751-1-6-8">🐍QrCode(row['barcode'],</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="110.75373"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan31226-7-5">  size=0.254*mm,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="115.53705"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan7">  border=0,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="120.32037"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan2">  fill='red',</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="125.10368"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan31270-7">  align=Align.BOT_RIGHT)</tspan></text>
+    </g>
+    <g
+       id="g5683-1-3-0"
+       transform="translate(-19.532473,958.14717)">
+      <rect
+         y="101.71503"
+         x="64.532478"
+         height="22.500004"
+         width="22.499992"
+         id="rect4193-4-1-7"
+         style="opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:0.844489;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4189-3-9-5"
+         y="105.97041"
+         x="67.344978"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="105.97041"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan6">🐍QrCode(row['barcode'],</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="110.75373"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan31272-7-9">  size=0.254*mm,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="115.53705"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan9">  error_correction=qrcode.ERROR_CORRECT_H,</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.75px;line-height:1.25;font-family:'open Sans';-inkscape-font-specification:'open Sans';text-align:start;text-anchor:start"
+           y="120.32037"
+           x="67.344978"
+           sodipodi:role="line"
+           id="tspan8">  border=0)</tspan></text>
     </g>
   </g>
 </svg>
