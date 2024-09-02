@@ -30,7 +30,7 @@ class QrCode(RectGroupReplacer):
     self.error_correction = error_correction
 
   def process_rect(self, rect: ET.Element) -> List[ET.Element]:
-    import qrcode.image.svg
+    import qrcode.image.svg  # type: ignore
 
     kwargs = {}
     if self.border is not None:

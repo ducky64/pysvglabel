@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 import time
 from typing import Dict, Tuple
 
-import win32com.shell.shell as shell
+import win32com.shell.shell as shell  # type:ignore
 import win32event  # type:ignore
 
 from labelcore import SvgTemplate, InkscapeSubprocess
