@@ -46,7 +46,7 @@ class Code128(RectGroupReplacer):
     align_x, align_y = Align.to_transform(self.align, (self.thickness * total_width, 0 * px),
                                           (width, 0 * px))
     assert self.thickness * total_width <= width, \
-      f"barcode '{self.data}' width {(self.thickness * total_width).to_str()} >= allocated {width.to_str()}"
+      f"{self.__class__.__name__} '{self.data}' width {(self.thickness * total_width).to_str()} >= allocated {width.to_str()}"
 
     path_cmds = ""
     for i, bar_width_dim in enumerate(bar_widths):

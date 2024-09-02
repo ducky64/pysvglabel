@@ -15,4 +15,5 @@ from .Subtemplate import Subtemplate
 from .SubtemplateArray import SubtemplateArray
 
 from .Code128 import Code128
+from .QrCode import QrCode
 from .DataMatrix import DataMatrix
