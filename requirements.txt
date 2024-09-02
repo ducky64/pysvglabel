@@ -1,2 +1,2 @@
-ppf-datamatrix
-qrcode
+ppf-datamatrix==0.2
+qrcode==7.4.2
