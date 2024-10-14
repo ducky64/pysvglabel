@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="46mm"
+   height="14.3999996mm"
+   viewBox="0 0 162.992126 51.0236205"
+   id="svg2"
+   version="1.1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="smdbook.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4415"
+       inkscape:collect="always">
+      <stop
+         id="stop4417"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         id="stop4419"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4415"
+       id="linearGradient4399"
+       x1="14.1732283"
+       y1="1055.1969"
+       x2="141.732285"
+       y2="1055.1969"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-7.0866142,-53.858274)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4415"
+       id="linearGradient4407"
+       x1="14.1732283"
+       y1="1077.87402"
+       x2="141.732285"
+       y2="1077.87402"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-7.0866142,-25.511812)" />
+    <rect
+       x="0"
+       y="966.86218"
+       width="159.44881"
+       height="58.216557"
+       id="rect882" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="65.659915"
+     inkscape:cy="9.8489873"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1863"
+     inkscape:window-height="1437"
+     inkscape:window-x="3267"
+     inkscape:window-y="390"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-edge-midpoints="false"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:object-nodes="true"
+     inkscape:bbox-nodes="false"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-nodes="false"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4133"
+       originx="0"
+       originy="0"
+       spacingy="1.7716536"
+       spacingx="1.7716536"
+       units="mm"
+       visible="true"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1001.33858)">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:url(#linearGradient4407);stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 0,1052.3622 H 141.73229"
+       id="path4197"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:url(#linearGradient4399);stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 0,1001.3386 H 141.73229"
+       id="path4197-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.75px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="3.787955"
+       y="949.92432"
+       id="text4134"
+       transform="scale(0.93541432,1.069045)"><tspan
+         sodipodi:role="line"
+         id="tspan4136"
+         x="3.787955"
+         y="949.92432"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.75px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';letter-spacing:-0.25px">{title}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:-0.25px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-size:13.75000043px"
+       x="151.7682"
+       y="949.92432"
+       id="text4134-1"
+       transform="scale(0.93541432,1.069045)"><tspan
+         sodipodi:role="line"
+         id="tspan4136-8"
+         x="151.5182"
+         y="949.92432"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:end;letter-spacing:-0.25px;text-anchor:end;font-size:13.75000043px">{package}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.75px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="3.7879548"
+       y="964.83936"
+       id="text4134-4"
+       transform="scale(0.93541432,1.069045)"><tspan
+         sodipodi:role="line"
+         id="tspan4136-7"
+         x="3.7879548"
+         y="964.83936"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.75px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';letter-spacing:-0.25px">{desc or &quot;&quot;}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.75px;line-height:0%;font-family:'Open Sans Condensed';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Open Sans Condensed, ';font-stretch:normal;font-variant:normal"
+       x="3.787955"
+       y="981.0802"
+       id="text4134-4-1"
+       transform="scale(0.93541432,1.069045)"><tspan
+         sodipodi:role="line"
+         id="tspan4136-7-4"
+         x="3.787955"
+         y="981.0802"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.75px;line-height:1.25;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';letter-spacing:-0.25px">{supplier_part}</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 0,1008.4252 v -7.0866 h 7.0866146"
+       id="path4146"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 0,1045.2756 v 7.0866 h 7.0866146"
+       id="path4146-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 162.99214,1008.4252 v -7.0866"
+       id="path4146-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 162.99214,1045.2756 v 7.0866"
+       id="path4146-3-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.75px;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="1397.7552"
+       y="-139.20734"
+       id="text4134-2"
+       transform="matrix(0,0.93541432,-1.069045,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4136-6"
+         x="1397.7552"
+         y="-139.20734"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.75px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:center;text-anchor:middle">{pagecat}</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text880"
+       style="font-size:3.75px;line-height:125%;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed, ';text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect882);display:inline;fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-6.5368652"
+       y="0"
+       transform="translate(0,-18.845432)"><tspan
+         x="0"
+         y="970.18401"
+         id="tspan3"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan1"># pysvglabel: init
+</tspan></tspan><tspan
+         x="0"
+         y="974.87151"
+         id="tspan5"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan4">from screws import *
+</tspan></tspan><tspan
+         x="0"
+         y="979.55901"
+         id="tspan7"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan6"># for a typical SMD book, printable on 8.5x11 paper
+</tspan></tspan><tspan
+         x="0"
+         y="984.24651"
+         id="tspan9"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan8"># note the category is way down outside the svg bounds,
+</tspan></tspan><tspan
+         x="0"
+         y="988.93401"
+         id="tspan11"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan10"># so it shows up halfway through a column
+</tspan></tspan><tspan
+         x="0"
+         y="993.62151"
+         id="tspan13"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan12">sheet = LabelSheet(page=(11, 8.5)*inch, space=(0, 0)*mm, count=(5, 12), vertical=True)
+</tspan></tspan><tspan
+         x="0"
+         y="998.30901"
+         id="tspan15"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan14">
+</tspan></tspan><tspan
+         x="0"
+         y="1002.9965"
+         id="tspan17"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan16">package = &quot;&quot;  # optional field
+</tspan></tspan><tspan
+         x="0"
+         y="1007.684"
+         id="tspan19"><tspan
+           style="font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#000000;stroke:none"
+           id="tspan18">desc = &quot;&quot;  #optional field</tspan></tspan></text>
+  </g>
+</svg>

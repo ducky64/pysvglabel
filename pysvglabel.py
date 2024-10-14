@@ -24,14 +24,18 @@ if __name__ == '__main__':
                       help="Use Inkscape's nonstandard multipage functionality, instead of writing multiple files.")
   args = parser.parse_args()
 
+  # instantiating the template messes with the system path, so abspath everything now
+  csvpath = os.path.abspath(args.csv)
+  outputpath = os.path.abspath(args.output)
+
   template = SvgTemplate(args.template)
   template_page_count = template.get_sheet_count()[0] * template.get_sheet_count()[1]
 
-  with open(args.csv, newline='', encoding='utf-8') as csvfile:
+  with open(csvpath, newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile)
     table = [row for row in reader]
 
-  output_name, output_ext = os.path.splitext(args.output)
+  output_name, output_ext = os.path.splitext(outputpath)
   inkscape: Optional[InkscapeSubprocess] = None
   if output_ext == '.pdf':
     inkscape = InkscapeSubprocess()
