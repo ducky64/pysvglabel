@@ -200,17 +200,17 @@ class SvgTemplate:
 
     (margin_x, margin_y) = self.sheet.get_margins(self.template.size)
     (viewbox_scale_x, viewbox_scale_y) = self._viewbox_scale()
+    pos_x = 0
+    pos_y = 0
     for row_num, row in enumerate(table):
       if row_num >= self.sheet.labels_per_sheet():
         raise BadTemplateException(f'table contains more entries than {self.sheet.labels_per_sheet()} per page')
 
-      count_x = row_num % self.sheet.count[0]
-      count_y = row_num // self.sheet.count[0]
       if not self.sheet.flip_x:
-        offset_x = margin_x + (self.template.size[0] + self.sheet.space[0]) * count_x
+        offset_x = margin_x + (self.template.size[0] + self.sheet.space[0]) * pos_x
       else:
-        offset_x = margin_x + (self.template.size[0] + self.sheet.space[0]) * (self.sheet.count[0] - 1 - count_x)
-      offset_y = margin_y + (self.template.size[1] + self.sheet.space[1]) * count_y
+        offset_x = margin_x + (self.template.size[0] + self.sheet.space[0]) * (self.sheet.count[0] - 1 - pos_x)
+      offset_y = margin_y + (self.template.size[1] + self.sheet.space[1]) * pos_y
 
       instance = self.apply_instance(row, table, row_num)
       assert 'transform' not in instance.attrib
@@ -218,6 +218,17 @@ class SvgTemplate:
         f'translate({offset_x.to_px() * viewbox_scale_x}, {offset_y.to_px() * viewbox_scale_y})'
 
       new_root.append(instance)
+
+      if self.sheet.vertical:
+        pos_y += 1
+        if pos_y >= self.sheet.count[1]:
+          pos_y = 0
+          pos_x += 1
+      else:
+        pos_x += 1
+        if pos_x >= self.sheet.count[0]:
+          pos_x = 0
+          pos_y += 1
 
     return new_root
 
