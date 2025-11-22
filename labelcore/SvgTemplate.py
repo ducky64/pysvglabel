@@ -6,6 +6,19 @@ from typing import Any, Dict, Callable, cast, List, Tuple
 from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
 
+from contextlib import contextmanager
+
+@contextmanager
+def context_chdir(path):
+  """Temporarily changes the os cwd using a context manager, restoring it afterwards."""
+  original_cwd = os.getcwd()
+  try:
+    os.chdir(path)
+    yield
+  finally:
+    os.chdir(original_cwd)
+
+
 def get_text_of(elt: ET.Element) -> str:
   inner_texts = [get_text_of(child) for child in filter_text_inner_elts(list(elt))]
   return (elt.text or "") + "".join(inner_texts)
@@ -39,11 +52,11 @@ class SvgTemplate:
   def _create_env(dir_abspath: str) -> Dict[str, Any]:
     """Creates an environment for a template in some directory. CWD leaks."""
     env: Dict[str, Any] = {}
-    os.chdir(dir_abspath)
-    exec("from labelfrontend import *", env)
-    exec("import sys as __sys", env)
-    dirpath_escaped = dir_abspath.replace('\\', '\\\\')
-    exec(f"__sys.path.append('{dirpath_escaped}')", env)
+    with context_chdir(dir_abspath):
+      exec("from labelfrontend import *", env)
+      exec("import sys as __sys", env)
+      dirpath_escaped = dir_abspath.replace('\\', '\\\\')
+      exec(f"__sys.path.append('{dirpath_escaped}')", env)
     return env
 
   def __init__(self, filename: str):
@@ -66,8 +79,9 @@ class SvgTemplate:
         if child_text.startswith('# pysvglabel: init'):
           if self.env is not None:
             raise BadTemplateException("multiple starting blocks (textboxes starting with '# pysvglabel: init') found")
-          self.env = self._create_env(self.dir_abspath)
-          exec(child_text, self.env)
+          with context_chdir(self.dir_abspath):
+            self.env = self._create_env(self.dir_abspath)
+            exec(child_text, self.env)
 
           if 'sheet' not in self.env:
             raise BadTemplateException("sheet not defined in starting block")
@@ -168,23 +182,14 @@ class SvgTemplate:
     """Creates a copy of this template, with substitutions for the given row data.
     The env dict is shallow-copied, so variable changes aren't reflected in other rows,
     but mutation effects will be visible."""
-    os.chdir(self.dir_abspath)
-    instance_env = copy(self.env)
-    value_variables = {key: value for key, value in row.items()
-                       if key.isidentifier()}  # discard non-identifiers
-    instance_env.update(value_variables)
-    instance_env.update({'row': row, 'table': table, 'row_num': row_num})
-    for row_code in self.row_contents:
-      exec(row_code, instance_env)
-
-    instance_env = copy(self.env)
-    value_variables = {key: value for key, value in row.items()
-                       if key.isidentifier()}  # discard non-identifiers
-    instance_env.update(value_variables)
-    instance_env.update({'row': row, 'table': table, 'row_num': row_num})
-
-    for row_code in self.row_contents:
-      exec(row_code, instance_env)
+    with context_chdir(self.dir_abspath):
+      instance_env = copy(self.env)
+      value_variables = {key: value for key, value in row.items()
+                         if key.isidentifier()}  # discard non-identifiers
+      instance_env.update(value_variables)
+      instance_env.update({'row': row, 'table': table, 'row_num': row_num})
+      for row_code in self.row_contents:
+        exec(row_code, instance_env)
 
     instance_svg = self.template.apply_instance(instance_env)
     new_group = ET.Element(f'{SVG_NAMESPACE}g')
@@ -234,10 +239,10 @@ class SvgTemplate:
 
   def run_end(self) -> None:
     """Call this to run the end block of the template."""
-    os.chdir(self.dir_abspath)
-    end_env = copy(self.env)
-    for end_code in self.end_contents:
-      exec(end_code, end_env)
+    with context_chdir(self.dir_abspath):
+      end_env = copy(self.env)
+      for end_code in self.end_contents:
+        exec(end_code, end_env)
 
 
 class SvgTemplateInstance:
@@ -263,12 +268,12 @@ class SvgTemplateInstance:
     def process_text(elt: ET.Element) -> None:
       for child in filter_text_inner_elts(list(elt)):
         process_text(child)
-      os.chdir(self.dir_abspath)
-      if elt.text:
-        elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, though """ in a label is unlikely
-      for child in elt:
-        if child.tail:
-          child.tail = eval(f'f"""{child.tail}"""', env)  # TODO proper escaping
+      with context_chdir(self.dir_abspath):
+        if elt.text:
+          elt.text = eval(f'f"""{elt.text}"""', env)  # TODO proper escaping, though """ in a label is unlikely
+        for child in elt:
+          if child.tail:
+            child.tail = eval(f'f"""{child.tail}"""', env)  # TODO proper escaping
 
     def apply_template(elt: ET.Element) -> None:
       from .GroupReplacer import GroupReplacer
@@ -279,8 +284,8 @@ class SvgTemplateInstance:
       if len(command_child_elts) == 1:
         command_elt = command_child_elts[0]
         code = get_text_of(command_elt).strip('🐍')
-        os.chdir(self.dir_abspath)
-        obj = eval(code, env)
+        with context_chdir(self.dir_abspath):
+          obj = eval(code, env)
         if not isinstance(obj, GroupReplacer):
           raise BadTemplateException(f'🐍 textbox expected result of type GroupReplacer, got {type(obj)}, in {code}')
 
