@@ -47,15 +47,18 @@ def visit(elt: ET.Element, fn: Callable[[ET.Element], None]) -> None:
 
 
 class SvgTemplate:
-  """Class that defines a SVG sheet template, including init block, per-row blocks, and end block."""
+  """Class that defines a SVG sheet template, including init block, per-row blocks, and end block.
+
+  Template code is executed in the template's directory using a temporary os.chdir.
+  """
   @staticmethod
   def _create_env(dir_abspath: str) -> Dict[str, Any]:
-    """Creates an environment for a template in some directory. CWD leaks."""
+    """Creates an environment for a template in some directory."""
     env: Dict[str, Any] = {}
+    dirpath_escaped = dir_abspath.replace('\\', '\\\\')
     with context_chdir(dir_abspath):
       exec("from labelfrontend import *", env)
       exec("import sys as __sys", env)
-      dirpath_escaped = dir_abspath.replace('\\', '\\\\')
       exec(f"__sys.path.append('{dirpath_escaped}')", env)
     return env
 
@@ -79,8 +82,8 @@ class SvgTemplate:
         if child_text.startswith('# pysvglabel: init'):
           if self.env is not None:
             raise BadTemplateException("multiple starting blocks (textboxes starting with '# pysvglabel: init') found")
+          self.env = self._create_env(self.dir_abspath)
           with context_chdir(self.dir_abspath):
-            self.env = self._create_env(self.dir_abspath)
             exec(child_text, self.env)
 
           if 'sheet' not in self.env:
@@ -182,12 +185,12 @@ class SvgTemplate:
     """Creates a copy of this template, with substitutions for the given row data.
     The env dict is shallow-copied, so variable changes aren't reflected in other rows,
     but mutation effects will be visible."""
+    instance_env = copy(self.env)
+    value_variables = {key: value for key, value in row.items()
+                       if key.isidentifier()}  # discard non-identifiers
+    instance_env.update(value_variables)
+    instance_env.update({'row': row, 'table': table, 'row_num': row_num})
     with context_chdir(self.dir_abspath):
-      instance_env = copy(self.env)
-      value_variables = {key: value for key, value in row.items()
-                         if key.isidentifier()}  # discard non-identifiers
-      instance_env.update(value_variables)
-      instance_env.update({'row': row, 'table': table, 'row_num': row_num})
       for row_code in self.row_contents:
         exec(row_code, instance_env)
 
@@ -239,8 +242,8 @@ class SvgTemplate:
 
   def run_end(self) -> None:
     """Call this to run the end block of the template."""
+    end_env = copy(self.env)
     with context_chdir(self.dir_abspath):
-      end_env = copy(self.env)
       for end_code in self.end_contents:
         exec(end_code, end_env)
 
