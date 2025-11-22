@@ -5,8 +5,8 @@ from typing import Any, Dict, Callable, cast, List, Tuple
 
 from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
-
 from contextlib import contextmanager
+
 
 @contextmanager
 def context_chdir(path):
