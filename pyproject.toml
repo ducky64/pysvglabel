@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysvglabel"
+description = "Label generator with SVG templates supporting embedded Python code and CSV data"
+readme = "README.md"
+version = "0.1.0"
+authors = [
+    { name = "Richard Lin", email = "rlin512@gmail.com" }
+]
+requires-python = "~=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Office/Business",
+    "Topic :: Printing",
+    "Typing :: Typed",
+]
+license = "BSD-3-Clause"
+dependencies = [
+    "ppf-datamatrix==0.2",
+    "qrcode==7.4.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/ducky64/pysvglabel"
+Issues = "https://github.com/ducky64/pysvglabel/issues"
+
+[project.optional-dependencies]
+dev = [
+    "mypy",
+]
+
+[tool.setuptools]
+packages = ["pysvglabel.labelcore", "pysvglabel.labelfrontend", "pysvglabel.generate", "pysvglabel.printer"]
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+strict = true
+
+[tool.black]
+line-length = 120

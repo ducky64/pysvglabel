@@ -2,7 +2,7 @@ from typing import List, Optional, Dict, Any, Tuple
 import xml.etree.ElementTree as ET
 import os.path
 
-from labelcore import SvgTemplate, RectGroupReplacer, SVG_NAMESPACE, SvgTemplateInstance
+from pysvglabel.labelcore import SvgTemplate, RectGroupReplacer, SVG_NAMESPACE, SvgTemplateInstance
 
 from .Align import Align
 from .Scaling import Scaling
