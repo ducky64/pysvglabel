@@ -1,7 +1,7 @@
 from typing import List, Optional
 import xml.etree.ElementTree as ET
 
-from pysvglabel.labelcore.GroupReplacer import RectGroupReplacer
+from ..labelcore.GroupReplacer import RectGroupReplacer
 from .units import LengthDimension
 from .Align import Align
 

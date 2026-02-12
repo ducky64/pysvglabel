@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 from .Align import Align
 from .external.Code128 import code128_widths
 
-from pysvglabel.labelcore.common import SVG_NAMESPACE
-from pysvglabel.labelcore.GroupReplacer import RectGroupReplacer
+from ..labelcore.common import SVG_NAMESPACE
+from ..labelcore.GroupReplacer import RectGroupReplacer
 from .units import LengthDimension, px
 
 

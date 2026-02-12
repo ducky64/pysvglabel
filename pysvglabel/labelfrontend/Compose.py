@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 from typing import List
 
-from pysvglabel.labelcore.GroupReplacer import GroupReplacer
+from ..labelcore.GroupReplacer import GroupReplacer
 
 
 class Compose(GroupReplacer):

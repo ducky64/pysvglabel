@@ -63,7 +63,7 @@ class SvgTemplate:
     return env
 
   def __init__(self, filename: str):
-    from pysvglabel.labelfrontend import LabelSheet
+    from ..labelfrontend import LabelSheet
 
     self.file_abspath = os.path.abspath(filename)
     self.dir_abspath = os.path.dirname(self.file_abspath)
@@ -148,7 +148,7 @@ class SvgTemplate:
 
   def _viewbox_scale(self) -> Tuple[float, float]:
     """Returns the viewbox scaling, as factor to multiply by to get true units."""
-    from pysvglabel.labelfrontend.units import LengthDimension
+    from ..labelfrontend.units import LengthDimension
     if 'viewBox' in self.skeleton.attrib and 'width' in self.skeleton.attrib and 'height' in self.skeleton.attrib:
       viewbox_split = self.skeleton.attrib['viewBox'].split(' ')
       assert len(viewbox_split) == 4, f"viewBox must have 4 components, got {self.skeleton.attrib['viewBox']}"
@@ -250,7 +250,7 @@ class SvgTemplate:
 class SvgTemplateInstance:
   """Class that defines a SVG template only, excluding top-level data like init block."""
   def __init__(self, template: ET.Element, dir_abspath: str):
-    from pysvglabel.labelfrontend.units import LengthDimension
+    from ..labelfrontend.units import LengthDimension
 
     if 'width' not in template.attrib:
       raise BadTemplateException("svg missing width")
