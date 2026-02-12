@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
-from typing import List, Dict
+from typing import List
 
-from labelcore.GroupReplacer import GroupReplacer
+from ..labelcore.GroupReplacer import GroupReplacer
 
 
 class Hide(GroupReplacer):

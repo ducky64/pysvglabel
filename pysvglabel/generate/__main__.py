@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 import os.path
 from typing import Optional
 
-from labelcore import SvgTemplate, InkscapeSubprocess, INKSCAPE_NAMESPACE, SODIPODI_NAMESPACE
+from ..labelcore import SvgTemplate, InkscapeSubprocess, INKSCAPE_NAMESPACE, SODIPODI_NAMESPACE
 
 
 if __name__ == '__main__':

@@ -1,9 +1,8 @@
 import xml.etree.ElementTree as ET
 from typing import List, Dict
 
-from labelcore.SvgTemplate import SvgTemplate
-from labelcore.GroupReplacer import GroupReplacer
-from labelfrontend.units import LengthDimension
+from ..labelcore.GroupReplacer import GroupReplacer
+from .units import LengthDimension
 
 
 class DimensionModifier(GroupReplacer):

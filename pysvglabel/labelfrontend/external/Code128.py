@@ -18,7 +18,7 @@ from typing import List
 
 # Copied from http://en.wikipedia.org/wiki/Code_128
 # Value Weights 128A    128B    128C
-CODE128_CHART = """
+CODE128_CHART = r"""
 0       212222  space   space   00
 1       222122  !       !       01
 2       222221  "       "       02

@@ -1,8 +1,7 @@
 import xml.etree.ElementTree as ET
 from typing import List, Dict
 
-from labelcore.SvgTemplate import SvgTemplate
-from labelcore.GroupReplacer import GroupReplacer
+from ..labelcore.GroupReplacer import GroupReplacer
 
 
 class StyleModifier(GroupReplacer):

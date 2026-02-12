@@ -6,7 +6,7 @@ import os.path
 import inspect
 from typing import Dict, List
 
-from labelcore import SvgTemplate
+from pysvglabel.labelcore import SvgTemplate
 
 
 class LabelTestCase(unittest.TestCase):

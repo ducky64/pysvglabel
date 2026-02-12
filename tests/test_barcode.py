@@ -1,7 +1,7 @@
 import csv
 
 import os.path
-from labelcore import SvgTemplate
+from pysvglabel.labelcore import SvgTemplate
 from .LabelTestCase import LabelTestCase
 
 

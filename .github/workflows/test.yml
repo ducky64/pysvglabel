@@ -1,0 +1,40 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          pip install -e .[dev]
+          pip freeze  # dump debug info on packages
+#      - name: Style
+#        run: |
+#          black --check .
+      - name: Static typing
+        run: |
+          mypy .
+      - name: Tests
+        run: |
+          python -m unittest
+      - name: Example
+        run: |
+          # test the executable module in a separate folder
+          cd examples
+          python -m pysvglabel.generate screws_40x10mm.svg screws.csv screws.svg
