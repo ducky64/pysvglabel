@@ -21,7 +21,7 @@ Additional options (see command help for details):
 If PDF output is requested, Inkscape is used as the renderer and must be installed and on your system PATH.
 
 Label sheet data is embedded in the template .svg file.
-All text in the .svg file are treated as Python f-strings, and the contents of the row (where the column name is a legal Python variable name) are made available. 
+All text in the .svg file is treated as Python f-strings, and the contents of the row (where the column name is a legal Python variable name) are made available. 
 Specially formatted commands (see [Template Reference](#template-reference)) that call Python functions (such as generating barcodes) can also be written into the template.
 
 **Security notes**: running the labelmaker can execute arbitrary Python code embedded in the template SVG and supporting scripts.
@@ -35,16 +35,16 @@ The live printing utility watches for changes in a .csv file and prints changed 
 This is useful for single label printers (as opposed to sheets), like a thermal printer.
 
 This needs a few more dependencies:
-`pip install pysvglabel[printing]`
+`pip install pysvglabel[winprint]`
 
 Inkscape must be installed and on your system PATH.
 
 Run
-`python -m pysvglabel.printer <"ZDesigner GX430t"> <template.svg> <data.csv>`
+`python -m pysvglabel.printer <printer-name> <template.svg> <data.csv>`
 
 ### API
 
-The SVG templating engine can be used in other Python code with the `SvgTempalte` class.
+The SVG templating engine can be used in other Python code with the `SvgTemplate` class.
 
 ```python
 from pysvglabel import SvgTemplate
@@ -79,6 +79,7 @@ It must define the `sheet` as a `LabelSheet` object, for example `sheet = LabelS
 ### Labels
 
 For each label instance, the CSV data is made available as local variables of the column name.
+Values can also be accessed through `row['column name']`,  especially if the column name is not a valid Python variable name.
 
 All text is interpreted as f-strings, use `{}` to substitute in variable values.
 
@@ -87,7 +88,7 @@ All text is interpreted as f-strings, use `{}` to substitute in variable values.
 These are defined as a rectangle (specifying the area) and a textbox (with the Python code, starting with the snake emoji `🐍`) in a group.
 
 Barcodes:
-- `Code128(self, data: str, thickness: LengthDimension, quiet: bool = True, align: Align = Align.CENTER, fill: str = '#000000')`: code 128 linear barcode generator, a general-purpose barcode
+- `Code128(data: str, thickness: LengthDimension, quiet: bool = True, align: Align = Align.CENTER, fill: str = '#000000')`: code 128 linear barcode generator, a general-purpose barcode
 - `QrCode(data: str, size: LengthDimension, align: Align = Align.CENTER, fill: str = '#000000', border: Optional[int] = None, error_correction: Optional[int] = None)`: QR code generator
 - `DataMatrix(data: str, size: LengthDimension, align: Align = Align.CENTER, fill: str = '#000000')`: datamatrix 2d barcode generator
 
