@@ -38,3 +38,4 @@ jobs:
           # test the executable module in a separate folder
           cd examples
           python -m pysvglabel.generate screws_40x10mm.svg screws.csv screws.svg
+          python example_api.py

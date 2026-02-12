@@ -59,15 +59,12 @@ sheet.append(template.apply_page([
   {'title': 'duck', 'barcode': '0001'},
 ]))
 
-# create the SVG
-root = ET.ElementTree(sheet)
-
 # ... which can be written out
-ET.tostring(root, 'utf-8')
+ET.tostring(sheet, 'utf-8')
 
 # ... or rendered to PNG
 import cairosvg
-cairosvg.svg2png(bytestring=ET.tostring(root, 'utf-8'))
+cairosvg.svg2png(bytestring=ET.tostring(sheet, 'utf-8'))
 ```
 
 ## Template Reference
