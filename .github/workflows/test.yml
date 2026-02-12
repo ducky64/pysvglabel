@@ -24,9 +24,9 @@ jobs:
         run: |
           pip install -e .[dev]
           pip freeze  # dump debug info on packages
-#      - name: Style
-#        run: |
-#          black --check .
+      - name: Style
+        run: |
+          black --check .
       - name: Static typing
         run: |
           mypy .

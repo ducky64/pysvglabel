@@ -128,65 +128,67 @@ CODE128_CHART = r"""
 106     2331112 Stop    Stop    Stop
 """.split()
 
-VALUES   = [int(value) for value in CODE128_CHART[0::5]]
-WEIGHTS  = dict(zip(VALUES, CODE128_CHART[1::5]))
+VALUES = [int(value) for value in CODE128_CHART[0::5]]
+WEIGHTS = dict(zip(VALUES, CODE128_CHART[1::5]))
 CODE128A = dict(zip(CODE128_CHART[2::5], VALUES))
 CODE128B = dict(zip(CODE128_CHART[3::5], VALUES))
 CODE128C = dict(zip(CODE128_CHART[4::5], VALUES))
 
 for charset in (CODE128A, CODE128B):
-  charset[' '] = charset.pop('space')
+    charset[" "] = charset.pop("space")
+
 
 def code128_format(data: str) -> List[int]:
-  """
-  Generate an optimal barcode from ASCII text
-  """
-  text     = str(data)
-  pos      = 0
-  length   = len(text)
+    """
+    Generate an optimal barcode from ASCII text
+    """
+    text = str(data)
+    pos = 0
+    length = len(text)
 
-  # Start Code
-  if text[:2].isdigit() and length > 1:
-    charset = CODE128C
-    codes   = [charset['StartC']]
-  else:
-    charset = CODE128B
-    codes   = [charset['StartB']]
-
-  # Data
-  while pos < length:
-    if charset is CODE128C:
-      if text[pos:pos+2].isdigit() and length - pos > 1:
-        # Encode Code C two characters at a time
-        codes.append(int(text[pos:pos+2]))
-        pos += 2
-      else:
-        # Switch to Code B
-        codes.append(charset['CodeB'])
-        charset = CODE128B
-    elif text[pos:pos+4].isdigit() and length - pos >= 4:
-      # Switch to Code C
-      codes.append(charset['CodeC'])
-      charset = CODE128C
+    # Start Code
+    if text[:2].isdigit() and length > 1:
+        charset = CODE128C
+        codes = [charset["StartC"]]
     else:
-      # Encode Code B one character at a time
-      codes.append(charset[text[pos]])
-      pos += 1
+        charset = CODE128B
+        codes = [charset["StartB"]]
 
-  # Checksum
-  checksum = 0
-  for weight, code in enumerate(codes):
-    checksum += max(weight, 1) * code
-  codes.append(checksum % 103)
+    # Data
+    while pos < length:
+        if charset is CODE128C:
+            if text[pos : pos + 2].isdigit() and length - pos > 1:
+                # Encode Code C two characters at a time
+                codes.append(int(text[pos : pos + 2]))
+                pos += 2
+            else:
+                # Switch to Code B
+                codes.append(charset["CodeB"])
+                charset = CODE128B
+        elif text[pos : pos + 4].isdigit() and length - pos >= 4:
+            # Switch to Code C
+            codes.append(charset["CodeC"])
+            charset = CODE128C
+        else:
+            # Encode Code B one character at a time
+            codes.append(charset[text[pos]])
+            pos += 1
 
-  # Stop Code
-  codes.append(charset['Stop'])
-  return codes
+    # Checksum
+    checksum = 0
+    for weight, code in enumerate(codes):
+        checksum += max(weight, 1) * code
+    codes.append(checksum % 103)
+
+    # Stop Code
+    codes.append(charset["Stop"])
+    return codes
+
 
 def code128_widths(data: str) -> List[int]:
-  barcode_widths = []
-  for code in code128_format(data):
-    for weight in WEIGHTS[code]:
-      barcode_widths.append(int(weight))
+    barcode_widths = []
+    for code in code128_format(data):
+        for weight in WEIGHTS[code]:
+            barcode_widths.append(int(weight))
 
-  return barcode_widths
+    return barcode_widths
