@@ -1,5 +1,6 @@
 import unittest
-from labelfrontend.units import LengthDimension, mm, inch, px
+from pysvglabel.labelfrontend import mm, inch, px
+from pysvglabel.labelfrontend.units import LengthDimension
 
 
 class UnitsParseTestCase(unittest.TestCase):

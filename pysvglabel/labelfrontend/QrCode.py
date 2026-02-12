@@ -1,9 +1,8 @@
 from typing import List, Optional
 import xml.etree.ElementTree as ET
 
-from labelcore.GroupReplacer import RectGroupReplacer
-from labelcore.common import SVG_NAMESPACE
-from .units import LengthDimension, mm
+from ..labelcore.GroupReplacer import RectGroupReplacer
+from .units import LengthDimension
 from .Align import Align
 
 
