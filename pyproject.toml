@@ -34,6 +34,10 @@ dev = [
     "mypy",
 ]
 
+printing = [
+    "pywin32"
+]
+
 [tool.setuptools]
 packages = ["pysvglabel.labelcore", "pysvglabel.labelfrontend", "pysvglabel.generate", "pysvglabel.printer"]
 

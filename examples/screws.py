@@ -1,7 +1,7 @@
 from string import digits
 from typing import Optional
 
-from pysvglabel.labelfrontend import LengthDimension, mm
+from pysvglabel.labelfrontend.units import LengthDimension, mm
 
 
 # Abbreviations from

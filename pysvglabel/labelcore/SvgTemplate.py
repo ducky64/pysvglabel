@@ -1,7 +1,7 @@
 import os.path
 import xml.etree.ElementTree as ET
 from copy import deepcopy, copy
-from typing import Any, Dict, Callable, cast, List, Tuple
+from typing import Any, Dict, Callable, cast, List, Tuple, Generator
 
 from .common import BadTemplateException, SVG_NAMESPACE, NAMESPACES, SVG_GRAPHICS_TAGS
 
@@ -9,7 +9,7 @@ from contextlib import contextmanager
 
 
 @contextmanager
-def context_chdir(path):
+def context_chdir(path: str) -> Generator[None, None, None]:
   """Temporarily changes the os cwd using a context manager, restoring it afterwards."""
   original_cwd = os.getcwd()
   try:
