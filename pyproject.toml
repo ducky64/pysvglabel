@@ -34,7 +34,7 @@ dev = [
     "mypy",
 ]
 
-printing = [
+winprint = [
     "pywin32"
 ]
 
