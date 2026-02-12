@@ -38,8 +38,11 @@ winprint = [
     "pywin32"
 ]
 
-[tool.setuptools]
-packages = ["pysvglabel.labelcore", "pysvglabel.labelfrontend", "pysvglabel.generate", "pysvglabel.printer"]
+[tool.setuptools.packages.find]
+# Include all packages found in the "src" directory (a common practice)
+include = ["pysvglabel*"]
+# Exclude the "tests" subfolder (and its contents) from the wheel/sdist
+exclude = ["docs", "examples", "tests", "tools"]
 
 [tool.mypy]
 check_untyped_defs = true
