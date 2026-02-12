@@ -32,6 +32,7 @@ Issues = "https://github.com/ducky64/pysvglabel/issues"
 [project.optional-dependencies]
 dev = [
     "mypy",
+    "black",
 ]
 
 winprint = [
