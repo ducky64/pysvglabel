@@ -4,7 +4,9 @@ import xml.etree.ElementTree as ET
 import os.path
 from typing import Optional
 
-from ..labelcore import SvgTemplate, InkscapeSubprocess, INKSCAPE_NAMESPACE, SODIPODI_NAMESPACE
+from .. import SvgTemplate
+from ..labelcore.common import INKSCAPE_NAMESPACE, SODIPODI_NAMESPACE
+from ..labelcore.InkscapeSubprocess import InkscapeSubprocess
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create label sheets from SVG templates.")

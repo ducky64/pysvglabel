@@ -1,3 +1,3 @@
-from .labelcore import SvgTemplate
+from .labelcore.SvgTemplate import SvgTemplate
 
 __all__ = ["SvgTemplate"]

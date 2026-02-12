@@ -51,5 +51,9 @@ disallow_incomplete_defs = true
 disallow_untyped_defs = true
 strict = true
 
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disable_error_code = ["attr-defined"]
+
 [tool.black]
 line-length = 120
